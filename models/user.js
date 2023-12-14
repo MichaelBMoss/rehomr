@@ -16,7 +16,8 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  }, location: { type: String },
+  role: { type: String , enum: ['organization', 'petSeeker'], default: '', required: true},
 }, {
   timestamps: true,
   toJSON: {
