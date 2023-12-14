@@ -19,39 +19,6 @@ export default function CreatePetPage() {
     });
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   const xhr = new XMLHttpRequest();
-  //   xhr.open('POST', '/api/pets', true);
-  //   xhr.setRequestHeader('Content-Type', 'application/json');
-
-  //   xhr.onreadystatechange = function () {
-  //     if (xhr.readyState === 4) {
-  //       if (xhr.status === 201) {
-  //         // Handle successful response, e.g., redirect or display a success message
-  //         console.log('Pet created:', JSON.parse(xhr.responseText));
-
-  //         // Clear the form after submission
-  //         setFormData({
-  //           name: '',
-  //           animal: '',
-  //           breed: '',
-  //           age: '',
-  //           description: '',
-  //           gender: '',
-  //           location: '',
-  //         });
-  //       } else {
-  //         console.error('Error creating pet:', xhr.statusText);
-  //       }
-  //     }
-  //   };
-
-  //   const data = JSON.stringify(formData);
-  //   xhr.send(data);
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
   
