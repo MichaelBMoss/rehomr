@@ -64,8 +64,9 @@ export default function SignUpForm({ setUser }) {
 						<input
 							type="radio"
 							id="organization"
-							name="role"
-							value="Organization"
+              name="role"
+              value="organization"
+              checked={credentials.role === "organization"}
 							onChange={handleChange}
 							required
 						/>
@@ -74,7 +75,8 @@ export default function SignUpForm({ setUser }) {
 							type="radio"
 							id="petSeeker"
 							name="role"
-							value="Pet Seeker"
+              value="petSeeker"
+              checked={credentials.role === "petSeeker"} 
 							onChange={handleChange}
 							required
 						/>
