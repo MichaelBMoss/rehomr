@@ -1,58 +1,104 @@
-import { Component } from 'react';
-import { signUp } from '../../utilities/users-service';
+import { useState } from "react";
+import { signUp } from "../../utilities/users-service";
 
-export default class SignUpForm extends Component {
-  state = {
-    name: '',
-    email: '',
-    password: '',
-    confirm: '',
-    error: ''
-  };
+export default function SignUpForm({ setUser }) {
+	const [credentials, setCredentials] = useState({
+		name: "",
+		email: "",
+		role: "",
+		location: "",
+		password: "",
+		confirm: "",
+	});
+	const [error, setError] = useState("");
 
-  handleChange = (evt) => {
-    this.setState({
-      [evt.target.name]: evt.target.value,
-      error: ''
-    });
-  };
+	function handleChange(evt) {
+		setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
+		setError("");
+	}
 
-  handleSubmit = async (evt) => {
+  async function handleSubmit(evt) { 
     evt.preventDefault();
+    console.log(credentials);
     try {
-      const {name, email, password} = this.state;
-      const formData = {name, email, password};
-      // The promise returned by the signUp service
-      // method will resolve to the user object included
-      // in the payload of the JSON Web Token (JWT)
-      const user = await signUp(formData);
-      this.props.setUser(user);
-    } catch {
-      // An error occurred
-      // Probably due to a duplicate email
-      this.setState({ error: 'Sign Up Failed - Try Again' });
+      const user = await signUp(credentials);
+      setUser(user);
     }
-  };
-
-  render() {
-    const disable = this.state.password !== this.state.confirm;
-    return (
-      <div>
-        <div className="form-container">
-          <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label>Name</label>
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required />
-            <label>Email</label>
-            <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required />
-            <label>Password</label>
-            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
-            <label>Confirm</label>
-            <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required />
-            <button type="submit" disabled={disable}>SIGN UP</button>
-          </form>
-        </div>
-        <p className="error-message">&nbsp;{this.state.error}</p>
-      </div>
-    );
+  catch {
+      setError("Sign Up Failed - Try Again");
+    }
   }
+    
+
+	return (
+		<div>
+			<div className="form-container">
+				<form autoComplete="off" onSubmit={handleSubmit}>
+					<label>Name</label>
+					<input
+						type="text"
+						name="name"
+						value={credentials.name}
+						onChange={handleChange}
+						required
+					/>
+					<label>Email</label>
+					<input
+						type="text"
+						name="email"
+						value={credentials.email}
+						onChange={handleChange}
+						required
+					/>
+            <label>Location</label>
+            <input
+              type="text"
+              name="location"
+              value={credentials.location}
+              onChange={handleChange}
+              required
+            />
+					<label>Role</label>
+					<div>
+						<label htmlFor="organization">Organization</label>
+						<input
+							type="radio"
+							id="organization"
+							name="role"
+							value="Organization"
+							onChange={handleChange}
+							required
+						/>
+						<label htmlFor="petSeeker">Pet Seeker</label>
+						<input
+							type="radio"
+							id="petSeeker"
+							name="role"
+							value="Pet Seeker"
+							onChange={handleChange}
+							required
+						/>
+					</div>
+					<label>Password</label>
+					<input
+						type="password"
+						name="password"
+						value={credentials.password}
+						onChange={handleChange}
+						required
+					/>
+					<label>Confirm</label>
+					<input
+						type="password"
+						name="confirm"
+						value={credentials.confirm}
+						onChange={handleChange}
+						required
+					/>
+					<button type="submit">SIGN UP</button>
+				</form>
+			</div>
+			<p className="error-message">&nbsp;{error}</p>
+		</div>
+	);
 }
