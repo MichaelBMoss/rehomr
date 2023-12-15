@@ -5,7 +5,10 @@ export default function CreatePetPage() {
     name: '',
     animal: '',
     breed: '',
-    age: '',
+    age: {
+      value: '',
+      unit: 'years', // Default value
+    },
     description: '',
     gender: '',
     location: '',
@@ -13,15 +16,25 @@ export default function CreatePetPage() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    if (name === 'ageValue' || name === 'ageUnit') {
+      setFormData({
+        ...formData,
+        age: {
+          ...formData.age,
+          [name === 'ageValue' ? 'value' : 'unit']: value,
+        },
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const xhr = new XMLHttpRequest();
       xhr.open('POST', '/api/pets', true);
@@ -30,15 +43,12 @@ export default function CreatePetPage() {
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
           if (xhr.status === 201) {
-            // Handle successful response, e.g., redirect or display a success message
             console.log('Pet created:', JSON.parse(xhr.responseText));
-  
-            // Clear the form after submission
             setFormData({
               name: '',
               animal: '',
               breed: '',
-              age: '',
+              age: { value: '', unit: 'years' },
               description: '',
               gender: '',
               location: '',
@@ -48,14 +58,13 @@ export default function CreatePetPage() {
           }
         }
       };
-  
+
       const data = JSON.stringify(formData);
       xhr.send(data);
     } catch (error) {
       console.error('Error creating pet:', error);
     }
   };
-  
 
   return (
     <div>
@@ -92,11 +101,21 @@ export default function CreatePetPage() {
           <label>Age:</label>
           <input
             type="number"
-            name="age"
-            value={formData.age}
+            name="ageValue"
+            value={formData.age.value}
             onChange={handleChange}
           />
+          <select
+            name="ageUnit"
+            value={formData.age.unit}
+            onChange={handleChange}
+          >
+            <option value="weeks">Weeks</option>
+            <option value="months">Months</option>
+            <option value="years">Years</option>
+          </select>
         </div>
+
         <div>
           <label>Description:</label>
           <textarea
