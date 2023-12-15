@@ -3,7 +3,7 @@ const Pet = require('../../models/pet/pet');
 module.exports = {
     create,
     index,
-    getOne,
+    getById,
     update,
     delete: deleteOne,
 
@@ -30,7 +30,7 @@ async function index(req, res) {
     }
 }
 
-async function getOne(req, res) {
+async function getById(req, res) {
     try {
         const pet = await Pet.findById(req.params.id);
         res.status(200).json(pet);
