@@ -23,12 +23,13 @@ export default function PetDetailPage() {
         <h1>Pet Details</h1>
         {pet ?
           <>
-          <p>{pet.name}</p>
-          <p>{pet.animal}</p>
-            <p>{pet.breed}</p>
-            <p>{pet.age}</p>
-            <p>{pet.gender}</p>
-            <p>{pet.description}</p>
+          <p>Name: {pet.name}</p>
+          <p>Animal Type: {pet.animal}</p>
+            <p>Breed: {pet.breed}</p>
+            <p>Age: {pet.age}</p>
+            <p>Gender: {pet.gender}</p>
+            <p>Bio: {pet.description}</p>
+            {/* <button onClick={handleDeletePet}>Delete Pet</button> */}
 
           </>
 
