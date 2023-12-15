@@ -98,7 +98,7 @@ export default function SignUpForm({ setUser }) {
 					<button type="submit">SIGN UP</button>
 				</form>
 			</div>
-			<p className="error-message">&nbsp;{error}</p>
+			<p className="error-message">{error}</p>
 		</div>
 	);
 }
