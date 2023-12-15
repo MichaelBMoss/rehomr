@@ -35,7 +35,7 @@ export default function PetDetailPage() {
 							<p>Bio: {pet.description}</p>
 						</div>
 						<span>
-							<Link to={`/pets/${pet._id}/edit`}>
+							<Link to={`/pets/${pet._id}/update`}>
 								<button>Edit</button>
 							</Link>
 							<Link to={`/pets/${pet._id}/delete`}>

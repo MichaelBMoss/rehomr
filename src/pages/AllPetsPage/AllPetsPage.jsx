@@ -22,7 +22,11 @@ export default function AllPetsPage() {
           <h1>All Pets Page</h1>
           {pets.map((pet) => (
             <Link to={`/pets/${pet._id}`} key={pet._id}>
-              <div>{pet.name}</div>
+              <div>
+                <h3>{pet.name}</h3>
+                <p>{pet.age.value} {pet.age.unit}</p>
+                <p>{pet.location}</p>
+              </div>
             </Link>
           ))}
         </>
