@@ -1,4 +1,6 @@
 const Pet = require('../../models/pet/pet');
+const uploadFile = require('../../routes/api/upload');
+
 
 module.exports = {
     create,
@@ -11,7 +13,8 @@ module.exports = {
 
 async function create(req, res) {
     try {
-        const newPet = new Pet(req.body);
+        const photoUrl = await uploadFile(req, res);
+        const newPet = new Pet({ ...req.body, photoUrl });
         const savedPet = await newPet.save();
         res.status(201).json(savedPet);
     } catch (error) {
