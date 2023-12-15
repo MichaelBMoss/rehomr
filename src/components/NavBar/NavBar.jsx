@@ -9,7 +9,7 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav>
-      <Link to={`/pets/${id}`}>Pet Details</Link>
+      {/* <Link to={`/pets/${id}`}>Pet Details</Link> */}
       &nbsp; | &nbsp;
       <Link to="/pets/new">Add a Pet</Link>
       &nbsp;&nbsp;

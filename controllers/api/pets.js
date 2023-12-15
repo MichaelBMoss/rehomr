@@ -39,3 +39,4 @@ async function getOne(req, res) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 }
+
