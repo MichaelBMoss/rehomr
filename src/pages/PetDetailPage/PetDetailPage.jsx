@@ -36,10 +36,10 @@ export default function PetDetailPage() {
 						</div>
 						<span>
 							<Link to={`/pets/${pet._id}/update`}>
-								<button>Edit</button>
+								<button>Edit Listing</button>
 							</Link>
 							<Link to={`/pets/${pet._id}/delete`}>
-								<button>Delete</button>
+								<button>Remove Listing</button>
 							</Link>
             			</span>
 					</>

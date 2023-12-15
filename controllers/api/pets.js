@@ -1,11 +1,12 @@
 const Pet = require('../../models/pet/pet');
 
+
 module.exports = {
     create,
     index,
     getById,
     update,
-    delete: deleteOne,
+    deletePet,
 
 };
 
@@ -54,7 +55,7 @@ async function update(req, res) {
     }
 }
 
-async function deleteOne(req, res) {
+async function deletePet(req, res) {
     try {
         const deletedPet = await Pet.findByIdAndRemove(req.params.id);
         res.status(200).json(deletedPet);

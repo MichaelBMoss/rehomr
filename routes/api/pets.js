@@ -11,7 +11,7 @@ router.get('/:id', petsCtrl.getById);
 // Define a route to handle updating a pet
 router.put('/:id', petsCtrl.update);
 // Define a route to handle deleting a pet
-router.delete('/:id', petsCtrl.delete);
+router.delete('/:id', petsCtrl.deletePet);
 
 
 
