@@ -4,8 +4,10 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 // Always require and configure near the top
 require('dotenv').config();
+const AWS = require('aws-sdk');
 // Connect to the database
 require('./config/database');
+
 
 const app = express();
 
