@@ -10,11 +10,21 @@ const petSchema = new mongoose.Schema({
     required: true,
   },
   breed: String,
-  age: Number,
+  age: {
+    value: {
+      type: Number,
+      required: true,
+    },
+    unit: {
+      type: String,
+      enum: ['weeks', 'months', 'years'],
+      required: true,
+    },
+  },
   description: String,
   gender: {
     type: String,
-    enum: ['Male', 'Female',],
+    enum: ['Male', 'Female'],
   },
   location: String,
 });
