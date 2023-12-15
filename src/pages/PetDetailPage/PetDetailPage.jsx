@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as petsAPI from "../../utilities/pets-api";
+import { Link } from 'react-router-dom';
+
 
 export default function PetDetailPage() {
 	const [pet, setPet] = useState();
@@ -33,14 +35,13 @@ export default function PetDetailPage() {
 							<p>Bio: {pet.description}</p>
 						</div>
 						<span>
-            <button>
-              <a href={`/pets/${pet._id}/edit`}>Edit</a>
-              </button>
-              &nbsp;&nbsp;&nbsp;
-              <button>
-                <a href={`/pets/${pet._id}/delete`}>Delete</a>
-              </button>
-            </span>
+							<Link to={`/pets/${pet._id}/edit`}>
+								<button>Edit</button>
+							</Link>
+							<Link to={`/pets/${pet._id}/delete`}>
+								<button>Delete</button>
+							</Link>
+            			</span>
 					</>
 				) : (
 					<p>Loading...</p>
