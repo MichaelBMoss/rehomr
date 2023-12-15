@@ -15,7 +15,7 @@ export default function NavBar({ user, setUser }) {
     <nav className="navbar navbar-expand-md">
       <div className="container-fluid">
         <Link
-          className={`navbar-brand ps-3 ${isHomePage ? 'nav-home' : ''}`} to="/">
+          className={`navbar-brand ps-3 ${isHomePage ? 'navbar-brand-home' : ''}`} to="/">
           reHomr
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar " aria-controls="offcanvasNavbar">
@@ -31,7 +31,7 @@ export default function NavBar({ user, setUser }) {
               <li className="nav-item">
                 <Link className={`nav-link ${isHomePage ? 'nav-home' : ''}`} to="/about">About</Link>
               </li>
-              <li className={`nav-item dropdown ${isHomePage ? 'nav-home' : ''}`}>
+              <li className="nav-item dropdown">
                 <a className={`nav-link dropdown-toggle ${isHomePage ? 'nav-home' : ''}`} href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Pets
                 </a>

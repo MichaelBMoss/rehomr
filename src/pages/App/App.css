@@ -1,0 +1,163 @@
+
+nav {
+  z-index: 1;
+}
+
+.navbar {
+  padding-top: 1rem;
+}
+
+.nav-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.navbar-brand {
+  color: black;
+}
+
+.nav-link {
+  position: relative;
+  margin: 0 2rem;
+  color: black;
+  text-decoration: none;
+  overflow: hidden;
+  padding: 0 !important; /* Prevent the underline from extending beyond the text */
+}
+
+.nav-link::before, .nav-home::before {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--yellow-1);
+  transform: scaleX(0);
+  transform-origin: center; /* Center the transform origin */
+  transition: transform 0.2s ease-out; /* Add transition for the transform property */
+  z-index: -1;
+}
+
+.nav-link:hover::before, .nav-home:hover::before {
+  transform: scaleX(1); /* Scale the underline to its full width on hover */
+}
+
+.nav-home, .navbar-brand-home {
+  color: white;
+  transition: 0.2s ease-in; /* Add transition for the transform property */
+}
+
+.nav-home:hover {
+  color: white;
+}
+
+.navbar-brand-home:hover {
+  color:var(--yellow-1);
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  min-width: 150px;
+  height: 40px;
+  padding: 5px 12px;
+}
+
+.btn-primary {
+  background-color: var(--yellow-1);
+  color: black;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--yellow-hover);
+  color: black;
+}
+
+.btn-primary-outline {
+  background-color: transparent;
+  border: 2px solid var(--yellow-1);
+}
+
+.btn-primary-outline:hover {
+  background-color: var(--yellow-1);
+}
+
+.btn-danger {
+  background-color: var(--red-1);
+}
+
+.home-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-img-overlay {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  opacity: 25%;
+}
+
+.home-hero-wrap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.home-hero {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+.home-title {
+  font-size: 4rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.home-tag {
+  width: 43%;
+}
+
+@media (max-width: 575.98px) {}
+
+@media (min-width: 576px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 992px) {
+  .home-title {
+    font-size: 3rem;
+  }
+
+  .home-tag {
+    font-size: 1.5rem;
+    width: 50%; 
+  }
+}
+
+@media (min-width: 1200px) {}
