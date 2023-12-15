@@ -11,6 +11,7 @@ import DeletePetPage from '../DeletePetPage/DeletePetPage';
 import UpdatePetPage from '../UpdatePetPage/UpdatePetPage';
 import AllPetsPage from '../AllPetsPage/AllPetsPage';
 import AboutPage from '../AboutPage/AboutPage';
+import OrgsListPage from '../OrgsListPage/OrgsListPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -28,6 +29,7 @@ export default function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/login" element={<AuthPage setUser={setUser} /> } />
+              <Route path="/organizations" element={<OrgsListPage />} />
             </Routes>
     </main>
   );
