@@ -6,7 +6,6 @@ import AuthPage from '../AuthPage/AuthPage';
 import HomePage from '../HomePage/HomePage'; 
 import NavBar from '../../components/NavBar/NavBar';
 import CreatePetPage from '../CreatePetPage/CreatePetPage';
-// import Pet from '../../../models/pet/pet';
 import PetDetailPage from '../PetDetailPage/PetDetailPage';
 import DeletePetPage from '../DeletePetPage/DeletePetPage';
 import UpdatePetPage from '../UpdatePetPage/UpdatePetPage';

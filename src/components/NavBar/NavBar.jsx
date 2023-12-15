@@ -39,7 +39,7 @@ export default function NavBar({ user, setUser }) {
                 </ul>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/organizations">Organizations</Link>
+                <Link className="nav-link" to="/organizations/">Organizations</Link>
               </li>
               {user ? (
                 <li className="nav-item"><Link className="nav-link btn btn-primary-outline" to="" onClick={handleLogOut}>Log Out</Link></li>
