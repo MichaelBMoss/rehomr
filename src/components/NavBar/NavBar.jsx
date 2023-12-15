@@ -31,7 +31,7 @@ export default function NavBar({ user, setUser }) {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <Link className="dropdown-item" to="/pets">See All Pets</Link>
+                    <Link className="dropdown-item" to="/pets/all">See All Pets</Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/pets/new">Add a Pet</Link>

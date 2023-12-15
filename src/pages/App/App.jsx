@@ -8,6 +8,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import CreatePetPage from '../CreatePetPage/CreatePetPage';
 import DeletePetPage from '../DeletePetPage/DeletePetPage';
 import UpdatePetPage from '../UpdatePetPage/UpdatePetPage';
+import AllPetsPage from '../AllPetsPage/AllPetsPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -17,6 +18,7 @@ export default function App() {
             <NavBar user={user} setUser={setUser} />
             <Routes>
               {/* Route components in here */}
+              <Route path="/pets/all" element={<AllPetsPage />} />
               <Route path="/pets/new" element={<CreatePetPage />} />
               <Route path="/pets/:petId/delete" element={<DeletePetPage />} />
               <Route path="/pets/:petId/update" element={<UpdatePetPage />} />
