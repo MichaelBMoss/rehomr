@@ -7,6 +7,7 @@ import HomePage from '../HomePage/HomePage';
 import NavBar from '../../components/NavBar/NavBar';
 import CreatePetPage from '../CreatePetPage/CreatePetPage';
 import DeletePetPage from '../DeletePetPage/DeletePetPage';
+import UpdatePetPage from '../UpdatePetPage/UpdatePetPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -18,6 +19,7 @@ export default function App() {
               {/* Route components in here */}
               <Route path="/pets/new" element={<CreatePetPage />} />
               <Route path="/pets/:petId/delete" element={<DeletePetPage />} />
+              <Route path="/pets/:petId/update" element={<UpdatePetPage />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<AuthPage setUser={setUser} /> } />
             </Routes>
