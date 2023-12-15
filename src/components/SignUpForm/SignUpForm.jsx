@@ -17,18 +17,16 @@ export default function SignUpForm({ setUser }) {
 		setError("");
 	}
 
-  async function handleSubmit(evt) { 
-    evt.preventDefault();
-    console.log(credentials);
-    try {
-      const user = await signUp(credentials);
-      setUser(user);
-    }
-  catch {
-      setError("Sign Up Failed - Try Again");
-    }
-  }
-    
+	async function handleSubmit(evt) {
+		evt.preventDefault();
+		console.log(credentials);
+		try {
+			const user = await signUp(credentials);
+			setUser(user);
+		} catch {
+			setError("Sign Up Failed - Try Again");
+		}
+	}
 
 	return (
 		<div>
@@ -50,23 +48,23 @@ export default function SignUpForm({ setUser }) {
 						onChange={handleChange}
 						required
 					/>
-            <label>Location</label>
-            <input
-              type="text"
-              name="location"
-              value={credentials.location}
-              onChange={handleChange}
-              required
-            />
+					<label>Location</label>
+					<input
+						type="text"
+						name="location"
+						value={credentials.location}
+						onChange={handleChange}
+						required
+					/>
 					<label>Role</label>
 					<div>
 						<label htmlFor="organization">Organization</label>
 						<input
 							type="radio"
 							id="organization"
-              name="role"
-              value="organization"
-              checked={credentials.role === "organization"}
+							name="role"
+							value="organization"
+							checked={credentials.role === "organization"}
 							onChange={handleChange}
 							required
 						/>
@@ -75,8 +73,8 @@ export default function SignUpForm({ setUser }) {
 							type="radio"
 							id="petSeeker"
 							name="role"
-              value="petSeeker"
-              checked={credentials.role === "petSeeker"} 
+							value="petSeeker"
+							checked={credentials.role === "petSeeker"}
 							onChange={handleChange}
 							required
 						/>
