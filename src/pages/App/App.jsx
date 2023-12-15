@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import PetDetailPage from '../PetDetailPage/PetDetailPage';
 import NavBar from '../../components/NavBar/NavBar';
 import CreatePetPage from '../CreatePetPage/CreatePetPage';
 
@@ -18,7 +18,7 @@ export default function App() {
             <Routes>
               {/* Route components in here */}
               <Route path="/pets/new" element={<CreatePetPage />} />
-              <Route path="/orders" element={<OrderHistoryPage />} />
+              <Route path="/pets/:id" element={<PetDetailPage />} />
             </Routes>
           </>
           :
