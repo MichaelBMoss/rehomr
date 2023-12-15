@@ -4,40 +4,44 @@ import * as petsAPI from "../../utilities/pets-api";
 
 export default function PetDetailPage() {
 	const [pet, setPet] = useState();
-	const { id } = useParams();
-	console.log(id);
+	const { petId } = useParams();
 
 	useEffect(() => {
 		const fetchPet = async () => {
 			try {
-				const data = await petsAPI.getById(id);
+				const data = await petsAPI.getById(petId);
 				setPet(data);
 			} catch (error) {
 				console.error(error);
 			}
 		};
-		console.log(pet);
 		fetchPet();
-	}, [id]);
+	}, [petId]);
+
 	return (
 		<>
 			<div>
 				<h1>Pet Details</h1>
 				{pet ? (
-					(console.log(pet),
-					(
-						<>
-							<div>
-								<p>Name: {pet.name}</p>
-								<p>Animal Type: {pet.animal}</p>
-								<p>Breed: {pet.breed}</p>
-								<p>Age: {pet.age}</p>
-								<p>Gender: {pet.gender}</p>
-								<p>Bio: {pet.description}</p>
-							</div>
-							{/* <button onClick={handleDeletePet}>Delete Pet</button> */}
-						</>
-					))
+					<>
+						<div>
+							<p>Name: {pet.name}</p>
+							<p>Animal Type: {pet.animal}</p>
+							<p>Breed: {pet.breed}</p>
+							<p>Age: {pet.age}</p>
+							<p>Gender: {pet.gender}</p>
+							<p>Bio: {pet.description}</p>
+						</div>
+						<span>
+            <button>
+              <a href={`/pets/${pet._id}/edit`}>Edit</a>
+              </button>
+              &nbsp;&nbsp;&nbsp;
+              <button>
+                <a href={`/pets/${pet._id}/delete`}>Delete</a>
+              </button>
+            </span>
+					</>
 				) : (
 					<p>Loading...</p>
 				)}
