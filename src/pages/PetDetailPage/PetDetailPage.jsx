@@ -25,7 +25,11 @@ export default function PetDetailPage() {
           <>
           <p>{pet.name}</p>
           <p>{pet.animal}</p>
-          <p>{pet.breed}</p>
+            <p>{pet.breed}</p>
+            <p>{pet.age}</p>
+            <p>{pet.gender}</p>
+            <p>{pet.description}</p>
+
           </>
 
             : <p>Loading...</p>}
