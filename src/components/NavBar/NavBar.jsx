@@ -48,9 +48,9 @@ export default function NavBar({ user, setUser }) {
                 <Link className={`nav-link ${isHomePage ? 'nav-home' : ''}`} to="/organizations">Organizations</Link>
               </li>
               {user ? (
-                <li className="nav-item"><Link className={`nav-link btn btn-primary-outline ${isHomePage ? 'nav-home' : ''}`} to="" onClick={handleLogOut}>Log Out</Link></li>
+                <li className="nav-item"><Link className={`btn btn-yellow-outline ${isHomePage ? 'nav-home-user' : ''}`} to="" onClick={handleLogOut}>Log Out</Link></li>
               ) : (
-                <li className="nav-item"><Link className={`nav-link btn btn-primary${isHomePage ? 'nav-home' : ''}`} to="/login">Log In/Sign Up</Link></li>
+                <li className="nav-item"><Link className="btn btn-yellow" to="/login">Log In/Sign Up</Link></li>
               )}
             </ul>
           </div>

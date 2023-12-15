@@ -10,7 +10,7 @@ export default function HomePage() {
         <div className=" home-hero">
           <h1 className="home-title">Welcome to reHomr</h1>
           <h2 className="home-tag">Find your furry friend and fill your heart with joy - where every adoption tells a tale of love and a home found</h2>
-          <Link className="btn btn-primary" to="/pets">See All Pets</Link>
+          <Link className="btn btn-yellow" to="/pets">See All Pets</Link>
         </div>
       </div>
     </>

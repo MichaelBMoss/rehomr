@@ -19,6 +19,10 @@ nav {
   /* Add transition for the transform property */
 }
 
+.navbar-brand:focus {
+  color: white;
+}
+
 .nav-link {
   position: relative;
   margin: 0 2rem;
@@ -53,7 +57,7 @@ nav {
 }
 
 .nav-home,
-.navbar-brand-home {
+.navbar-brand-home, .navbar-brand-home:active, .nav-home-user {
   color: white;
   transition: 0.2s ease-in;
   /* Add transition for the transform property */
@@ -78,23 +82,23 @@ nav {
   padding: 5px 12px;
 }
 
-.btn-primary {
+.btn-yellow {
   background-color: var(--yellow-1);
   color: black;
   border: none;
 }
 
-.btn-primary:hover {
+.btn-yellow:hover {
   background-color: var(--yellow-hover);
   color: black;
 }
 
-.btn-primary-outline {
+.btn-yellow-outline {
   background-color: transparent;
   border: 2px solid var(--yellow-1);
 }
 
-.btn-primary-outline:hover {
+.btn-yellow-outline:hover {
   background-color: var(--yellow-1);
 }
 
