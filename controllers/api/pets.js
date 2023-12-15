@@ -40,3 +40,26 @@ async function getOne(req, res) {
     }
 }
 
+async function update(req, res) {
+    try {
+        const updatedPet = await Pet.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        );
+        res.status(200).json(updatedPet);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+async function deleteOne(req, res) {
+    try {
+        const deletedPet = await Pet.findByIdAndRemove(req.params.id);
+        res.status(200).json(deletedPet);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}

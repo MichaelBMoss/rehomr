@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import * as userService from '../../utilities/users-service';
+import * as petsAPI from '../../utilities/pets-api';
 
 export default function NavBar({ user, setUser }) {
   function handleLogOut() {
@@ -9,7 +10,7 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav>
-      {/* <Link to={`/pets/${id}`}>Pet Details</Link> */}
+      <Link to="pets">Pet Details</Link>
       &nbsp; | &nbsp;
       <Link to="/pets/new">Add a Pet</Link>
       &nbsp;&nbsp;
