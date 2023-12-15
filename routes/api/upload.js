@@ -8,7 +8,7 @@ const uuid = require("uuid");
 const fs = require("fs");
 
 router.post("/", upload.single("file"), (req, res) => {
-    console.log(req.file);
+	console.log(req.file);
 	// req.file contains information about the uploaded file
 	const fileContent = fs.readFileSync(req.file.path);
 	const params = {
@@ -17,8 +17,8 @@ router.post("/", upload.single("file"), (req, res) => {
 		Body: fileContent,
 	};
 	// Uploading files to the bucket
-    s3.upload(params, function (err, data) {
-        console.log(data);
+	s3.upload(params, function (err, data) {
+		fs.unlinkSync(req.file.path);
 		if (err) {
 			res.status(500).send(err);
 		}
