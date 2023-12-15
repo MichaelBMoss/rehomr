@@ -22,6 +22,10 @@ body {
   height: 100vh;
 }
 
+nav {
+  z-index: 1;
+}
+
 .navbar {
   padding-top: 1rem;
 }
@@ -30,6 +34,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: black;
+}
+
+.navbar-brand {
+  color: black;
+}
+
+.nav-home {
+  color: white;
 }
 
 .nav-link {
@@ -54,6 +67,7 @@ body {
 
 .btn-primary:hover {
   background-color: var(--yellow-hover);
+  color: black;
 }
 
 .btn-primary-outline {
