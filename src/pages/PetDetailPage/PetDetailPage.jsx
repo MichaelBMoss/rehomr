@@ -33,14 +33,14 @@ export default function PetDetailPage() {
 							<p>Bio: {pet.description}</p>
 						</div>
 						<span>
-            <button>
-              <a href={`/pets/${pet._id}/edit`}>Edit</a>
-              </button>
-              &nbsp;&nbsp;&nbsp;
-              <button>
-                <a href={`/pets/${pet._id}/delete`}>Delete</a>
-              </button>
-            </span>
+							<button>
+								<a href={`/pets/${pet._id}/edit`}>Edit</a>
+							</button>
+							&nbsp;&nbsp;&nbsp;
+							<button>
+								<a href={`/pets/${pet._id}/delete`}>Delete</a>
+							</button>
+						</span>
 					</>
 				) : (
 					<p>Loading...</p>
