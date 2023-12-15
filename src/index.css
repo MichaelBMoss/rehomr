@@ -10,7 +10,9 @@
 
 /* background-color: var(--blue-1); */
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
@@ -20,49 +22,4 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
-}
-
-.navbar {
-  padding-top: 1rem;
-}
-
-.nav-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.nav-link {
-  margin: 0 1rem;
-}
-
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
-  min-width: 150px;
-  height: 40px;
-  padding: 5px 12px;
-}
-
-.btn-primary {
-  background-color: var(--yellow-1);
-}
-
-.btn-primary:hover {
-  background-color: var(--yellow-hover);
-}
-
-.btn-primary-outline {
-  background-color: transparent;
-  border: 2px solid var(--yellow-1);
-}
-
-.btn-primary-outline:hover {
-  background-color: var(--yellow-1);
-}
-
-.btn-danger {
-  background-color: var(--red-1);
 }

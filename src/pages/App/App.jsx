@@ -10,6 +10,7 @@ import PetDetailPage from '../PetDetailPage/PetDetailPage';
 import DeletePetPage from '../DeletePetPage/DeletePetPage';
 import UpdatePetPage from '../UpdatePetPage/UpdatePetPage';
 import AllPetsPage from '../AllPetsPage/AllPetsPage';
+import AboutPage from '../AboutPage/AboutPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -25,6 +26,7 @@ export default function App() {
               <Route path="/pets/:petId/delete" element={<DeletePetPage />} />
               <Route path="/pets/:petId/update" element={<UpdatePetPage />} />
               <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
               <Route path="/login" element={<AuthPage setUser={setUser} /> } />
             </Routes>
     </main>
