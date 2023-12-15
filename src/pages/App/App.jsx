@@ -11,6 +11,7 @@ import DeletePetPage from '../DeletePetPage/DeletePetPage';
 import UpdatePetPage from '../UpdatePetPage/UpdatePetPage';
 import AllPetsPage from '../AllPetsPage/AllPetsPage';
 import AboutPage from '../AboutPage/AboutPage';
+import OrgsListPage from '../OrgsListPage/OrgsListPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -20,7 +21,7 @@ export default function App() {
             <NavBar user={user} setUser={setUser} />
             <Routes>
               {/* Route components in here */}
-              <Route path="/pets/all" element={<AllPetsPage />} />
+              <Route path="/pets" element={<AllPetsPage />} />
               <Route path="/pets/:petId" element={<PetDetailPage />} />
               <Route path="/pets/new" element={<CreatePetPage />} />
               <Route path="/pets/:petId/delete" element={<DeletePetPage />} />
@@ -28,6 +29,7 @@ export default function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/login" element={<AuthPage setUser={setUser} /> } />
+              <Route path="/organizations" element={<OrgsListPage />} />
             </Routes>
     </main>
   );
