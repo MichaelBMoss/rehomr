@@ -192,7 +192,7 @@ nav {
 .auth-page-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 93vh;
+  height:100vh;
   align-items: center;
 }
 
@@ -229,9 +229,10 @@ nav {
 
 .auth-page-form {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  height: 80%;
 }
 
 .form-container {
