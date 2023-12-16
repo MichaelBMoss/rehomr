@@ -17,14 +17,14 @@ export default function CreatePetPage() {
 		location: "",
 	});
 
-  return (
-    <div className="pet-form">
-      <h1>Add a pet for adoption</h1>
-      <PetForm 
-        purpose={'create'} 
-        formData={formData}
-        setFormData={setFormData}
-        />
-    </div>
-  );
+	return (
+		<div className="pet-form">
+			<h1>Add a pet for adoption</h1>
+			<PetForm
+				purpose={"create"}
+				formData={formData}
+				setFormData={setFormData}
+			/>
+		</div>
+	);
 }
