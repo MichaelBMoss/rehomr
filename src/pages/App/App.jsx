@@ -25,7 +25,7 @@ export default function App() {
               <Route path="/pets/:petId" element={<PetDetailPage />} />
               <Route path="/pets/new" element={<CreatePetPage />} />
               <Route path="/pets/:petId/delete" element={<DeletePetPage />} />
-              {/* <Route path="/pets/:petId/update" element={<UpdatePetPage />} /> */}
+              <Route path="/pets/:petId/update" element={<UpdatePetPage />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/login" element={<AuthPage setUser={setUser} /> } />
