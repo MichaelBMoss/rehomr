@@ -38,15 +38,16 @@ export default function CreatePetPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await axios.post('/api/pets', formData, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-
+  
       if (response.status === 201) {
+        const newPetId = response.data._id;
         console.log('Pet created:', response.data);
         setFormData({
           name: '',
@@ -57,7 +58,7 @@ export default function CreatePetPage() {
           gender: '',
           location: '',
         });
-        navigate('/pets');
+        navigate(`/pets/${newPetId}`); // Navigate to the new pet's page
       } else {
         console.error('Error creating pet:', response.statusText);
       }
@@ -65,6 +66,7 @@ export default function CreatePetPage() {
       console.error('Error creating pet:', error);
     }
   };
+  
 
   return (
     <div>
