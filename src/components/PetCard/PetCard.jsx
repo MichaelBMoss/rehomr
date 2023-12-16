@@ -6,7 +6,7 @@ export default function PetCard({ pet }) {
         <>
             <Link className="card pet-card" to={`/pets/${pet._id}`}>
                 <div className="pet-card-photo">
-                    <img src="images/enis-yavuz-KKtuRtGkDys-unsplash.jpg" alt="" />
+                    <img src={`${pet.photoUrl}`} alt="" />
                 </div>
                 <div className="pet-card-info">
                     <h3>{pet.name}</h3>
