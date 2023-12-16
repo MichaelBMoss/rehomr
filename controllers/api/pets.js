@@ -1,4 +1,6 @@
 const Pet = require('../../models/pet/pet');
+const uploadFile = require('../../routes/api/upload');
+
 
 
 module.exports = {
@@ -12,7 +14,10 @@ module.exports = {
 
 async function create(req, res) {
     try {
-        const newPet = new Pet(req.body);
+        const photoUrl = await uploadFile(req, res);
+        const { age, ...otherFields } = req.body;
+        const parsedAge = JSON.parse(age);
+        const newPet = new Pet({ age: parsedAge, ...otherFields, photoUrl });
         const savedPet = await newPet.save();
         res.status(201).json(savedPet);
     } catch (error) {
@@ -50,7 +55,6 @@ async function update(req, res) {
         );
         res.status(200).json(updatedPet);
     } catch (error) {
-        console.log('fuuuuuuuuuuuuuuuuuuuuuuuuuuuuug')
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
