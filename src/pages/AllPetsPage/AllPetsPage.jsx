@@ -19,14 +19,14 @@ export default function AllPetsPage() {
 
   return (
     <>
-    <div className="index-wrap">
-      <h1>All Pets Page</h1>
-      <div className="list-group">
-        {pets.map((pet) => (
-          <PetCard pet={pet} key={pet._id} />
-        ))}
-      </div>
-    </div>
+        <div className="index-wrap">
+          <h1>All Pets Page</h1>
+          <div className="list-group">
+            {pets.map((pet) => (
+              <PetCard pet={pet} key={pet._id} />
+            ))}
+          </div>
+        </div>
     </>
   );
 }

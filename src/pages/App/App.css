@@ -313,8 +313,12 @@ label[for="petSeeker"] > span, label[for="organization"] > span {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin: 50px auto;
-  gap: 50px;
+  background-color: rgb(243, 243, 243);
+  padding: 50px 0;
+}
+
+.index-wrap > h1 {
+  margin-bottom: 50px;
 }
 
 .list-group {
@@ -324,18 +328,53 @@ label[for="petSeeker"] > span, label[for="organization"] > span {
   width: 70%;
 }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 5px;
+  gap: 10px;
+}
+
+.pet-card-photo {
+  width: 95%;
+  padding-top: 95%;
+  position: relative;
+  overflow: hidden;
+}
+
+.pet-card-photo img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pet-card-info {
+  text-align: center;
+}
+
+.pet-card {
+  text-decoration: none;
+  transition: 0.2s ease-in;
+}
+
+.pet-card:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
 
 @media (max-width: 575.98px) {}
 
 @media (min-width: 768px) {
-  .card-group {
-    display: grid;
-  }
 }
 
 @media (max-width: 768px) {
-  .card-group {
+  .list-group {
     width: 90%;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -349,7 +388,7 @@ label[for="petSeeker"] > span, label[for="organization"] > span {
     width: 50%;
   }
 
-  .card-group {
+  .list-group {
     width: 90%;
   }
 }
