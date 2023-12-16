@@ -65,73 +65,77 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
 
 
   return (
-    <form onSubmit={handleSubmit} encType="multipart/form-data">
-      <label>Name:</label>
-      <input
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-      />
-      <label>Animal:</label>
-      <input
-        type="text"
-        name="animal"
-        value={formData.animal}
-        onChange={handleChange}
-      />
-      <label>Breed:</label>
-      <input
-        type="text"
-        name="breed"
-        value={formData.breed}
-        onChange={handleChange}
-      />
-      <label>Age:</label>
-      <input
-        type="number"
-        name="ageValue"
-        value={formData.age.value}
-        onChange={handleChange}
-      />
-      <select
-        name="ageUnit"
-        value={formData.age.unit}
-        onChange={handleChange}
-      >
-        <option value="weeks">Weeks</option>
-        <option value="months">Months</option>
-        <option value="years">Years</option>
-      </select>
-      <label>Description:</label>
-      <textarea
-        name="description"
-        value={formData.description}
-        onChange={handleChange}
-      ></textarea>
-      <label>Gender:</label>
-      <select
-        name="gender"
-        value={formData.gender}
-        onChange={handleChange}
-      >
-        <option value="">Select</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </select>
+    <div className="pet-form-container">
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <label>Name:</label>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+        <label>Animal:</label>
+        <input
+          type="text"
+          name="animal"
+          value={formData.animal}
+          onChange={handleChange}
+        />
+        <label>Breed:</label>
+        <input
+          type="text"
+          name="breed"
+          value={formData.breed}
+          onChange={handleChange}
+        />
+        <label>Age:</label>
+        <div className="pet-age-input-wrap">
+          <input
+            type="number"
+            name="ageValue"
+            value={formData.age.value}
+            onChange={handleChange}
+          />
+          <select
+            name="ageUnit"
+            value={formData.age.unit}
+            onChange={handleChange}
+          >
+            <option value="weeks">Weeks</option>
+            <option value="months">Months</option>
+            <option value="years">Years</option>
+          </select>
+        </div>
+        <label>Description:</label>
+        <textarea
+          name="description"
+          value={formData.description}
+          onChange={handleChange}
+        ></textarea>
+        <label>Gender:</label>
+        <select
+          name="gender"
+          value={formData.gender}
+          onChange={handleChange}
+        >
+          <option value="">Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
 
-      <label>Location:</label>
-      <input
-        type="text"
-        name="location"
-        value={formData.location}
-        onChange={handleChange}
-      />
+        <label>Location:</label>
+        <input
+          type="text"
+          name="location"
+          value={formData.location}
+          onChange={handleChange}
+        />
 
-      <label>Photo:</label>
-      <input type="file" onChange={handleFileChange} />
+        <label>Photo:</label>
+        <input type="file" onChange={handleFileChange} />
 
-      <button type="submit">Submit</button>
-    </form>
+        <button className="btn btn-yellow" type="submit">Submit</button>
+      </form>
+    </div>
   );
 }
