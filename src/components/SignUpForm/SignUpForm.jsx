@@ -29,8 +29,9 @@ export default function SignUpForm({ setUser }) {
 	}
 
 	return (
-		<div>
+		<>
 			<div className="form-container">
+				<h1>Sign Up</h1>
 				<form autoComplete="off" onSubmit={handleSubmit}>
 					<label>Name</label>
 					<input
@@ -56,10 +57,10 @@ export default function SignUpForm({ setUser }) {
 						onChange={handleChange}
 						required
 					/>
-					<label>Role</label>
-					<div>
-						<label htmlFor="organization">Organization</label>
+					<label>Select the option that applies to you:</label>
+					<div className="form-check">
 						<input
+							className="form-check-input"
 							type="radio"
 							id="organization"
 							name="role"
@@ -68,8 +69,10 @@ export default function SignUpForm({ setUser }) {
 							onChange={handleChange}
 							required
 						/>
-						<label htmlFor="petSeeker">Pet Seeker</label>
+						<label htmlFor="organization"><span>Organization</span> – I want to list pets for adoption</label>
+						<br />
 						<input
+							className="form-check-input"
 							type="radio"
 							id="petSeeker"
 							name="role"
@@ -78,6 +81,7 @@ export default function SignUpForm({ setUser }) {
 							onChange={handleChange}
 							required
 						/>
+						<label htmlFor="petSeeker"><span>Pet Seeker</span> – I want to find a pet to adopt</label>
 					</div>
 					<label>Password</label>
 					<input
@@ -95,10 +99,10 @@ export default function SignUpForm({ setUser }) {
 						onChange={handleChange}
 						required
 					/>
-					<button type="submit">SIGN UP</button>
+					<button className="btn btn-yellow" type="submit">SIGN UP</button>
 				</form>
 			</div>
 			<p className="error-message">{error}</p>
-		</div>
+		</>
 	);
 }

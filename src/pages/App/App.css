@@ -188,7 +188,8 @@ nav {
 .auth-page-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 100vh;
+  height: 93vh;
+  align-items: center;
 }
 
 .auth-page-image-container {
@@ -272,6 +273,9 @@ form {
   text-decoration: var(--yellow-1) underline;
 }
 
+label[for="petSeeker"] > span, label[for="organization"] > span {
+  font-weight: 500;
+}
 
 
 
