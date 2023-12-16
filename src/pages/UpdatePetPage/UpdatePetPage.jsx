@@ -2,12 +2,10 @@ import PetForm from '../../components/PetForm/PetForm';
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as petsAPI from "../../utilities/pets-api";
-import { useNavigate } from 'react-router-dom';
 
 export default function UpdatePetPage() {
     const [pet, setPet] = useState();
     const { petId } = useParams();
-    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
         animal: '',

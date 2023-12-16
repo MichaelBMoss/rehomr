@@ -1,6 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import PetForm from "../../components/PetForm/PetForm";
 
 export default function CreatePetPage() {
