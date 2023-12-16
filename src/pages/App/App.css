@@ -357,6 +357,16 @@ label[for="petSeeker"] > span, label[for="organization"] > span {
   text-align: center;
 }
 
+.pet-card-info > h3 {
+  color: var(--blue-1);
+}
+
+.pet-card-info > span {
+  font-size: 0.8rem;
+  color: var(--gray-1);
+}
+
+
 .pet-card {
   text-decoration: none;
   transition: 0.2s ease-in;

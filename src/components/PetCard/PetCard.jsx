@@ -12,7 +12,7 @@ export default function PetCard({ pet }) {
                     <h3>{pet.name}</h3>
                     <p>{pet.breed} | {pet.gender} | {pet.age.value} {pet.age.unit}</p>
                     <p>Org Name</p>
-                    <p>{pet.location}</p>
+                    <span>{pet.location}</span>
                 </div>
             </Link>
         </>
