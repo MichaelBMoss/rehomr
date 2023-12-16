@@ -13,6 +13,10 @@ nav {
   color: black;
 }
 
+.nav-btn {
+  margin-left: 15px;
+}
+
 .navbar-brand {
   color: black;
   transition: 0.2s ease-in;
@@ -209,7 +213,7 @@ nav {
 
 .auth-page-image-container h1 {
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -266,7 +270,7 @@ form {
   margin: 0;
   padding: 0;
   text-decoration: var(--blue-1) underline;
-  transition: 0.2s ease-in;
+  transition: 0.2s ease-out;
 }
 
 .form-change-btn:hover {

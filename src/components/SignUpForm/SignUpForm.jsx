@@ -62,18 +62,6 @@ export default function SignUpForm({ setUser }) {
 						<input
 							className="form-check-input"
 							type="radio"
-							id="organization"
-							name="role"
-							value="organization"
-							checked={credentials.role === "organization"}
-							onChange={handleChange}
-							required
-						/>
-						<label htmlFor="organization"><span>Organization</span> – I want to list pets for adoption</label>
-						<br />
-						<input
-							className="form-check-input"
-							type="radio"
 							id="petSeeker"
 							name="role"
 							value="petSeeker"
@@ -82,6 +70,18 @@ export default function SignUpForm({ setUser }) {
 							required
 						/>
 						<label htmlFor="petSeeker"><span>Pet Seeker</span> – I want to find a pet to adopt</label>
+						<br />
+						<input
+							className="form-check-input"
+							type="radio"
+							id="organization"
+							name="role"
+							value="organization"
+							checked={credentials.role === "organization"}
+							onChange={handleChange}
+							required
+						/>
+						<label htmlFor="organization"><span>Organization</span> – I want to list pets for adoption</label>
 					</div>
 					<label>Password</label>
 					<input
