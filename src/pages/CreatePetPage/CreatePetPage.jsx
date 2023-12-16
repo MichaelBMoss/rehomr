@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreatePetPage() {
   const [formData, setFormData] = useState({
@@ -32,35 +34,33 @@ export default function CreatePetPage() {
     }
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', '/api/pets', true);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-  
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 201) {
-            console.log('Pet created:', JSON.parse(xhr.responseText));
-            setFormData({
-              name: '',
-              animal: '',
-              breed: '',
-              age: { value: '', unit: 'years' },
-              description: '',
-              gender: '',
-              location: '',
-            });
-          } else {
-            console.error('Error creating pet:', xhr.statusText);
-          }
-        }
-      };
+      const response = await axios.post('/api/pets', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-      const data = JSON.stringify(formData);
-      xhr.send(data);
+      if (response.status === 201) {
+        console.log('Pet created:', response.data);
+        setFormData({
+          name: '',
+          animal: '',
+          breed: '',
+          age: { value: '', unit: 'years' },
+          description: '',
+          gender: '',
+          location: '',
+        });
+        navigate('/pets');
+      } else {
+        console.error('Error creating pet:', response.statusText);
+      }
     } catch (error) {
       console.error('Error creating pet:', error);
     }
