@@ -227,12 +227,15 @@ nav {
   height: 100%;
 }
 
-.auth-page-form {
+.auth-page-form, .pet-form {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   height: 80%;
+}
+.pet-form {
+  margin: 25px auto;
 }
 
 .form-container {
@@ -248,11 +251,11 @@ form > label {
   margin: 5px 0;
 }
 
-form > input[type="text"], form > input[type="password"] {
+form > input[type="text"], form > input[type="password"], input[type="number"], textarea, select {
   border: 2px solid rgb(211, 211, 211);
   padding: 3px 9px;
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 form > .btn {
@@ -282,6 +285,28 @@ label[for="petSeeker"] > span, label[for="organization"] > span {
   font-weight: 500;
 }
 
+.pet-form-container {
+  width: 60%;
+}
+
+.pet-age-input-wrap {
+  display: flex;
+  gap: 0px;
+  height: 100%;
+  width: 75%;
+  max-width: 300px;
+}
+
+.pet-age-input-wrap > input {
+  border-radius: 5px 0px 0px 5px;
+  border-right: none;
+  width: 100%;
+}
+
+.pet-age-input-wrap > select {
+  border-radius: 0px 5px 5px 0px;
+  border-left: none;
+}
 
 
 @media (max-width: 575.98px) {}

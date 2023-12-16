@@ -17,7 +17,7 @@ export default function CreatePetPage() {
   });
 
   return (
-    <div>
+    <div className="pet-form">
       <h1>Add a pet for adoption</h1>
       <PetForm 
         purpose={'create'} 
