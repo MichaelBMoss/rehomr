@@ -27,7 +27,7 @@ export default function PetDetailPage() {
 				{pet ? (
 					<>
 						<div>
-							<p>sjfdskjfids</p>
+						<img src={pet.photoUrl} alt={pet.name} />
 							<p>Name: {pet.name}</p>
 							<p>Animal Type: {pet.animal}</p>
 							<p>Breed: {pet.breed}</p>
