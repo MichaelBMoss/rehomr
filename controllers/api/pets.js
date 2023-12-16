@@ -50,6 +50,7 @@ async function update(req, res) {
         );
         res.status(200).json(updatedPet);
     } catch (error) {
+        console.log('fuuuuuuuuuuuuuuuuuuuuuuuuuuuuug')
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }

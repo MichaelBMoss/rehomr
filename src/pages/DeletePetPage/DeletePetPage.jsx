@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import * as petsAPI from "../../utilities/pets-api";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 
-export default function PetDetailPage() {
+export default function DeletePetPage() {
 	const [pet, setPet] = useState();
 	const { petId } = useParams();
   const navigate = useNavigate();
