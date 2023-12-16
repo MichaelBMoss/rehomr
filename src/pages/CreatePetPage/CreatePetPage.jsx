@@ -14,7 +14,7 @@ export default function CreatePetPage() {
 		location: "",
 	});
 
-	// const [file, setFile] = useState(null);
+	const [file, setFile] = useState(null);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -34,8 +34,9 @@ export default function CreatePetPage() {
 		}
 	};
 
-	// const handleFileChange = (e) => {
-	//   setFile(e.target.files[0]);
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  }
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -148,10 +149,10 @@ export default function CreatePetPage() {
         </div>
         <div>
           <label>Photo:</label>
-          <input type="file" name="photo" />
+          <input type="file" name="photo" onChange={handleFileChange} />
         </div>
 				<button type="submit">Submit</button>
 			</form>
 		</div>
 	);
-}
+  }
