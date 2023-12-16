@@ -20,9 +20,11 @@ export default function AllPetsPage() {
   return (
     <>
       <h1>All Pets Page</h1>
+      <div className="card-group">
       {pets.map((pet) => (
         <PetCard pet={pet} key={pet._id} />
       ))}
+      </div>
     </>
 
   );
