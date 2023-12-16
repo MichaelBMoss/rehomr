@@ -27,19 +27,20 @@ export default function PetDetailPage() {
 				{pet ? (
 					<>
 						<div>
+							<p>sjfdskjfids</p>
 							<p>Name: {pet.name}</p>
 							<p>Animal Type: {pet.animal}</p>
 							<p>Breed: {pet.breed}</p>
-							<p>Age: {pet.age}</p>
+							<p>Age: {pet.age.value} {pet.age.unit}</p>
 							<p>Gender: {pet.gender}</p>
 							<p>Bio: {pet.description}</p>
 						</div>
 						<span>
 							<Link to={`/pets/${pet._id}/update`}>
-								<button>Edit</button>
+								<button>Edit Listing</button>
 							</Link>
 							<Link to={`/pets/${pet._id}/delete`}>
-								<button>Delete</button>
+								<button>Remove Listing</button>
 							</Link>
             			</span>
 					</>

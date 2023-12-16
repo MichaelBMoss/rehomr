@@ -21,6 +21,7 @@
 │   └── ensureLoggedIn.js
 ├── controllers
 │   └── api
+│       ├── pets.js
 │       └── users.js
 ├── crud-helper.js
 ├── models
@@ -32,6 +33,8 @@
 ├── project_structure.txt
 ├── public
 │   ├── favicon.ico
+│   ├── images
+│   │   └── enis-yavuz-KKtuRtGkDys-unsplash.jpg
 │   ├── index.html
 │   ├── logo192.png
 │   ├── logo512.png
@@ -54,6 +57,11 @@
     ├── index.css
     ├── index.js
     ├── pages
+    │   ├── AboutPage
+    │   │   └── AboutPage.jsx
+    │   ├── AllPetsPage
+    │   │   ├── AllPetsPage.css
+    │   │   └── AllPetsPage.jsx
     │   ├── App
     │   │   ├── App.css
     │   │   └── App.jsx
@@ -61,11 +69,19 @@
     │   │   └── AuthPage.jsx
     │   ├── CreatePetPage
     │   │   └── CreatePetPage.jsx
-    │   └── HomePage
-    │       └── HomePage.jsx
+    │   ├── DeletePetPage
+    │   │   └── DeletePetPage.jsx
+    │   ├── HomePage
+    │   │   └── HomePage.jsx
+    │   ├── PetDetailPage
+    │   │   ├── PetDetailPage.css
+    │   │   └── PetDetailPage.jsx
+    │   └── UpdatePetPage
+    │       └── UpdatePetPage.jsx
     └── utilities
+        ├── pets-api.js
         ├── send-request.js
         ├── users-api.js
         └── users-service.js
 
-23 directories, 45 files
+29 directories, 55 files

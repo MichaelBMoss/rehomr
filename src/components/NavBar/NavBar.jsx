@@ -37,7 +37,7 @@ export default function NavBar({ user, setUser }) {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <Link className="dropdown-item" to="/pets/all">See All Pets</Link>
+                    <Link className="dropdown-item" to="/pets">See All Pets</Link>
                   </li>
                   <li>
                     <Link className="dropdown-item" to="/pets/new">Add a Pet</Link>
@@ -48,9 +48,9 @@ export default function NavBar({ user, setUser }) {
                 <Link className={`nav-link ${isHomePage ? 'nav-home' : ''}`} to="/organizations">Organizations</Link>
               </li>
               {user ? (
-                <li className="nav-item"><Link className={`btn btn-yellow-outline ${isHomePage ? 'nav-home-user' : ''}`} to="" onClick={handleLogOut}>Log Out</Link></li>
+                <li className="nav-item"><Link className={`btn btn-yellow-outline nav-btn ${isHomePage ? 'nav-home-user' : ''}`} to="" onClick={handleLogOut}>Log Out</Link></li>
               ) : (
-                <li className="nav-item"><Link className="btn btn-yellow" to="/login">Log In/Sign Up</Link></li>
+                <li className="nav-item"><Link className="btn btn-yellow nav-btn" to="/login">Log In/Sign Up</Link></li>
               )}
             </ul>
           </div>

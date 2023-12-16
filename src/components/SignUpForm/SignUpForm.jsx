@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { signUp } from "../../utilities/users-service";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUpForm({ setUser }) {
 	const [credentials, setCredentials] = useState({
@@ -17,20 +18,24 @@ export default function SignUpForm({ setUser }) {
 		setError("");
 	}
 
+	const navigate = useNavigate();
+
 	async function handleSubmit(evt) {
 		evt.preventDefault();
 		console.log(credentials);
 		try {
 			const user = await signUp(credentials);
 			setUser(user);
+			navigate("/");
 		} catch {
 			setError("Sign Up Failed - Try Again");
 		}
 	}
 
 	return (
-		<div>
+		<>
 			<div className="form-container">
+				<h1>Sign Up</h1>
 				<form autoComplete="off" onSubmit={handleSubmit}>
 					<label>Name</label>
 					<input
@@ -56,20 +61,10 @@ export default function SignUpForm({ setUser }) {
 						onChange={handleChange}
 						required
 					/>
-					<label>Role</label>
-					<div>
-						<label htmlFor="organization">Organization</label>
+					<label>Select the option that applies to you:</label>
+					<div className="form-check">
 						<input
-							type="radio"
-							id="organization"
-							name="role"
-							value="organization"
-							checked={credentials.role === "organization"}
-							onChange={handleChange}
-							required
-						/>
-						<label htmlFor="petSeeker">Pet Seeker</label>
-						<input
+							className="form-check-input"
 							type="radio"
 							id="petSeeker"
 							name="role"
@@ -78,6 +73,19 @@ export default function SignUpForm({ setUser }) {
 							onChange={handleChange}
 							required
 						/>
+						<label htmlFor="petSeeker"><span>Pet Seeker</span> – I want to find a pet to adopt</label>
+						<br />
+						<input
+							className="form-check-input"
+							type="radio"
+							id="organization"
+							name="role"
+							value="organization"
+							checked={credentials.role === "organization"}
+							onChange={handleChange}
+							required
+						/>
+						<label htmlFor="organization"><span>Organization</span> – I want to list pets for adoption</label>
 					</div>
 					<label>Password</label>
 					<input
@@ -95,10 +103,10 @@ export default function SignUpForm({ setUser }) {
 						onChange={handleChange}
 						required
 					/>
-					<button type="submit">SIGN UP</button>
+					<button className="btn btn-yellow" type="submit">SIGN UP</button>
 				</form>
 			</div>
 			<p className="error-message">{error}</p>
-		</div>
+		</>
 	);
 }

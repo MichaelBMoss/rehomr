@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreatePetPage() {
 	const [formData, setFormData] = useState({
@@ -16,70 +18,55 @@ export default function CreatePetPage() {
 
 	const [file, setFile] = useState(null);
 
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		if (name === "ageValue" || name === "ageUnit") {
-			setFormData({
-				...formData,
-				age: {
-					...formData.age,
-					[name === "ageValue" ? "value" : "unit"]: value,
-				},
-			});
-		} else {
-			setFormData({
-				...formData,
-				[name]: value,
-			});
-		}
-	};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'ageValue' || name === 'ageUnit') {
+      setFormData({
+        ...formData,
+        age: {
+          ...formData.age,
+          [name === 'ageValue' ? 'value' : 'unit']: value,
+        },
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  };
 
-	const handleFileChange = (e) => {
-		setFile(e.target.files[0]);
-	};
+  const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		try {
-			const formDataObj = new FormData();
-			Object.keys(formData).forEach((key) => {
-				if (key === "age") {
-					formDataObj.append(key, JSON.stringify(formData[key]));
-				} else {
-					formDataObj.append(key, formData[key]);
-				}
-			});
-			formDataObj.append("photo", file);
+    try {
+      const response = await axios.post('/api/pets', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
-			const xhr = new XMLHttpRequest();
-			xhr.open("POST", "/api/pets", true);
-
-			xhr.onreadystatechange = function () {
-				if (xhr.readyState === 4) {
-					if (xhr.status === 201) {
-						console.log("Pet created:", JSON.parse(xhr.responseText));
-						setFormData({
-							name: "",
-							animal: "",
-							breed: "",
-							age: { value: "", unit: "years" },
-							description: "",
-							gender: "",
-							location: "",
-						});
-						setFile(null);
-					} else {
-						console.error("Error creating pet:", xhr.statusText);
-					}
-				}
-			};
-
-			xhr.send(formDataObj);
-		} catch (error) {
-			console.error("Error creating pet:", error);
-		}
-	};
+      if (response.status === 201) {
+        console.log('Pet created:', response.data);
+        setFormData({
+          name: '',
+          animal: '',
+          breed: '',
+          age: { value: '', unit: 'years' },
+          description: '',
+          gender: '',
+          location: '',
+        });
+        navigate('/pets');
+      } else {
+        console.error('Error creating pet:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error creating pet:', error);
+    }
+  };
 
 	return (
 		<div>
