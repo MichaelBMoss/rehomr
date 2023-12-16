@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function PetForm({ purpose, formData, setFormData, petId = null }) {
+  const [file, setFile] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,32 +24,37 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
     }
   };
 
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const data = new FormData();
+    Object.keys(formData).forEach((key) => {
+      if (key === 'age') {
+        data.append('age', JSON.stringify(formData.age));
+      } else {
+        data.append(key, formData[key]);
+      }
+    });
+    data.append('file', file);
+
     try {
       let response;
       if (purpose === 'create') {
-        response = await axios.post('/api/pets', formData, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        response = await axios.post('/api/pets', data);
       } else if (purpose === 'update') {
-        // Assuming you have a prop named `petId` for the pet being updated
-        response = await axios.put(`/api/pets/${petId}`, formData, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        response = await axios.put(`/api/pets/${petId}`, data);
       }
 
       if (response.status === 201 || response.status === 200) {
         const newPetId = response.data._id;
         console.log('Pet created:', response.data);
-        navigate(`/pets/${newPetId}`); // Navigate to the new pet's page
+        navigate(`/pets/${newPetId}`);
       } else {
         console.error('Error creating pet:', response.statusText);
       }
@@ -59,31 +65,36 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
 
 
   return (
-    <div className="form-container pet-form-container">
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-        <label>Animal:</label>
-        <input
-          type="text"
-          name="animal"
-          value={formData.animal}
-          onChange={handleChange}
-        />
-        <label>Breed:</label>
-        <input
-          type="text"
-          name="breed"
-          value={formData.breed}
-          onChange={handleChange}
-        />
-        <label>Age:</label>
-        <div className="pet-age-input-wrap">
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <div>
+          <label>Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Animal:</label>
+          <input
+            type="text"
+            name="animal"
+            value={formData.animal}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Breed:</label>
+          <input
+            type="text"
+            name="breed"
+            value={formData.breed}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Age:</label>
           <input
             type="number"
             name="ageValue"
@@ -101,31 +112,40 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
           </select>
         </div>
 
-        <label>Description:</label>
-        <textarea
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-        ></textarea>
-        <label>Gender:</label>
-        <select
-          name="gender"
-          value={formData.gender}
-          onChange={handleChange}
-        >
-          <option value="">Select</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-        <label>Location:</label>
-        <input
-          type="text"
-          name="location"
-          value={formData.location}
-          onChange={handleChange}
-        />
-        <button className="btn btn-yellow" type="submit">Submit</button>
+        <div>
+          <label>Description:</label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+          ></textarea>
+        </div>
+        <div>
+          <label>Gender:</label>
+          <select
+            name="gender"
+            value={formData.gender}
+            onChange={handleChange}
+          >
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div>
+          <label>Location:</label>
+          <input
+            type="text"
+            name="location"
+            value={formData.location}
+            onChange={handleChange}
+          />
+      </div>
+      <div>
+      <label>Photo:</label>
+        <input type="file" onChange={handleFileChange} />
+      </div>
+        <button type="submit">Submit</button>
       </form>
-    </div>
   );
 }

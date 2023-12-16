@@ -54,7 +54,7 @@ export default function UpdatePetPage() {
 
     return (
         <div className="pet-form">
-            <h1>Edit {pet.name}'s information:</h1>
+            <h1>Edit Pet's information:</h1>
             <PetForm
                 purpose={'update'}
                 formData={formData}
