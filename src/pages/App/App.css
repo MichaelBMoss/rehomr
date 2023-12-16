@@ -308,12 +308,36 @@ label[for="petSeeker"] > span, label[for="organization"] > span {
   border-left: none;
 }
 
+.index-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 50px auto;
+  gap: 50px;
+}
+
+.list-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5%;
+  width: 70%;
+}
+
 
 @media (max-width: 575.98px) {}
 
-@media (min-width: 576px) {}
+@media (min-width: 768px) {
+  .card-group {
+    display: grid;
+  }
+}
 
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+  .card-group {
+    width: 90%;
+  }
+}
 
 @media (max-width: 992px) {
   .home-title {
@@ -323,6 +347,10 @@ label[for="petSeeker"] > span, label[for="organization"] > span {
   .home-tag {
     font-size: 1.5rem;
     width: 50%;
+  }
+
+  .card-group {
+    width: 90%;
   }
 }
 
