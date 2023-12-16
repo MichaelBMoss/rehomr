@@ -34,17 +34,26 @@ export default function CreatePetPage() {
 		}
 	};
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  }
+	const handleFileChange = (e) => {
+		setFile(e.target.files[0]);
+	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		try {
+			const formDataObj = new FormData();
+			Object.keys(formData).forEach((key) => {
+				if (key === "age") {
+					formDataObj.append(key, JSON.stringify(formData[key]));
+				} else {
+					formDataObj.append(key, formData[key]);
+				}
+			});
+			formDataObj.append("photo", file);
+
 			const xhr = new XMLHttpRequest();
 			xhr.open("POST", "/api/pets", true);
-			xhr.setRequestHeader("Content-Type", "application/json");
 
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState === 4) {
@@ -59,14 +68,14 @@ export default function CreatePetPage() {
 							gender: "",
 							location: "",
 						});
+						setFile(null);
 					} else {
 						console.error("Error creating pet:", xhr.statusText);
 					}
 				}
 			};
 
-			const data = JSON.stringify(formData);
-			xhr.send(data);
+			xhr.send(formDataObj);
 		} catch (error) {
 			console.error("Error creating pet:", error);
 		}
@@ -146,13 +155,13 @@ export default function CreatePetPage() {
 						value={formData.location}
 						onChange={handleChange}
 					/>
-        </div>
-        <div>
-          <label>Photo:</label>
-          <input type="file" name="photo" onChange={handleFileChange} />
-        </div>
+				</div>
+				<div>
+					<label>Photo:</label>
+					<input type="file" name="photo" onChange={handleFileChange} />
+				</div>
 				<button type="submit">Submit</button>
 			</form>
 		</div>
 	);
-  }
+}

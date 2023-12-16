@@ -11,6 +11,9 @@ function uploadFile(req, res) {
 			if (err) {
 				reject(err);
 			}
+			if (!req.file) {
+				reject(new Error('No file found'));
+			}
 
 			const fileContent = fs.readFileSync(req.file.path);
 			const params = {
