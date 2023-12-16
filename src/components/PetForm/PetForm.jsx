@@ -25,6 +25,9 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
   };
 
   const handleFileChange = (e) => {
+    if (formData.photoUrl) {
+      formData.photoUrl = ''
+    }
     setFile(e.target.files[0]);
   };
 

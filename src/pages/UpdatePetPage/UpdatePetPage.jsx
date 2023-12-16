@@ -8,6 +8,19 @@ export default function UpdatePetPage() {
     const [pet, setPet] = useState();
     const { petId } = useParams();
     const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        name: '',
+        animal: '',
+        breed: '',
+        age: {
+            value: '',
+            unit: 'years',
+        },
+        description: '',
+        gender: '',
+        location: '',
+        photoUrl: '',
+    });
 
     useEffect(() => {
         const fetchPet = async () => {
@@ -21,18 +34,8 @@ export default function UpdatePetPage() {
         fetchPet();
     }, [petId]);
 
-    const [formData, setFormData] = useState({
-        name: '',
-        animal: '',
-        breed: '',
-        age: {
-            value: '',
-            unit: 'years',
-        },
-        description: '',
-        gender: '',
-        location: '',
-    });
+    console.log(pet)
+
 
     // Initialize formData with pet data when available
     useEffect(() => {
@@ -48,6 +51,7 @@ export default function UpdatePetPage() {
                 description: pet.description || '',
                 gender: pet.gender || '',
                 location: pet.location || '',
+                photoUrl: pet.photoUrl || ''
             });
         }
     }, [pet]);

@@ -26,7 +26,7 @@ const petSchema = new mongoose.Schema({
 		type: String,
 		enum: ["Male", "Female"],
 	},
-	location: String,
+	location: { type: String, required: true }, 
 	photoUrl: {
 		type: String,
 	},
