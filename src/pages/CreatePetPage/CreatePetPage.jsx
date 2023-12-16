@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function CreatePetPage() {
 	const [formData, setFormData] = useState({
@@ -18,55 +18,65 @@ export default function CreatePetPage() {
 
 	const [file, setFile] = useState(null);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === 'ageValue' || name === 'ageUnit') {
-      setFormData({
-        ...formData,
-        age: {
-          ...formData.age,
-          [name === 'ageValue' ? 'value' : 'unit']: value,
-        },
-      });
-    } else {
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-    }
-  };
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		if (name === "ageValue" || name === "ageUnit") {
+			setFormData({
+				...formData,
+				age: {
+					...formData.age,
+					[name === "ageValue" ? "value" : "unit"]: value,
+				},
+			});
+		} else {
+			setFormData({
+				...formData,
+				[name]: value,
+			});
+		}
+	};
 
-  const navigate = useNavigate();
+	const handleFileChange = (e) => {
+		setFile(e.target.files[0]);
+	};
+
+	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-    try {
-      const response = await axios.post('/api/pets', formData, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+    const data = new FormData();
+    Object.keys(formData).forEach((key) => {
+        if (key === 'age') {
+            data.append('age', JSON.stringify(formData.age));
+        } else {
+            data.append(key, formData[key]);
+        }
+    });
+    data.append('file', file);
+		try {
+			const response = await axios.post("/api/pets", data);
 
-      if (response.status === 201) {
-        console.log('Pet created:', response.data);
-        setFormData({
-          name: '',
-          animal: '',
-          breed: '',
-          age: { value: '', unit: 'years' },
-          description: '',
-          gender: '',
-          location: '',
-        });
-        navigate('/pets');
-      } else {
-        console.error('Error creating pet:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error creating pet:', error);
-    }
-  };
+			if (response.status === 201) {
+				console.log("Pet created:", response.data);
+				setFormData({
+					name: "",
+					animal: "",
+					breed: "",
+					age: { value: "", unit: "years" },
+					description: "",
+					gender: "",
+					location: "",
+				});
+				setFile(null);
+				navigate("/pets");
+			} else {
+				console.error("Error creating pet - else:", response.statusText);
+			}
+		} catch (error) {
+			console.error("Error creating pet - catch:", error);
+		}
+	};
 
 	return (
 		<div>
@@ -145,7 +155,7 @@ export default function CreatePetPage() {
 				</div>
 				<div>
 					<label>Photo:</label>
-					<input type="file" name="photo" onChange={handleFileChange} />
+					<input type="file" name="file" onChange={handleFileChange} />
 				</div>
 				<button type="submit">Submit</button>
 			</form>
