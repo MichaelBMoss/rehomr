@@ -7,7 +7,7 @@ export default function AllOrgsPage() {
   useEffect(() => {
     const fetchAllOrgs = async () => {
       try {
-        const data = await usersAPI.getAll('/api/users');
+        const data = await usersAPI.getAll('/api/users/orgs');
         setOrgs(data);
       } catch (error) {
         console.error(error);
@@ -20,12 +20,12 @@ export default function AllOrgsPage() {
     <>
       <div className="index-wrap">
         <h1>All Organizations Page</h1>
-        {/* <div className="list-group">
+        <div className="list-group">
           {orgs.length > 0 &&
             orgs.map((org) => (
                 <p>{org.name}</p>
             ))}
-        </div> */}
+        </div>
       </div>
     </>
   );

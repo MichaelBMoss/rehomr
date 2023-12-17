@@ -6,7 +6,8 @@ module.exports = {
   create,
   login,
   checkToken,
-  retrieveAllUsers
+  retrieveAllUsers,
+  retrieveAllOrgs,
 };
 
 function checkToken(req, res) {
@@ -50,6 +51,24 @@ function createJWT(user) {
   );
 }
 
-function retrieveAllUsers() {
-  console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+/*--- Org Functions --*/
+
+async function retrieveAllUsers(req, res) {
+  try {
+      const users = await User.find({});
+      res.status(200).json(users);
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+async function retrieveAllOrgs(req, res) {
+  try {
+    const orgs = await User.find({ role: 'organization' });
+    res.status(200).json(orgs);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
