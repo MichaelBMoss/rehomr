@@ -12,3 +12,11 @@ export async function login(credentials) {
 export async function checkToken() {
   return sendRequest(`${BASE_URL}/check-token`);
 }
+
+export function getAll(baseURL) {
+  return sendRequest(baseURL);
+}
+
+export function getById(baseURL, id) {
+  return sendRequest(`${baseURL}/${id}`);
+}

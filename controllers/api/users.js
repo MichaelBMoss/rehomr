@@ -5,7 +5,8 @@ const User = require('../../models/user');
 module.exports = {
   create,
   login,
-  checkToken
+  checkToken,
+  retrieveAllUsers
 };
 
 function checkToken(req, res) {
@@ -47,4 +48,8 @@ function createJWT(user) {
     process.env.SECRET,
     { expiresIn: '24h' }
   );
+}
+
+function retrieveAllUsers() {
+  console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
 }
