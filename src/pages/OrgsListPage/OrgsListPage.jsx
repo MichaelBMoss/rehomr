@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import * as usersAPI from "../../utilities/users-api";
+import { Link } from 'react-router-dom';
 
 export default function AllOrgsPage() {
   const [orgs, setOrgs] = useState([]);
@@ -19,11 +20,15 @@ export default function AllOrgsPage() {
   return (
     <>
       <div className="index-wrap">
-        <h1>All Organizations Page</h1>
+        <h1>All Orgs Page</h1>
         <div className="list-group">
           {orgs.length > 0 &&
             orgs.map((org) => (
-                <p>{org.name}</p>
+              <Link to={`/orgs/${org._id}`} key={org._id}>
+                <div>
+                  {org.name}
+                </div>
+              </Link>  
             ))}
         </div>
       </div>
