@@ -6,8 +6,8 @@ module.exports = {
   create,
   login,
   checkToken,
-  retrieveAllUsers,
-  retrieveAllOrgs,
+  index,
+  getById,
 };
 
 function checkToken(req, res) {
@@ -53,12 +53,22 @@ function createJWT(user) {
 
 /*--- Org Functions --*/
 
-async function retrieveAllOrgs(req, res) {
+async function index(req, res) {
   try {
     const orgs = await User.find({ role: 'organization' });
     res.status(200).json(orgs);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+async function getById(req, res) {
+  try {
+      const user = await User.findById(req.params.id);
+      res.status(200).json(user);
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
   }
 }
