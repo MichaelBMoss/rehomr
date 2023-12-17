@@ -6,7 +6,6 @@ module.exports = {
   create,
   login,
   checkToken,
-  retrieveAllUsers,
   retrieveAllOrgs,
 };
 
