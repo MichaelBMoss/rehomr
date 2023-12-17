@@ -84,7 +84,7 @@
     │   └── UpdatePetPage
     │       └── UpdatePetPage.jsx
     └── utilities
-        ├── pets-api.js
+        ├── data-api.js
         ├── send-request.js
         ├── users-api.js
         └── users-service.js

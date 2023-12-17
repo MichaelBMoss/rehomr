@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import * as petsAPI from "../../utilities/pets-api";
+import * as dataAPI from "../../utilities/data-api";
 import PetCard from "../../components/PetCard/PetCard";
 
 export default function AllPetsPage() {
@@ -8,7 +8,7 @@ export default function AllPetsPage() {
   useEffect(() => {
     const fetchAllPets = async () => {
       try {
-        const data = await petsAPI.getAll();
+        const data = await dataAPI.getAll('/api/pets');
         setPets(data);
       } catch (error) {
         console.error(error);
@@ -19,14 +19,15 @@ export default function AllPetsPage() {
 
   return (
     <>
-        <div className="index-wrap">
-          <h1>All Pets Page</h1>
-          <div className="list-group">
-            {pets.map((pet) => (
+      <div className="index-wrap">
+        <h1>All Pets Page</h1>
+        <div className="list-group">
+          {pets.length > 0 &&
+            pets.map((pet) => (
               <PetCard pet={pet} key={pet._id} />
             ))}
-          </div>
         </div>
+      </div>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import PetForm from '../../components/PetForm/PetForm';
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import * as petsAPI from "../../utilities/pets-api";
+import * as dataAPI from "../../utilities/data-api";
 
 export default function UpdatePetPage() {
     const [pet, setPet] = useState();
@@ -23,7 +23,7 @@ export default function UpdatePetPage() {
     useEffect(() => {
         const fetchPet = async () => {
             try {
-                const data = await petsAPI.getById(petId);
+                const data = await dataAPI.getById('/api/pets', petId);
                 setPet(data);
             } catch (error) {
                 console.error(error);

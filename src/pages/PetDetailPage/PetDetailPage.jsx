@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import * as petsAPI from "../../utilities/pets-api";
+import * as dataAPI from "../../utilities/data-api";
 import { Link } from 'react-router-dom';
 
 
@@ -11,7 +11,7 @@ export default function PetDetailPage() {
 	useEffect(() => {
 		const fetchPet = async () => {
 			try {
-				const data = await petsAPI.getById(petId);
+				const data = await dataAPI.getById('/api/pets', petId);
 				setPet(data);
 			} catch (error) {
 				console.error(error);
