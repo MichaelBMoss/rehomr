@@ -27,7 +27,11 @@ const petSchema = new mongoose.Schema({
 		type: String,
 		enum: ["Male", "Female"],
 	},
-	location: { type: String, required: true }, 
+	location: {
+		lat: { type: Number, required: true },
+		lng: { type: Number, required: true },
+		address: { type: String, required: true },
+	},
 	photoUrl: {
 		type: String,
 	},

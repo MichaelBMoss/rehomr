@@ -7,8 +7,31 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
   const [file, setFile] = useState(null);
   const [zipCode, setZipCode] = useState("");
 
-  const handleZipCodeChange = (event) => {
-    setZipCode(event.target.value);
+  const handleZipCodeChange = async (event) => {
+    const zipCode = event.target.value;
+    setZipCode(zipCode); // Update the state here
+  
+    // If the zip code has 5 digits
+    if (zipCode.length === 5) {
+      try {
+        const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=YOUR_API_KEY`);
+        
+        if (response.data.results[0]) {
+          const location = response.data.results[0].geometry.location;
+          setFormData({
+            ...formData,
+            location: {
+              lat: location.lat,
+              lng: location.lng,
+              address: zipCode
+            },
+          });
+          console.log('location:', location); 
+        }
+      } catch (error) {
+        console.error('Error getting location:', error);
+      }
+    }
   };
 
   const handleChange = (e) => {
@@ -47,6 +70,7 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
       }
     });
     data.append('file', file);
+    
 
     try {
       let response;
@@ -85,7 +109,7 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
           value={formData.animal}
           onChange={handleChange}
         >
-          <option value="" disabled selected>Select</option>
+          <option value="" disabled>Select</option>
           <option value="Dog">Dog</option>
           <option value="Cat">Cat</option>
           <option value="Other">Other</option>
@@ -127,7 +151,7 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
           value={formData.gender}
           onChange={handleChange}
         >
-          <option value="" disabled select>Select</option>
+          <option value="" disabled>Select</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>
