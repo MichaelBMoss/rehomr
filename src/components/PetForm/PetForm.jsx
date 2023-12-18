@@ -75,12 +75,16 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
           onChange={handleChange}
         />
         <label>Animal:</label>
-        <input
-          type="text"
+        <select
           name="animal"
           value={formData.animal}
           onChange={handleChange}
-        />
+        >
+          <option value="" disabled selected>Select</option>
+          <option value="Dog">Dog</option>
+          <option value="Cat">Cat</option>
+          <option value="Other">Other</option>
+        </select>
         <label>Breed:</label>
         <input
           type="text"
@@ -118,7 +122,7 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
           value={formData.gender}
           onChange={handleChange}
         >
-          <option value="">Select</option>
+          <option value="" disabled select>Select</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>
