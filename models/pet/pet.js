@@ -7,6 +7,7 @@ const petSchema = new mongoose.Schema({
 	},
 	animal: {
 		type: String,
+		enum: ["Dog", "Cat", "Other"],
 		required: true,
 	},
 	breed: String,
