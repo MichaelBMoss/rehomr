@@ -10,18 +10,34 @@ export default function AllPetsPage() {
     setSortOrder(e.target.value);
   };
 
+  const convertToWeeks = (age) => {
+    switch (age.unit) {
+      case 'years':
+        return age.value * 52;
+      case 'months':
+        return age.value * 4;
+      case 'weeks':
+      default:
+        return age.value;
+    }
+  };
+
   useEffect(() => {
     const fetchAllPets = async () => {
       try {
         const data = await dataAPI.getAll('/api/pets');
-        data.sort((a, b) => a[sortOrder].localeCompare(b[sortOrder]));
+        if (sortOrder === 'age') {
+          data.sort((a, b) => convertToWeeks(a.age) - convertToWeeks(b.age));
+        } else {
+          data.sort((a, b) => a[sortOrder].localeCompare(b[sortOrder]));
+        }
         setPets(data);
       } catch (error) {
         console.error(error);
       }
     };
     fetchAllPets();
-  }, [sortOrder]); // The empty dependency array ensures this effect runs only once on mount
+  }, [sortOrder]); 
 
   return (
     <>
