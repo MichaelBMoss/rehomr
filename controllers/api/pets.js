@@ -15,9 +15,10 @@ module.exports = {
 async function create(req, res) {
     try {
         const photoUrl = await uploadFile(req, res);
-        const { age, ...otherFields } = req.body;
+        const { age, location, ...otherFields } = req.body;
         const parsedAge = JSON.parse(age);
-        const newPet = new Pet({ age: parsedAge, ...otherFields, photoUrl });
+        const parsedLocation = JSON.parse(location);
+        const newPet = new Pet({ age: parsedAge, location: parsedLocation, ...otherFields, photoUrl });
         const savedPet = await newPet.save();
         res.status(201).json(savedPet);
     } catch (error) {

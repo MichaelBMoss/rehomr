@@ -29,7 +29,7 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
               address: address
             },
           });
-          console.log('location', formData.location); 
+          console.log('location', formData.location);
         }
       } catch (error) {
         console.error('Error getting location:', error);
@@ -61,6 +61,7 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
 
   const navigate = useNavigate();
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -68,7 +69,9 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
     Object.keys(formData).forEach((key) => {
       if (key === 'age') {
         data.append('age', JSON.stringify(formData.age));
-      } else {
+      } else if (key === 'location') {
+      data.append('location', JSON.stringify(formData.location));
+    } else {
         data.append(key, formData[key]);
       }
     });
