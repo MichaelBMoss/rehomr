@@ -14,8 +14,8 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
     // If the zip code has 5 digits
     if (zipCode.length === 5) {
       try {
-        const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=YOUR_API_KEY`);
-        
+        const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`);
+        console.log('Google Maps API response:', response.data); 
         if (response.data.results[0]) {
           const location = response.data.results[0].geometry.location;
           setFormData({
@@ -26,7 +26,6 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
               address: zipCode
             },
           });
-          console.log('location:', location); 
         }
       } catch (error) {
         console.error('Error getting location:', error);
