@@ -20,7 +20,6 @@ nav {
 .navbar-brand {
   color: black;
   transition: 0.2s ease-in;
-  /* Add transition for the transform property */
 }
 
 .navbar-brand:focus {
@@ -34,7 +33,6 @@ nav {
   text-decoration: none;
   overflow: hidden;
   padding: 0 !important;
-  /* Prevent the underline from extending beyond the text */
 }
 
 .nav-link::before,
@@ -445,6 +443,7 @@ label[for="organization"]>span {
 }
 
 .detail-card-info p {
+  margin-top: 25px;
   font-size: 1rem; 
 }
 
