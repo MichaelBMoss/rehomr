@@ -10,12 +10,17 @@ export default function SignUpForm({ setUser }) {
 		location: "",
 		password: "",
 		confirm: "",
+		photo: null,
 	});
 	const [error, setError] = useState("");
 
 	function handleChange(evt) {
 		setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
 		setError("");
+	}
+
+	const handleFileChange = (evt) => {
+		setCredentials({ ...credentials, photo: e.target.files[0] })
 	}
 
 	const navigate = useNavigate();
@@ -103,6 +108,12 @@ export default function SignUpForm({ setUser }) {
 						onChange={handleChange}
 						required
 					/>
+					{credentials.role === 'organization' && (
+						<>
+							<label>Organization Photo:</label>
+							<input type="file" accept="image/*" onChange={handleFileChange} />
+						</>
+					)}
 					<button className="btn btn-yellow" type="submit">SIGN UP</button>
 				</form>
 			</div>
