@@ -14,18 +14,28 @@ export default function AllPetsPage() {
     const fetchAllPets = async () => {
       try {
         const data = await dataAPI.getAll('/api/pets');
+        data.sort((a, b) => a[sortOrder].localeCompare(b[sortOrder]));
         setPets(data);
       } catch (error) {
         console.error(error);
       }
     };
     fetchAllPets();
-  }, []); // The empty dependency array ensures this effect runs only once on mount
+  }, [sortOrder]); // The empty dependency array ensures this effect runs only once on mount
 
   return (
     <>
       <div className="index-wrap">
         <h1>All Pets Page</h1>
+        <select value={sortOrder} onChange={handleSortChange}>
+          <option value="name">Name</option>
+          <option value="animal">Animal</option>
+          <option value="age">Age</option>
+          <option value="breed">Breed</option>
+          <option value="gender">Gender</option>
+          <option value="location">Location</option>
+
+        </select>
         <div className="list-group">
           {pets.length > 0 &&
             pets.map((pet) => (
