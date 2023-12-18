@@ -18,6 +18,7 @@ const userSchema = new Schema({
     required: true
   }, location: { type: String },
   role: { type: String, enum: ['organization', 'petSeeker'], default: 'petSeeker', required: true},
+  photoUrl: {type: String},
 }, {
   timestamps: true,
   toJSON: {
