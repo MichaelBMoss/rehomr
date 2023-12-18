@@ -10,12 +10,17 @@ export default function SignUpForm({ setUser }) {
 		location: "",
 		password: "",
 		confirm: "",
+		photoUrl: null,
 	});
 	const [error, setError] = useState("");
 
 	function handleChange(evt) {
 		setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
 		setError("");
+	}
+
+	const handleFileChange = (evt) => {
+		setCredentials({ ...credentials, photo: evt.target.files[0] })
 	}
 
 	const navigate = useNavigate();
@@ -53,6 +58,22 @@ export default function SignUpForm({ setUser }) {
 						onChange={handleChange}
 						required
 					/>
+					<label>Password</label>
+					<input
+						type="password"
+						name="password"
+						value={credentials.password}
+						onChange={handleChange}
+						required
+					/>
+					<label>Confirm</label>
+					<input
+						type="password"
+						name="confirm"
+						value={credentials.confirm}
+						onChange={handleChange}
+						required
+					/>
 					<label>Location</label>
 					<input
 						type="text"
@@ -61,6 +82,7 @@ export default function SignUpForm({ setUser }) {
 						onChange={handleChange}
 						required
 					/>
+
 					<label>Select the option that applies to you:</label>
 					<div className="form-check">
 						<input
@@ -87,22 +109,13 @@ export default function SignUpForm({ setUser }) {
 						/>
 						<label htmlFor="organization"><span>Organization</span> – I want to list pets for adoption</label>
 					</div>
-					<label>Password</label>
-					<input
-						type="password"
-						name="password"
-						value={credentials.password}
-						onChange={handleChange}
-						required
-					/>
-					<label>Confirm</label>
-					<input
-						type="password"
-						name="confirm"
-						value={credentials.confirm}
-						onChange={handleChange}
-						required
-					/>
+					<br />
+					{credentials.role === 'organization' && (
+						<>
+							<label>Organization Photo:</label>
+							<input type="file" accept="image/*" onChange={handleFileChange} />
+						</>
+					)}
 					<button className="btn btn-yellow" type="submit">SIGN UP</button>
 				</form>
 			</div>

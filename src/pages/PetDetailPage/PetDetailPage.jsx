@@ -20,31 +20,65 @@ export default function PetDetailPage() {
 		fetchPet();
 	}, [petId]);
 
+	console.log(pet)
 	return (
 		<>
-			<div>
-				<h1>Pet Details</h1>
+			<div className="pet-detail-wrap">
 				{pet ? (
 					<>
-						<div>
-						<img src={pet.photoUrl} alt={pet.name} />
-							<p>Name: {pet.name}</p>
-							<p>Animal Type: {pet.animal}</p>
-							<p>Breed: {pet.breed}</p>
-							<p>Age: {pet.age.value} {pet.age.unit}</p>
-							<p>Gender: {pet.gender}</p>
-							<p>Bio: {pet.description}</p>
-							<p>Location: {pet.location.address}</p>
+						<div className="pet-detail-card">
+							<div className="detail-card-image">
+								<img src={pet.photoUrl} alt={pet.name} />
+							</div>
+							<div className="detail-card-info">
+								<div className="detail-card-info-text">
+									<div className="info-text-1">
+										<h1>{pet.name}</h1>
+										<h5>{pet.breed}</h5>
+										<h5>Organization Name</h5>
+										<p>{pet.description}</p>
+									</div>
+									<div className="info-text-2">
+										<div className="info-line"></div>
+										<ul>
+											<li>
+												<span>ANIMAL</span>
+												<div>{pet.animal}</div>
+											</li>
+											<li>
+												<span>GENDER</span>
+												<div>{pet.gender}</div>
+											</li>
+											<li>
+												<span>AGE</span>
+												<div>{pet.age.value} {pet.age.unit}</div>
+											</li>
+											<li>
+												<span>LOCATION</span>
+												<div>{pet.location}</div>
+											</li>
+
+										</ul>
+									</div>
+								</div>
+								<div className="pet-crud-buttons">
+									<Link className="btn btn-yellow" to={`/pets/${pet._id}/update`}>
+										Edit Listing
+									</Link>
+									<Link className="btn btn-red-outline" to={`/pets/${pet._id}/delete`}>
+										Remove Listing
+									</Link>
+								</div>
+							</div>
+							{/* <div>
+								<p>Animal Type: {pet.animal}</p>
+								<p>Gender: {pet.gender}</p>
+								<p>Age: {pet.age.value} {pet.age.unit}</p>
+								<p>Location: {pet.location}</p>
+							</div> */}
 						</div>
-						<span>
-							<Link to={`/pets/${pet._id}/update`}>
-								<button>Edit Listing</button>
-							</Link>
-							<Link to={`/pets/${pet._id}/delete`}>
-								<button>Remove Listing</button>
-							</Link>
-            			</span>
 					</>
+
 				) : (
 					<p>Loading...</p>
 				)}
