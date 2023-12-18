@@ -109,6 +109,7 @@ export default function SignUpForm({ setUser }) {
 						/>
 						<label htmlFor="organization"><span>Organization</span> – I want to list pets for adoption</label>
 					</div>
+					<br />
 					{credentials.role === 'organization' && (
 						<>
 							<label>Organization Photo:</label>
