@@ -5,6 +5,11 @@ import { useNavigate } from 'react-router-dom';
 
 export default function PetForm({ purpose, formData, setFormData, petId = null }) {
   const [file, setFile] = useState(null);
+  const [zipCode, setZipCode] = useState("");
+
+  const handleZipCodeChange = (event) => {
+    setZipCode(event.target.value);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -127,13 +132,19 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
           <option value="Female">Female</option>
         </select>
 
-        <label>Location:</label>
+        <label>zipCode:</label>
         <input
+          type="text"
+          name="location"
+          value={zipCode}
+          onChange={handleZipCodeChange}
+        />
+        {/* <input
           type="text"
           name="location"
           value={formData.location}
           onChange={handleChange}
-        />
+        /> */}
 
         <label>Photo:</label>
         <input type="file" onChange={handleFileChange} />
