@@ -34,6 +34,7 @@ export default function PetDetailPage() {
 							<p>Age: {pet.age.value} {pet.age.unit}</p>
 							<p>Gender: {pet.gender}</p>
 							<p>Bio: {pet.description}</p>
+							<p>Location: {pet.location.address}</p>
 						</div>
 						<span>
 							<Link to={`/pets/${pet._id}/update`}>
