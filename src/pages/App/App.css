@@ -436,13 +436,19 @@ label[for="organization"]>span {
   justify-content: space-between;
 }
 
-.detail-card-info > h1 {
+.info-text-1 > h1 {
   color: var(--blue-1);
 }
 
-.detail-card-info p {
-  font-size: 1.3rem; 
+.detail-card-info h5 {
+  color: var(--gray-1);
 }
+
+.detail-card-info p {
+  font-size: 1rem; 
+}
+
+
 
 .detail-card-info-text {
   display: flex;
@@ -499,6 +505,11 @@ label[for="organization"]>span {
     width: 90%;
     grid-template-columns: 1fr;
   }
+
+  .pet-detail-wrap {
+    padding: 20px;
+  }
+
 }
 
 @media (max-width: 992px) {
@@ -514,6 +525,56 @@ label[for="organization"]>span {
   .list-group {
     width: 90%;
   }
+
+  .pet-detail-wrap {
+    height: 100%;
+  }
+  .pet-detail-card {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .detail-card-info {
+    padding: 0;
+  }
+
+  .info-line {
+    top: 0; 
+    height: 300px;
+  }
+
+  .info-text-1 {
+    flex: 4; 
+  }
+
+  .info-text-1 h5 {
+    font-size: 1.2rem;
+  }
+
+  .info-text-1 p {
+    font-size: 0.8rem;
+  }
+
+  .pet-crud-buttons {
+    flex-direction: column;
+  }
+
+
+  .info-text-2 li {
+    margin-bottom: 35px;
+    font-size: 0.8rem;
+  }
+  
+  .info-text-2 span {
+    color: var(--gray-1);
+    font-weight: 500;
+    font-size: 0.5rem;
+  }
+
+  .info-text-2 ul {
+    padding-top: 20px;
+  }
+
 }
 
 @media (min-width: 1200px) {}

@@ -34,8 +34,8 @@ export default function PetDetailPage() {
 								<div className="detail-card-info-text">
 									<div className="info-text-1">
 										<h1>{pet.name}</h1>
-										<p>{pet.breed}</p>
-										<p>Organization Name</p>
+										<h5>{pet.breed}</h5>
+										<h5>Organization Name</h5>
 										<p>{pet.description}</p>
 									</div>
 									<div className="info-text-2">
