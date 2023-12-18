@@ -4,6 +4,11 @@ import PetCard from "../../components/PetCard/PetCard";
 
 export default function AllPetsPage() {
   const [pets, setPets] = useState([]);
+  const [sortOrder, setSortOrder] = useState('name');
+
+  const handleSortChange = (e) => {
+    setSortOrder(e.target.value);
+  };
 
   useEffect(() => {
     const fetchAllPets = async () => {
