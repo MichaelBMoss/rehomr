@@ -35,6 +35,9 @@ const petSchema = new mongoose.Schema({
 	photoUrl: {
 		type: String,
 	},
-});
+},
+	{
+		timestamps: true,
+	});
 
 module.exports = mongoose.model("Pet", petSchema);

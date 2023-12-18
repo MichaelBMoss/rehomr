@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function PetCard({ pet }) {
-    console.log(pet)
+    console.log(pet) 
     return (
         <>
             <Link className="card pet-card" to={`/pets/${pet._id}`}>
