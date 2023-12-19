@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import * as usersAPI from "../../utilities/users-api";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import OrgCard from "../../components/OrgCard/OrgCard";
 
 export default function AllOrgsPage() {

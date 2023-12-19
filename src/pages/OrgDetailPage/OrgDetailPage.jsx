@@ -31,7 +31,7 @@ export default function OrgDetailPage() {
 						</div>
 						<div className="org-detail-info">
 							<h1>{org.name}</h1>
-							<div>{org.location}</div>
+							<div>{org.location.address}</div>
 						</div>
 
 					</div>
