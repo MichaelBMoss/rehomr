@@ -29,7 +29,6 @@ const port = process.env.PORT || 3001;
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/pets', require('./routes/api/pets')); // Add this line to include the pets route
-app.use('/api/upload', require('./routes/api/upload')); // Add this line to include the upload route
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX/API requests
