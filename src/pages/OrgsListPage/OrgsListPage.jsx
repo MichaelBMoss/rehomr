@@ -22,13 +22,15 @@ export default function AllOrgsPage() {
       <div className="index-wrap">
         <h1>All Orgs Page</h1>
         <div className="list-group">
-          {orgs.length > 0 &&
-            orgs.map((org) => (
-              <Link to={`/orgs/${org._id}`} key={org._id}>
-                <div>
-                  {org.name}
+          {orgs.map((org) => (
+              <Link className="card org-card" to={`/orgs/${org._id}`} key={org._id}>
+                <div className="org-card-photo">
+                  <img src={`${org.photoUrl}`} alt={`${org.name}`} />
                 </div>
-                <div>{org.photoUrl}</div>
+                <div className="org-card-info">
+                  <h3>{org.name}</h3>
+                  <span>{org.location}</span>
+                </div>
               </Link>  
             ))}
         </div>

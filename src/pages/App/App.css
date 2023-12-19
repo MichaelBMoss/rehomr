@@ -354,14 +354,14 @@ label[for="organization"]>span {
   border: 1px solid rgb(230, 230, 230);
 }
 
-.pet-card-photo {
+.pet-card-photo, .org-card-photo {
   width: 95%;
   padding-top: 95%;
   position: relative;
   overflow: hidden;
 }
 
-.pet-card-photo img {
+.pet-card-photo img, .org-card-photo img {
   position: absolute;
   top: 0;
   left: 0;
@@ -370,26 +370,26 @@ label[for="organization"]>span {
   object-fit: cover;
 }
 
-.pet-card-info {
+.pet-card-info, .org-card-info {
   text-align: center;
 }
 
-.pet-card-info>h3 {
+.pet-card-info>h3, .org-card-info>h3 {
   color: var(--blue-1);
 }
 
-.pet-card-info>span {
+.pet-card-info>span, .org-card-info>span {
   font-size: 0.8rem;
   color: var(--gray-1);
 }
 
 
-.pet-card {
+.pet-card, .org-card {
   text-decoration: none;
   transition: 0.2s ease-in;
 }
 
-.pet-card:hover {
+.pet-card:hover, .org-card:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
