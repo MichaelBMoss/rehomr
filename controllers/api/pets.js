@@ -49,17 +49,44 @@ async function getById(req, res) {
 
 async function update(req, res) {
     try {
+        const photoUrl = await uploadFile(req, res);
+        const { age, location, ...otherFields } = req.body;
+
+        // Ensure that age and location are parsed correctly
+        let parsedAge, parsedLocation;
+        try {
+            parsedAge = JSON.parse(age);
+            parsedLocation = JSON.parse(location);
+        } catch (parseError) {
+            return res.status(400).json({ error: 'Invalid age or location format' });
+        }
+
+        // Construct the update object
+        const updateData = { 
+            ...otherFields, 
+            ...(photoUrl ? { photoUrl } : {}), // Include photoUrl only if it's available
+            age: parsedAge,
+            location: parsedLocation
+        };
+
+        // Update the pet information in the database
         const updatedPet = await Pet.findByIdAndUpdate(
             req.params.id,
-            req.body,
+            updateData,
             { new: true }
         );
+
+        if (!updatedPet) {
+            return res.status(404).json({ error: 'Pet not found' });
+        }
+
         res.status(200).json(updatedPet);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 }
+
 
 async function deletePet(req, res) {
     try {
