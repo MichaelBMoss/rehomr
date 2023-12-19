@@ -106,6 +106,17 @@ nav {
   background-color: var(--yellow-1);
 }
 
+.btn-red {
+  background-color: var(--red-1);
+  color: white;
+  border: none;
+}
+
+.btn-red:hover {
+  background-color: #e22413;
+  color: white;
+}
+
 .btn-red-outline {
   background-color: transparent;
   border: 2px solid var(--red-1);
@@ -114,10 +125,6 @@ nav {
 .btn-red-outline:hover {
   background-color: var(--red-1);
   color: white; 
-}
-
-.btn-red {
-  background-color: var(--red-1);
 }
 
 .home-img {
