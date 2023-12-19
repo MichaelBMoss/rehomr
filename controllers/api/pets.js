@@ -1,5 +1,5 @@
 const Pet = require('../../models/pet/pet');
-const uploadFile = require('../../routes/api/upload');
+const uploadFile = require('../../src/utilities/image-api');
 
 
 

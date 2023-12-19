@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
-import { getUser } from "../../utilities/users-service";
+import { signUp, getUser } from "../../utilities/users-service";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUpForm({ setUser }) {
@@ -11,6 +11,7 @@ export default function SignUpForm({ setUser }) {
 		location: "",
 		password: "",
 		confirm: "",
+		photoUrl: "", 
 	});
 	// const [zipCode, setZipCode] = useState("");
 	const [error, setError] = useState("");
@@ -56,25 +57,28 @@ export default function SignUpForm({ setUser }) {
 	async function handleSubmit(evt) {
 		evt.preventDefault();
 
-		const formData = new FormData()
-		Object.keys(credentials).forEach((key) => {
-			// if (key === 'location') {
+		try {
+			if (credentials.role === 'petSeeker') {
+				const user = await signUp(credentials);
+				setUser(user);
+				navigate('/');
+			} else {
+				const formData = new FormData();
+				Object.keys(credentials).forEach((key) => {
+					// if (key === 'location') {
             //     formData.append('location', JSON.stringify(credentials.location));
             // } else {
                 formData.append(key, credentials[key])
-            // }
+		            // }
 		})
 		
-		try {
-			// const user = await signUp(credentials);
-			let response;
-			response = await axios.post('/api/users', formData)
-			console.log("response: ")
-			console.log(response)
-			localStorage.setItem('token', response.data);
-			setUser(getUser());
-			navigate("/");
-		} catch {
+				let response;
+				response = await axios.post('api/users/org', formData);
+				localStorage.setItem('token', response.data);
+				setUser(getUser());
+				navigate('/'); 
+			}
+		} catch (err) {
 			setError("Sign Up Failed - Try Again");
 		}
 	}
@@ -83,7 +87,7 @@ export default function SignUpForm({ setUser }) {
 		<>
 			<div className="form-container">
 				<h1>Sign Up</h1>
-				<form autoComplete="off" onSubmit={handleSubmit} encType="multipart/form-data">
+				<form autoComplete="off" onSubmit={handleSubmit}>
 					<label>Name</label>
 					<input
 						type="text"
