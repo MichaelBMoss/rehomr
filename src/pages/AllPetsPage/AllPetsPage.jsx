@@ -4,7 +4,7 @@ import PetCard from "../../components/PetCard/PetCard";
 import { getDistance } from 'geolib';
 
 
-export default function AllPetsPage() {
+export default function AllPetsPage({user}) {
   const [pets, setPets] = useState([]);
   const [sortOrder, setSortOrder] = useState('name');
 
