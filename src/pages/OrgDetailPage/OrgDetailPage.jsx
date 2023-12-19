@@ -27,7 +27,8 @@ export default function OrgDetailPage() {
 				{org ? (
 					<>
 						<div>
-						    <p>Name: {org.name}</p>
+							<p>Name: {org.name}</p>
+							<p>Location: {org. location && org.location.address}</p>
 							</div>
 						<span>
 							{/* <Link to={`/pets/${pet._id}/update`}>

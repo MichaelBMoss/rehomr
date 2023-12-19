@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import * as dataAPI from "../../utilities/data-api";
 import PetCard from "../../components/PetCard/PetCard";
+import { getDistance } from 'geolib';
+
 
 export default function AllPetsPage() {
   const [pets, setPets] = useState([]);
