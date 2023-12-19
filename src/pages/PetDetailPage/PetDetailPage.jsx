@@ -55,7 +55,7 @@ export default function PetDetailPage() {
 											</li>
 											<li>
 												<span>LOCATION</span>
-												<div>{pet.location}</div>
+												<div>{pet.location.address}</div>
 											</li>
 
 										</ul>

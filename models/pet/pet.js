@@ -7,6 +7,7 @@ const petSchema = new mongoose.Schema({
 	},
 	animal: {
 		type: String,
+		enum: ["Dog", "Cat", "Other"],
 		required: true,
 	},
 	breed: String,
@@ -26,10 +27,17 @@ const petSchema = new mongoose.Schema({
 		type: String,
 		enum: ["Male", "Female"],
 	},
-	location: { type: String, required: true }, 
+	location: {
+		lat: { type: Number, },
+		lng: { type: Number, },
+		address: { type: String, },
+	},
 	photoUrl: {
 		type: String,
 	},
-});
+},
+	{
+		timestamps: true,
+	});
 
 module.exports = mongoose.model("Pet", petSchema);
