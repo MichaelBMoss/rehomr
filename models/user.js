@@ -17,7 +17,12 @@ const userSchema = new Schema({
     type: String,
     required: true
   }, location: { type: String },
-  role: { type: String, enum: ['organization', 'petSeeker'], default: 'petSeeker', required: true},
+  location: {
+    lat: { type: Number, },
+		lng: { type: Number, },
+		address: { type: String, },
+	},
+  role: { type: String, enum: ['organization', 'petSeeker'], default: 'petSeeker', required: true },
   photoUrl: {type: String},
 }, {
   timestamps: true,
