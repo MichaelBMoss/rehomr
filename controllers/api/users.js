@@ -19,16 +19,16 @@ function checkToken(req, res) {
 async function create(req, res) {
   try {
     // Add the user to the db
-    // can I save the photo into a new variable and then use it after user creation? 
-    const photoUrl = await uploadFile(req, res)
-    console.log("photoUrl: ")
-    console.log(photoUrl)
+    console.log(req.body)
+    let photoUrl
+    if (req.body.role === 'organization'){
+      photoUrl = await uploadFile(req, res)
+    }
     const user = await User.create({...req.body, photoUrl: photoUrl});
-    console.log("user: ")
-    console.log(user)
     const token = createJWT(user);
     res.json(token);
   } catch (err) {
+    console.log(err)
     res.status(400).json(err);
   }
 }

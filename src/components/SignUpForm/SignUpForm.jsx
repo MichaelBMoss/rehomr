@@ -11,6 +11,7 @@ export default function SignUpForm({ setUser }) {
 		location: "",
 		password: "",
 		confirm: "",
+		photoUrl: "", 
 	});
 	const [error, setError] = useState("");
 
@@ -28,20 +29,25 @@ export default function SignUpForm({ setUser }) {
 	async function handleSubmit(evt) {
 		evt.preventDefault();
 
-		if (credentials.role === 'petSeeker') {
-			try {
-				const user = await signUp(credentials);
-				setUser(user);
-				navigate("/");
-			} catch {
-				setError("Sign Up Failed - Try Again");
-			}
-		} else {
+		// if (credentials.role === 'petSeeker') {
+		// 	try {
+		// 		const user = await signUp(credentials);
+		// 		setUser(user);
+		// 		navigate("/");
+		// 	} catch {
+		// 		setError("Sign Up Failed - Try Again");
+		// 	}
+		// } else {
+			console.log(credentials)
 			const formData = new FormData()
 			Object.keys(credentials).forEach((key) => {
+				console.log("key: ")
+				console.log(key)
 				formData.append(key, credentials[key])
 			})
-
+			for (let data of formData.entries()) {
+				console.log(data)
+			}
 			try {
 				// const user = await signUp(credentials);
 				let response;
@@ -52,7 +58,7 @@ export default function SignUpForm({ setUser }) {
 			} catch {
 				setError("Sign Up Failed - Try Again");
 			}
-		}
+		// }
 
 	}
 
@@ -60,7 +66,7 @@ export default function SignUpForm({ setUser }) {
 		<>
 			<div className="form-container">
 				<h1>Sign Up</h1>
-				<form autoComplete="off" onSubmit={handleSubmit} encType="multipart/form-data">
+				<form autoComplete="off" onSubmit={handleSubmit}>
 					<label>Name</label>
 					<input
 						type="text"
