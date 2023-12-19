@@ -22,14 +22,19 @@ export default function OrgDetailPage() {
 
 	return (
 		<>
-			<div>
-				<h1>Org Details</h1>
+			<div className="org-detail-wrap">
 				{org ? (
 					<>
-						<div>
-							<p>Name: {org.name}</p>
-							<p>Location: {org. location && org.location.address}</p>
-							</div>
+					<div className="org-detail-card">
+						<div className="org-detail-image">
+							<img src={org.photoUrl} alt={org.name} />
+						</div>
+						<div className="org-detail-info">
+							<h1>{org.name}</h1>
+							<div>{org.location}</div>
+						</div>
+
+					</div>
 						<span>
 							{/* <Link to={`/pets/${pet._id}/update`}>
 								<button>Edit Listing</button>
@@ -37,7 +42,7 @@ export default function OrgDetailPage() {
 							<Link to={`/pets/${pet._id}/delete`}>
 								<button>Remove Listing</button>
 							</Link> */}
-            			</span>
+						</span>
 					</>
 				) : (
 					<p>Loading...</p>

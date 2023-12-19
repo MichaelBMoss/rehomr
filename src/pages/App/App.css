@@ -361,14 +361,14 @@ label[for="organization"]>span {
   border: 1px solid rgb(230, 230, 230);
 }
 
-.pet-card-photo {
+.pet-card-photo, .org-card-photo {
   width: 95%;
   padding-top: 95%;
   position: relative;
   overflow: hidden;
 }
 
-.pet-card-photo img {
+.pet-card-photo img, .org-card-photo img {
   position: absolute;
   top: 0;
   left: 0;
@@ -377,30 +377,30 @@ label[for="organization"]>span {
   object-fit: cover;
 }
 
-.pet-card-info {
+.pet-card-info, .org-card-info {
   text-align: center;
 }
 
-.pet-card-info>h3 {
+.pet-card-info>h3, .org-card-info>h3 {
   color: var(--blue-1);
 }
 
-.pet-card-info>span {
+.pet-card-info>span, .org-card-info>span {
   font-size: 0.8rem;
   color: var(--gray-1);
 }
 
 
-.pet-card {
+.pet-card, .org-card {
   text-decoration: none;
   transition: 0.2s ease-in;
 }
 
-.pet-card:hover {
+.pet-card:hover, .org-card:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-.pet-detail-wrap {
+.pet-detail-wrap, .org-detail-wrap {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -408,6 +408,10 @@ label[for="organization"]>span {
   padding-bottom: 100px;
   height: 100vh;
   background-color: rgb(243, 243, 243);
+}
+
+.org-detail-wrap {
+  height: 100%;
 }
 
 .pet-detail-card {
@@ -498,15 +502,74 @@ label[for="organization"]>span {
   font-weight: 500;
   font-size: 0.7rem;
 }
+.pet-detail-card {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 575px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.org-detail-card {
+  display: flex;
+  width: 750px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  gap: 50px;
+}
+
+.org-detail-image {
+  width: 50%;
+}
+
+/* .org-detail-info {
+  width: fit-content;
+} */
+
+/* .org-detail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} */
+
+/* .org-detail-info h1 {
+  color: var(--blue-1);
+} */
 
 
+@media (max-width: 550px) {
+  .org-detail-info h1 {
+    font-size: 1.3rem;
+  }
+}
 
+@media (min-width: 768px) {
+  .org-detail-card {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-@media (max-width: 575.98px) {}
+  /* .org-detail-info {
+    flex-grow: 1;
+    width: fit-content;
+    max-width: 100%;
+  } */
 
-@media (min-width: 768px) {}
+  .org-detail-image img {
+    max-width: 100%;
+    height: auto;
+  }
+}
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .list-group {
     width: 90%;
     grid-template-columns: 1fr;
@@ -516,6 +579,16 @@ label[for="organization"]>span {
     padding: 20px;
   }
 
+  .org-detail-card {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .org-detail-image img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 @media (max-width: 992px) {
