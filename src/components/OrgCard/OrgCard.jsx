@@ -9,7 +9,7 @@ export default function OrgCard({ org }) {
                 </div>
                 <div className="org-card-info">
                   <h3>{org.name}</h3>
-                  <span>{org.location}</span>
+                  <span>{org.location?.address}</span>
                 </div>
               </Link>  
         </>
