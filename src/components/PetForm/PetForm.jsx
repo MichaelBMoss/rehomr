@@ -179,38 +179,13 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
           <option value="Female">Female</option>
         </select>
 
-        <PlacesAutocomplete
-          value={address}
-          onChange={setAddress}
-          onSelect={handleSelect}
-        >
-          {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-            <div>
-              <input {...getInputProps({ placeholder: "Type address" })} />
-              <div>
-                {loading ? <div>...loading</div> : null}
-
-                {suggestions.map((suggestion) => {
-                  const style = {
-                    backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
-                  };
-
-                  return (
-                    <div {...getSuggestionItemProps(suggestion, { style })}>
-                      {suggestion.description}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </PlacesAutocomplete>
-        {/* <input
+        <label>Zip Code:</label>
+        <input
           type="text"
-          name="location"
-          value={formData.location}
-          onChange={handleChange}
-        /> */}
+          name="zipCode"
+          value={zipCode}
+          onChange={handleZipCodeChange}
+        />
 
         <label>Photo:</label>
         <input type="file" onChange={handleFileChange} />
