@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function PetCard({ pet, distance }) {
+export default function PetCard({ pet, distance, user }) {
     console.log(pet) 
     return (
         <>
@@ -12,8 +12,7 @@ export default function PetCard({ pet, distance }) {
                     <h3>{pet.name}</h3>
                     <p>{pet.breed} | {pet.gender} | {pet.age.value} {pet.age.unit}</p>
                     <p>Org Name</p>
-                    <span>{pet.location && pet.location.address}</span>
-                    Distance from you: {distance} miles
+                    <span>{user && distance ? `You're new best friend is ${distance} away` : pet.location.address}</span>
                 </div>
             </Link>
         </>

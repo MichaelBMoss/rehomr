@@ -26,15 +26,17 @@ export default function AllPetsPage({ user }) {
 	useEffect(() => {
 		const fetchAllPets = async () => {
 			try {
-        let data = await dataAPI.getAll("/api/pets");
-        data = data.map(pet => {
-          const distanceInMeters = getDistance(
-            { latitude: user.location.lat, longitude: user.location.lng },
-            { latitude: pet.location.lat, longitude: pet.location.lng }
-          );
-          const distanceInMiles = (distanceInMeters * 0.000621371).toFixed(2);
-          return { ...pet, distance: distanceInMiles };
-        });
+				let data = await dataAPI.getAll("/api/pets");
+				if (user) {
+					data = data.map((pet) => {
+						const distanceInMeters = getDistance(
+							{ latitude: user.location.lat, longitude: user.location.lng },
+							{ latitude: pet.location.lat, longitude: pet.location.lng }
+						);
+						const distanceInMiles = (distanceInMeters * 0.000621371).toFixed(2);
+						return { ...pet, distance: distanceInMiles };
+					});
+				}
 				if (sortOrder === "age") {
 					data.sort((a, b) => convertToWeeks(a.age) - convertToWeeks(b.age));
 				} else {
@@ -62,7 +64,14 @@ export default function AllPetsPage({ user }) {
 				</select>
 				<div className="list-group">
 					{pets.length > 0 &&
-						pets.map((pet) => <PetCard pet={pet} key={pet._id} distance={pet.distance}/>)}
+						pets.map((pet) => (
+							<PetCard
+								pet={pet}
+								key={pet._id}
+								distance={pet.distance}
+								user={user}
+							/>
+						))}
 				</div>
 			</div>
 		</>
