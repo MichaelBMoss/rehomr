@@ -27,7 +27,6 @@ export default function SignUpForm({ setUser }) {
 
 	async function handleSubmit(evt) {
 		evt.preventDefault();
-		console.log(credentials);
 		try {
 			const user = await signUp(credentials);
 			setUser(user);
