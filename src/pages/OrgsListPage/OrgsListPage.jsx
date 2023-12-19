@@ -28,6 +28,7 @@ export default function AllOrgsPage() {
                 <div>
                   {org.name}
                 </div>
+                <div>{org.photoUrl}</div>
               </Link>  
             ))}
         </div>

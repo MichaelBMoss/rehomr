@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { signUp } from "../../utilities/users-service";
+import axios from 'axios';
+import { getUser } from "../../utilities/users-service";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUpForm({ setUser }) {
@@ -10,7 +11,6 @@ export default function SignUpForm({ setUser }) {
 		location: "",
 		password: "",
 		confirm: "",
-		photoUrl: null,
 	});
 	const [error, setError] = useState("");
 
@@ -20,16 +20,27 @@ export default function SignUpForm({ setUser }) {
 	}
 
 	const handleFileChange = (evt) => {
-		setCredentials({ ...credentials, photo: evt.target.files[0] })
+		setCredentials({ ...credentials, file: evt.target.files[0] })
 	}
 
 	const navigate = useNavigate();
 
 	async function handleSubmit(evt) {
 		evt.preventDefault();
+
+		const formData = new FormData()
+		Object.keys(credentials).forEach((key) => {
+			formData.append(key, credentials[key])
+		})
+
 		try {
-			const user = await signUp(credentials);
-			setUser(user);
+			// const user = await signUp(credentials);
+			let response;
+			response = await axios.post('/api/users', formData)
+			console.log("response: ")
+			console.log(response)
+			localStorage.setItem('token', response.data);
+			setUser(getUser());
 			navigate("/");
 		} catch {
 			setError("Sign Up Failed - Try Again");
@@ -40,7 +51,7 @@ export default function SignUpForm({ setUser }) {
 		<>
 			<div className="form-container">
 				<h1>Sign Up</h1>
-				<form autoComplete="off" onSubmit={handleSubmit}>
+				<form autoComplete="off" onSubmit={handleSubmit} encType="multipart/form-data">
 					<label>Name</label>
 					<input
 						type="text"

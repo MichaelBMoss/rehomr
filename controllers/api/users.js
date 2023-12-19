@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../../models/user');
+const uploadFile = require('../../routes/api/upload')
 
 module.exports = {
   create,
@@ -18,7 +19,13 @@ function checkToken(req, res) {
 async function create(req, res) {
   try {
     // Add the user to the db
-    const user = await User.create(req.body);
+    // can I save the photo into a new variable and then use it after user creation? 
+    const photoUrl = await uploadFile(req, res)
+    console.log("photoUrl: ")
+    console.log(photoUrl)
+    const user = await User.create({...req.body, photoUrl: photoUrl});
+    console.log("user: ")
+    console.log(user)
     const token = createJWT(user);
     res.json(token);
   } catch (err) {
