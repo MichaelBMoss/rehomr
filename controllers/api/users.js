@@ -4,7 +4,8 @@ const User = require('../../models/user');
 const uploadFile = require('../../routes/api/upload')
 
 module.exports = {
-  create,
+  createPS,
+  createOrg,
   login,
   checkToken,
   index,
@@ -16,19 +17,24 @@ function checkToken(req, res) {
   res.json(req.exp);
 }
 
-async function create(req, res) {
+async function createPS (req, res) {
+  try{
+    const user = await User.create(req.body)
+    const token = createJWT(user)
+    res.json(token)
+  } catch(err) {
+    res.status(400).json(err)
+  }
+}
+
+async function createOrg(req, res) {
   try {
-    // Add the user to the db
-    // can I save the photo into a new variable and then use it after user creation? 
     const photoUrl = await uploadFile(req, res)
-    console.log("photoUrl: ")
-    console.log(photoUrl)
     const user = await User.create({...req.body, photoUrl: photoUrl});
-    console.log("user: ")
-    console.log(user)
     const token = createJWT(user);
     res.json(token);
   } catch (err) {
+    console.log(err)
     res.status(400).json(err);
   }
 }

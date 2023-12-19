@@ -6,7 +6,8 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 // All paths start with '/api/users'
 
 // POST /api/users (create a user - sign up)
-router.post('/', usersCtrl.create);
+router.post('/ps', usersCtrl.createPS);
+router.post('/org', usersCtrl.createOrg);
 // POST /api/users/login
 router.post('/login', usersCtrl.login);
 // GET /api/users/check-token

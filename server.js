@@ -13,6 +13,7 @@ const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 // Configure both serve-favicon & static middleware
 // to serve from the production 'build' folder
