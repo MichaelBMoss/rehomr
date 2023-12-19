@@ -23,6 +23,9 @@ async function create(req, res) {
     const photoUrl = await uploadFile(req, res)
     console.log("photoUrl: ")
     console.log(photoUrl)
+    // const location = JSON.parse(req.body.location);
+    // const { name, email, role, password } = req.body;
+    // const user = await User.create({ name, email, role, location, password, photoUrl });
     const user = await User.create({...req.body, photoUrl: photoUrl});
     console.log("user: ")
     console.log(user)

@@ -12,7 +12,35 @@ export default function SignUpForm({ setUser }) {
 		password: "",
 		confirm: "",
 	});
+	// const [zipCode, setZipCode] = useState("");
 	const [error, setError] = useState("");
+
+	// const handleZipCodeChange = async (event) => {
+    //     const zipCode = event.target.value;
+    //     setZipCode(zipCode);
+    //     if (zipCode.length === 5) {
+    //         try {
+    //             const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`);
+    //             console.log('Google Maps API response:', response.data);
+    //             if (response.data.results[0]) {
+    //                 const location = response.data.results[0].geometry.location;
+    //                 const address = response.data.results[0].formatted_address;
+    //                 console.log('address', address);
+    //                 console.log('location', location);
+    //                 setCredentials({
+    //                     ...credentials,
+    //                     location: {
+    //                         lat: location.lat,
+    //                         lng: location.lng,
+    //                         address: address
+    //                     },
+    //                 });
+    //                 console.log('location', credentials.location);
+    //             }
+    //         } catch (error) {
+    //             console.error('Error getting location:', error);
+    //         }
+    //     }
 
 	function handleChange(evt) {
 		setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
@@ -30,9 +58,13 @@ export default function SignUpForm({ setUser }) {
 
 		const formData = new FormData()
 		Object.keys(credentials).forEach((key) => {
-			formData.append(key, credentials[key])
+			// if (key === 'location') {
+            //     formData.append('location', JSON.stringify(credentials.location));
+            // } else {
+                formData.append(key, credentials[key])
+            // }
 		})
-
+		
 		try {
 			// const user = await signUp(credentials);
 			let response;
@@ -92,6 +124,17 @@ export default function SignUpForm({ setUser }) {
 						onChange={handleChange}
 						required
 					/>
+					{/* <label>Zip Code:</label>
+                    <input
+                        type="text"
+                        name="zipCode"
+                        value={zipCode}
+                        onChange={handleZipCodeChange}
+                        minLength={5}
+                        maxLength={5}
+                        required
+                    /> */}
+
 
 					<label>Select the option that applies to you:</label>
 					<div className="form-check">
