@@ -29,37 +29,26 @@ export default function SignUpForm({ setUser }) {
 	async function handleSubmit(evt) {
 		evt.preventDefault();
 
-		// if (credentials.role === 'petSeeker') {
-		// 	try {
-		// 		const user = await signUp(credentials);
-		// 		setUser(user);
-		// 		navigate("/");
-		// 	} catch {
-		// 		setError("Sign Up Failed - Try Again");
-		// 	}
-		// } else {
-			console.log(credentials)
-			const formData = new FormData()
-			Object.keys(credentials).forEach((key) => {
-				console.log("key: ")
-				console.log(key)
-				formData.append(key, credentials[key])
-			})
-			for (let data of formData.entries()) {
-				console.log(data)
-			}
-			try {
-				// const user = await signUp(credentials);
+		try {
+			if (credentials.role === 'petSeeker') {
+				const user = await signUp(credentials);
+				setUser(user);
+				navigate('/');
+			} else {
+				const formData = new FormData();
+				Object.keys(credentials).forEach((key) => {
+					formData.append(key, credentials[key])
+				})
+
 				let response;
-				response = await axios.post('/api/users', formData)
+				response = await axios.post('api/users/org', formData);
 				localStorage.setItem('token', response.data);
 				setUser(getUser());
-				navigate("/");
-			} catch {
-				setError("Sign Up Failed - Try Again");
+				navigate('/'); 
 			}
-		// }
-
+		} catch (err) {
+			setError("Sign Up Failed - Try Again");
+		}
 	}
 
 	return (

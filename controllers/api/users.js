@@ -4,7 +4,8 @@ const User = require('../../models/user');
 const uploadFile = require('../../routes/api/upload')
 
 module.exports = {
-  create,
+  createPS,
+  createOrg,
   login,
   checkToken,
   index,
@@ -16,14 +17,19 @@ function checkToken(req, res) {
   res.json(req.exp);
 }
 
-async function create(req, res) {
+async function createPS (req, res) {
+  try{
+    const user = await User.create(req.body)
+    const token = createJWT(user)
+    res.json(token)
+  } catch(err) {
+    res.status(400).json(err)
+  }
+}
+
+async function createOrg(req, res) {
   try {
-    // Add the user to the db
-    console.log(req.body)
-    let photoUrl
-    if (req.body.role === 'organization'){
-      photoUrl = await uploadFile(req, res)
-    }
+    const photoUrl = await uploadFile(req, res)
     const user = await User.create({...req.body, photoUrl: photoUrl});
     const token = createJWT(user);
     res.json(token);
