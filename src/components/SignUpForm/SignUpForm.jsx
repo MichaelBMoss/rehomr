@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
-import { getUser } from "../../utilities/users-service";
+import { signUp, getUser } from "../../utilities/users-service";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUpForm({ setUser }) {
@@ -28,23 +28,32 @@ export default function SignUpForm({ setUser }) {
 	async function handleSubmit(evt) {
 		evt.preventDefault();
 
-		const formData = new FormData()
-		Object.keys(credentials).forEach((key) => {
-			formData.append(key, credentials[key])
-		})
+		if (credentials.role === 'petSeeker') {
+			try {
+				const user = await signUp(credentials);
+				setUser(user);
+				navigate("/");
+			} catch {
+				setError("Sign Up Failed - Try Again");
+			}
+		} else {
+			const formData = new FormData()
+			Object.keys(credentials).forEach((key) => {
+				formData.append(key, credentials[key])
+			})
 
-		try {
-			// const user = await signUp(credentials);
-			let response;
-			response = await axios.post('/api/users', formData)
-			console.log("response: ")
-			console.log(response)
-			localStorage.setItem('token', response.data);
-			setUser(getUser());
-			navigate("/");
-		} catch {
-			setError("Sign Up Failed - Try Again");
+			try {
+				// const user = await signUp(credentials);
+				let response;
+				response = await axios.post('/api/users', formData)
+				localStorage.setItem('token', response.data);
+				setUser(getUser());
+				navigate("/");
+			} catch {
+				setError("Sign Up Failed - Try Again");
+			}
 		}
+
 	}
 
 	return (
