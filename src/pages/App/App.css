@@ -46,16 +46,13 @@ nav {
   background-color: var(--yellow-1);
   transform: scaleX(0);
   transform-origin: center;
-  /* Center the transform origin */
   transition: transform 0.2s ease-out;
-  /* Add transition for the transform property */
   z-index: -1;
 }
 
 .nav-link:hover::before,
 .nav-home:hover::before {
   transform: scaleX(1);
-  /* Scale the underline to its full width on hover */
 }
 
 .nav-home,
@@ -64,7 +61,6 @@ nav {
 .nav-home-user {
   color: white;
   transition: 0.2s ease-in;
-  /* Add transition for the transform property */
 }
 
 .nav-home:hover {
@@ -224,7 +220,6 @@ nav {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
-  /* Semi-transparent black overlay */
 }
 
 .auth-page-image-container h1 {
@@ -337,7 +332,8 @@ label[for="organization"]>span {
   justify-content: flex-start;
   align-items: center;
   background-color: rgb(243, 243, 243);
-  padding: 50px 0 150px;
+  padding: 50px 0;
+  min-height: max-content;
 }
 
 .index-wrap>h1 {
@@ -345,8 +341,9 @@ label[for="organization"]>span {
 }
 
 .list-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 5%;
   width: 70%;
 }
@@ -392,6 +389,8 @@ label[for="organization"]>span {
 
 
 .pet-card, .org-card {
+  width: 30%;
+  margin-bottom: 5%;
   text-decoration: none;
   transition: 0.2s ease-in;
 }
@@ -529,20 +528,6 @@ label[for="organization"]>span {
   width: 50%;
 }
 
-/* .org-detail-info {
-  width: fit-content;
-} */
-
-/* .org-detail-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} */
-
-/* .org-detail-info h1 {
-  color: var(--blue-1);
-} */
-
 
 @media (max-width: 550px) {
   .org-detail-info h1 {
@@ -557,12 +542,6 @@ label[for="organization"]>span {
     align-items: center;
   }
 
-  /* .org-detail-info {
-    flex-grow: 1;
-    width: fit-content;
-    max-width: 100%;
-  } */
-
   .org-detail-image img {
     max-width: 100%;
     height: auto;
@@ -572,7 +551,10 @@ label[for="organization"]>span {
 @media (max-width: 767px) {
   .list-group {
     width: 90%;
-    grid-template-columns: 1fr;
+  }
+
+  .pet-card, .org-card {
+    width: 100%;
   }
 
   .pet-detail-wrap {
@@ -656,4 +638,3 @@ label[for="organization"]>span {
 
 }
 
-@media (min-width: 1200px) {}
