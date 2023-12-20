@@ -77,14 +77,19 @@ export default function PetDetailPage() {
 									</Link>
 								</div>
 								<div>
-									console.log(pet); 
 									<GoogleMap
 										mapContainerStyle={{ width: "400px", height: "400px" }}
 										center={{ lat: pet.location.lat, lng: pet.location.lng }}
 										zoom={10}
 									>
 										<MarkerF
-											
+											key="0"
+											// icon={{
+											// 	url: pet.photoUrl,
+											// 	scaledSize: new window.google.maps.Size(36, 36), // size of the icon
+											// 	origin: new window.google.maps.Point(0, 0), // position of the image within the icon
+											// 	anchor: new window.google.maps.Point(18, 18), // position of the icon on the map
+											// }}
 											position={{
 												lat: pet.location.lat,
 												lng: pet.location.lng,
