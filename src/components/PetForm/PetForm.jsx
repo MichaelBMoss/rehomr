@@ -7,7 +7,6 @@ import {getUser} from '../../utilities/users-service'
 export default function PetForm({ purpose, formData, setFormData, petId = null }) {
   const [file, setFile] = useState(null);
   const [zipCode, setZipCode] = useState("");
-  const [orgId, setOrgId] = useState("")
 
 
   const handleZipCodeChange = async (event) => {
