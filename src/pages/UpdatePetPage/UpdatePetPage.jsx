@@ -34,9 +34,6 @@ export default function UpdatePetPage({ user }) {
         fetchPet();
     }, [petId]);
 
-    console.log(pet)
-
-
     // Initialize formData with pet data when available
     useEffect(() => {
         if (pet) {

@@ -28,11 +28,8 @@ export default function DeletePetPage({ user }) { // Assuming you receive the us
 
 			// Redirect to a different page after successful deletion
 			navigate("/pets");
-
-			console.log("Pet deleted:", response.data);
 		} catch (error) {
 			console.error(error);
-			// Handle error
 		}
 	};
 

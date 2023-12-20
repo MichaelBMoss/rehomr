@@ -22,14 +22,12 @@ export default function CreatePetPage({ user }) {
 
 	useEffect(() => {
 		if (user && user.role !== 'organization') {
-			console.log('Redirecting to login, user is not authorized.');
 			navigate("/login");
 		}
 	}, [user, navigate]);
 	
 	if (!user || user.role !== 'organization') {
-		// Show a loading indicator or return null while waiting for the effect to run
-		return <div>Loading...</div>; // or return null;
+		return <div>Loading...</div>;
 	}
 
 	return (

@@ -24,12 +24,9 @@ export default function SignUpForm({ setUser }) {
 				const response = await axios.get(
 					`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`
 				);
-				console.log("Google Maps API response:", response.data);
 				if (response.data.results[0]) {
 					const location = response.data.results[0].geometry.location;
 					const address = response.data.results[0].formatted_address;
-					console.log("address", address);
-					console.log("location", location);
 					setCredentials({
 						...credentials,
 						location: {
@@ -38,7 +35,6 @@ export default function SignUpForm({ setUser }) {
 							address: address,
 						},
 					});
-					console.log("location", credentials.location);
 				}
 			} catch (error) {
 				console.error("Error getting location:", error);

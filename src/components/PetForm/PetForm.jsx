@@ -17,12 +17,9 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
     if (zipCode.length === 5) {
       try {
         const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`);
-        console.log('Google Maps API response:', response.data); 
         if (response.data.results[0]) {
           const location = response.data.results[0].geometry.location;
           const address = response.data.results[0].formatted_address;
-          console.log('address', address); 
-          console.log('location', location); 
           setFormData({
             ...formData,
             location: {
@@ -31,7 +28,6 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
               address: address
             },
           });
-          console.log('location', formData.location);
         }
       } catch (error) {
         console.error('Error getting location:', error);
@@ -92,7 +88,6 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
 
       if (response.status === 201 || response.status === 200) {
         const newPetId = response.data._id;
-        console.log('Pet created:', response.data);
         navigate(`/pets/${newPetId}`);
       } else {
         console.error('Error creating pet:', response.statusText);
