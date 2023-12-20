@@ -12,10 +12,10 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <nav className="navbar navbar-expand-md">
+    <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
         <Link
-          className={`navbar-brand ps-3 ${isHomePage ? 'navbar-brand-home' : ''}`} to="/">
+          className={`navbar-brand ps-3 ${isHomePage ? 'navbar-brand-home' : ''}`} to="/" >
           reHomr
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar " aria-controls="offcanvasNavbar">
@@ -23,26 +23,22 @@ export default function NavBar({ user, setUser }) {
         </button>
         <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div className="offcanvas-header">
-            <h5 className="offcanvas-title" id="offcanvasNavbarLabel">reHomr</h5>
             <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li>
+
+              </li>
               <li className="nav-item">
                 <Link className={`nav-link ${isHomePage ? 'nav-home' : ''}`} to="/about">About</Link>
               </li>
-              <li className="nav-item dropdown">
-                <a className={`nav-link dropdown-toggle ${isHomePage ? 'nav-home' : ''}`} href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Pets
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link className="dropdown-item" to="/pets">See All Pets</Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/pets/new">Add a Pet</Link>
-                  </li>
-                </ul>
+
+              <li className="nav-item">
+                <Link className={`nav-link ${isHomePage ? 'nav-home' : ''}`} to="/pets"> Pets</Link>
+              </li>
+              <li className="nav-item">
+                <Link className={`nav-link ${isHomePage ? 'nav-home' : ''}`} to="/pets/new">Add a Pet</Link>
               </li>
               <li className="nav-item">
                 <Link className={`nav-link ${isHomePage ? 'nav-home' : ''}`} to="/orgs">Organizations</Link>

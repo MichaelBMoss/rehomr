@@ -545,6 +545,8 @@ label[for="organization"]>span {
 }
 
 
+
+
 @media (max-width: 550px) {
   .org-detail-info h1 {
     font-size: 1.3rem;
@@ -661,6 +663,18 @@ label[for="organization"]>span {
 
   .info-text-2 ul {
     padding-top: 20px;
+  }
+
+  .nav-item {
+    margin: 8px auto;
+  }
+
+  .nav-home, .nav-home-user {
+    color: black
+  }
+
+  .nav-home:hover {
+    color: black
   }
 
 }
