@@ -58,7 +58,13 @@ export default function PetDetailPage({ user }) {
 									<div className="info-text-1">
 										<h1>{pet.name}</h1>
 										<h5>{pet.breed}</h5>
-										{org ? <Link className="org-link" to={`/orgs/${org._id}`}>{org.name}</Link> : ''}
+										{org ? (
+											<Link className="org-link" to={`/orgs/${org._id}`}>
+												{org.name}
+											</Link>
+										) : (
+											""
+										)}
 										<p>{pet.description}</p>
 									</div>
 									<div className="info-text-2">
@@ -85,7 +91,7 @@ export default function PetDetailPage({ user }) {
 										</ul>
 									</div>
 								</div>
-								{user && pet.organizationId === user._id ? (
+								{user && pet && org && pet.organizationId === user._id ? (
 									<div className="pet-crud-buttons">
 										<Link
 											className="btn btn-yellow"
@@ -101,9 +107,17 @@ export default function PetDetailPage({ user }) {
 										</Link>
 									</div>
 								) : (
-									(org && <a className="btn btn-yellow" href={`mailto:${org.email}?subject=I'd%20like%20more%20information%20about%20${pet.name}&body=Hello,%0D%0A%0D%0AMy%20name%20is%20${user.name}.%20I'd%20like%20to%20learn%20more%20about%20possibly%20adopting%20${pet.name}.%20%0D%0A%0D%0AThank%20you,%0D%0A%0D%0A${user.name}`}>Message {org.name}</a>)
+									org &&
+									pet &&
+									user && (
+										<a
+											className="btn btn-yellow"
+											href={`mailto:${org.email}?subject=I'd%20like%20more%20information%20about%20${pet.name}&body=Hello,%0D%0A%0D%0AMy%20name%20is%20${user.name}.%20I'd%20like%20to%20learn%20more%20about%20possibly%20adopting%20${pet.name}.%20%0D%0A%0D%0AThank%20you,%0D%0A%0D%0A${user.name}`}
+										>
+											Message {org.name}
+										</a>
+									)
 								)}
-
 							</div>
 						</div>
 						<div className="map-wrap">
