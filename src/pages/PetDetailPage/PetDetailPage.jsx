@@ -116,10 +116,13 @@ export default function PetDetailPage({ user }) {
 										mapContainerStyle={{ width: "300px", height: "300px" }}
 										center={{ lat: pet.location.lat, lng: pet.location.lng }}
 										zoom={10}
-										className="google-map"
 									>
 										<MarkerF
 											key="0"
+											// icon={{
+											// 	url: "/images/paw.png",
+											// 	scaledSize: new window.google.maps.Size(36, 36),
+											// }}
 											position={{
 												lat: pet.location.lat,
 												lng: pet.location.lng,
