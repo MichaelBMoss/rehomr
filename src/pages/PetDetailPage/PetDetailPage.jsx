@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import * as dataAPI from "../../utilities/data-api";
 import { Link } from "react-router-dom";
 import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
-import * as userAPI from '../../utilities/users-api';
+import * as userAPI from "../../utilities/users-api";
 
 export default function PetDetailPage({ user }) {
 	const [pet, setPet] = useState({
@@ -27,13 +27,13 @@ export default function PetDetailPage({ user }) {
 		const fetchData = async () => {
 			try {
 				// Fetch pet data
-				const petData = await dataAPI.getById('/api/pets', petId);
+				const petData = await dataAPI.getById("/api/pets", petId);
 				setPet(petData);
 
 				// Fetch organization data if pet and organizationId are available
 				if (petData && petData.organizationId) {
 					const orgId = petData.organizationId;
-					const orgData = await userAPI.getById('/api/users/orgs', orgId);
+					const orgData = await userAPI.getById("/api/users/orgs", orgId);
 					setOrg(orgData);
 				}
 			} catch (error) {
@@ -85,13 +85,18 @@ export default function PetDetailPage({ user }) {
 										</ul>
 									</div>
 								</div>
-								{/* Conditionally render the buttons */}
 								{user && pet.organizationId === user._id ? (
 									<div className="pet-crud-buttons">
-										<Link className="btn btn-yellow" to={`/pets/${pet._id}/update`}>
+										<Link
+											className="btn btn-yellow"
+											to={`/pets/${pet._id}/update`}
+										>
 											Edit Listing
 										</Link>
-										<Link className="btn btn-red-outline" to={`/pets/${pet._id}/delete`}>
+										<Link
+											className="btn btn-red-outline"
+											to={`/pets/${pet._id}/delete`}
+										>
 											Remove Listing
 										</Link>
 									</div>
@@ -102,32 +107,28 @@ export default function PetDetailPage({ user }) {
 								)}
 
 							</div>
-							<div>
-							</div>
 						</div>
 						<div className="map-wrap">
 							<h2>Where is your new friend?</h2>
 							<div className="map-card">
-								<GoogleMap
-									mapContainerStyle={{ width: "300px", height: "300px" }}
-									center={{ lat: pet.location.lat, lng: pet.location.lng }}
-									zoom={10}
-									className="google-map"
-								>
-									<MarkerF
-										key="0"
-										// icon={{
-										// 	url: pet.photoUrl,
-										// 	scaledSize: new window.google.maps.Size(36, 36), // size of the icon
-										// 	origin: new window.google.maps.Point(0, 0), // position of the image within the icon
-										// 	anchor: new window.google.maps.Point(18, 18), // position of the icon on the map
-										// }}
-										position={{
-											lat: pet.location.lat,
-											lng: pet.location.lng,
-										}}
-									/>
-								</GoogleMap>
+								{pet.location && pet.location.lat && pet.location.lng ? (
+									<GoogleMap
+										mapContainerStyle={{ width: "300px", height: "300px" }}
+										center={{ lat: pet.location.lat, lng: pet.location.lng }}
+										zoom={10}
+										className="google-map"
+									>
+										<MarkerF
+											key="0"
+											position={{
+												lat: pet.location.lat,
+												lng: pet.location.lng,
+											}}
+										/>
+									</GoogleMap>
+								) : (
+									<p>Loading map...</p>
+								)}
 							</div>
 						</div>
 					</>
