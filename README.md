@@ -28,7 +28,6 @@
 
 **Other Technologies:**
   - Google Maps API (for location services)
-  - [Add any other relevant technologies used in your project]
 
 ## Getting Started
 
