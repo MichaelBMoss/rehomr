@@ -4,7 +4,6 @@ import PetCard from "../../components/PetCard/PetCard";
 import { getDistance } from "geolib";
 import { GoogleMap, MarkerF } from "@react-google-maps/api";
 
-
 export default function AllPetsPage({ user }) {
 	const [pets, setPets] = useState([]);
 	const [sortOrder, setSortOrder] = useState("name");
@@ -77,6 +76,31 @@ export default function AllPetsPage({ user }) {
 							/>
 						))}
 				</div>
+				{pets.length > 0 ? (
+					<GoogleMap
+						mapContainerStyle={{ width: "300px", height: "300px" }}
+						center={{ lat: pets[0].location.lat, lng: pets[0].location.lng }} // Center the map on the first pet
+						zoom={10}
+						className="google-map"
+					>
+						{pets.map(
+							(pet, index) =>
+								pet.location &&
+								pet.location.lat &&
+								pet.location.lng && (
+									<MarkerF
+										key={index}
+										position={{
+											lat: pet.location.lat,
+											lng: pet.location.lng,
+										}}
+									/>
+								)
+						)}
+					</GoogleMap>
+				) : (
+					<p>Loading map...</p>
+				)}
 			</div>
 		</>
 	);
