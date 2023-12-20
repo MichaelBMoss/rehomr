@@ -2,25 +2,47 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as dataAPI from "../../utilities/data-api";
 import { Link } from "react-router-dom";
-import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";import * as userAPI from '../../utilities/users-api';
 
-export default function PetDetailPage() {
-	const [pet, setPet] = useState();
+export default function PetDetailPage({ user }) {
+	const [pet, setPet] = useState({
+		name: "",
+		animal: "",
+		breed: "",
+		age: {
+			value: "",
+			unit: "years", // Default value
+		},
+		description: "",
+		gender: "",
+		location: "",
+		photoUrl: "",
+		organizationId: "",
+	});
 	const { petId } = useParams();
+	const [org, setOrg] = useState();
 
 	useEffect(() => {
-		const fetchPet = async () => {
+		const fetchData = async () => {
 			try {
-				const data = await dataAPI.getById("/api/pets", petId);
-				setPet(data);
+				// Fetch pet data
+				const petData = await dataAPI.getById('/api/pets', petId);
+				setPet(petData);
+	
+				// Fetch organization data if pet and organizationId are available
+				if (petData && petData.organizationId) {
+					const orgId = petData.organizationId;
+					const orgData = await userAPI.getById('/api/users/orgs', orgId);
+					setOrg(orgData);
+				}
 			} catch (error) {
 				console.error(error);
 			}
 		};
-		fetchPet();
+	
+		fetchData();
 	}, [petId]);
 
-	console.log(pet);
 	return (
 		<>
 			<div className="pet-detail-wrap">
@@ -35,7 +57,7 @@ export default function PetDetailPage() {
 									<div className="info-text-1">
 										<h1>{pet.name}</h1>
 										<h5>{pet.breed}</h5>
-										<h5>Organization Name</h5>
+                                        {org ? <h5>{org.name}</h5> : ''}
 										<p>{pet.description}</p>
 									</div>
 									<div className="info-text-2">
@@ -62,41 +84,21 @@ export default function PetDetailPage() {
 										</ul>
 									</div>
 								</div>
-								<div className="pet-crud-buttons">
-									<Link
-										className="btn btn-yellow"
-										to={`/pets/${pet._id}/update`}
-									>
-										Edit Listing
+								{/* Conditionally render the buttons */}
+								{user && pet.organizationId === user._id ? (
+									<div className="pet-crud-buttons">
+										<Link className="btn btn-yellow" to={`/pets/${pet._id}/update`}>
+											Edit Listing
+										</Link>
+										<Link className="btn btn-red-outline" to={`/pets/${pet._id}/delete`}>
+											Remove Listing
+										</Link>
+									</div>
+								) : (
+									<Link className="btn btn-yellow" to={`/`}>
+											Message Organization
 									</Link>
-									<Link
-										className="btn btn-red-outline"
-										to={`/pets/${pet._id}/delete`}
-									>
-										Remove Listing
-									</Link>
-								</div>
-								<div>
-									<GoogleMap
-										mapContainerStyle={{ width: "400px", height: "400px" }}
-										center={{ lat: pet.location.lat, lng: pet.location.lng }}
-										zoom={10}
-									>
-										<MarkerF
-											key="0"
-											// icon={{
-											// 	url: pet.photoUrl,
-											// 	scaledSize: new window.google.maps.Size(36, 36), // size of the icon
-											// 	origin: new window.google.maps.Point(0, 0), // position of the image within the icon
-											// 	anchor: new window.google.maps.Point(18, 18), // position of the icon on the map
-											// }}
-											position={{
-												lat: pet.location.lat,
-												lng: pet.location.lng,
-											}}
-										/>
-									</GoogleMap>
-								</div>
+								)}
 							</div>
 						</div>
 					</>

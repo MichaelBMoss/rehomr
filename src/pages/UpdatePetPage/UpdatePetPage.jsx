@@ -2,8 +2,10 @@ import PetForm from '../../components/PetForm/PetForm';
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as dataAPI from "../../utilities/data-api";
+import { useNavigate } from 'react-router-dom';
 
-export default function UpdatePetPage() {
+export default function UpdatePetPage({ user }) {
+    const navigate = useNavigate();
     const [pet, setPet] = useState();
     const { petId } = useParams();
     const [formData, setFormData] = useState({
@@ -53,6 +55,16 @@ export default function UpdatePetPage() {
             });
         }
     }, [pet]);
+
+    	// Check if the user's ID matches the pet's organizationId
+	const isUserAuthorized = user && pet && user._id === pet.organizationId;
+
+	if (!isUserAuthorized) {
+		// If the user is not authorized, navigate them to the "/login" page
+		navigate("/");
+		return null; // You may return null or display an appropriate message
+	}
+
 
     return (
         <div className="pet-form">
