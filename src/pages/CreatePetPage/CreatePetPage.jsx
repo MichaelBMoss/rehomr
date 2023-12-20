@@ -21,16 +21,15 @@ export default function CreatePetPage({ user }) {
 	});
 
 	useEffect(() => {
-		if (!user) {
-			console.log('Redirecting to login, user is not authenticated.');
-			// If the user is not authorized, navigate them to the "/login" page
+		if (user && user.role !== 'organization') {
+			console.log('Redirecting to login, user is not authorized.');
 			navigate("/login");
 		}
-	}, [user, navigate]); // Dependencies array includes `user` and `navigate`
-
-	if (!user) {
-		// While waiting for the effect to run, you can return null or a loading indicator
-		return null;
+	}, [user, navigate]);
+	
+	if (!user || user.role !== 'organization') {
+		// Show a loading indicator or return null while waiting for the effect to run
+		return <div>Loading...</div>; // or return null;
 	}
 
 	return (
