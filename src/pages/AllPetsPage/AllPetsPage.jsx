@@ -4,6 +4,7 @@ import PetCard from "../../components/PetCard/PetCard";
 import { getDistance } from "geolib";
 import { GoogleMap, MarkerF } from "@react-google-maps/api";
 
+
 export default function AllPetsPage({ user }) {
 	const [pets, setPets] = useState([]);
 	const [sortOrder, setSortOrder] = useState("name");
