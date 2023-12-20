@@ -37,7 +37,7 @@ export default function DeletePetPage({ user }) { // Assuming you receive the us
 	};
 
 	// Check if the user's ID matches the pet's organizationId
-	const isUserAuthorized = user && pet && user.id === pet.organizationId;
+	const isUserAuthorized = user && pet && user._id === pet.organizationId;
 
 	if (!isUserAuthorized) {
 		// If the user is not authorized, navigate them to the "/login" page

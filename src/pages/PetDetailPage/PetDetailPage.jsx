@@ -86,7 +86,7 @@ export default function PetDetailPage({ user }) {
 									</div>
 								</div>
 								{/* Conditionally render the buttons */}
-								{user && pet.organizationId === user.id ? (
+								{user && pet.organizationId === user._id ? (
 									<div className="pet-crud-buttons">
 										<Link className="btn btn-yellow" to={`/pets/${pet._id}/update`}>
 											Edit Listing
