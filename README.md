@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# reHomr: Connecting Pets with Loving Homes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## App Description
 
-## Available Scripts
+**reHomr** is a web application designed to streamline the process of connecting pets in need of a home with individuals or families looking to adopt. The platform serves as a bridge between pet owners or rescue organizations and potential adopters, facilitating the adoption process and providing a centralized space for users to explore, learn about, and connect with pets.
 
-In the project directory, you can run:
+### Key Features:
 
-### `npm start`
+- **Pet Listings:** Browse through a diverse range of pets available for adoption, each accompanied by detailed information, photos, and contact details.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **User Profiles:** Create user profiles for pet owners, adopters, and organizations, fostering a sense of community within the platform.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Easy Adoption Process:** Streamlined adoption procedures, allowing users to express interest, communicate with pet owners or organizations, and complete the adoption process seamlessly.
 
-### `npm test`
+- **Organization Pages:** Dedicated pages for pet rescue organizations, providing a space for them to showcase their mission, values, and available pets.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Background
 
-### `npm run build`
+The inspiration behind reHomr comes from the desire to simplify and enhance the pet adoption experience. Many pets in need of homes are often overlooked due to fragmented adoption processes and lack of visibility. reHomr aims to address this by providing a user-friendly platform that connects pets with caring individuals and families.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Whether you're a pet owner looking to find a loving home for your furry friend or an individual eager to open your heart and home to a new companion, reHomr is here to make the adoption journey enjoyable, transparent, and rewarding for everyone involved.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Screenshot(s)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- Include screenshots of your app's landing page and any other relevant screenshots -->
 
-### `npm run eject`
+## Technologies Used
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<!-- List the technologies used in your project -->
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- [Deployed App (Heroku)](#)
+- [Trello Board (Project Planning)](#)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Next Steps
 
-## Learn More
+Planned future enhancements (icebox items).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
