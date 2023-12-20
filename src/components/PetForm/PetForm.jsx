@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import {getUser} from '../../utilities/users-service'
+import { getUser } from '../../utilities/users-service'
 
 
 export default function PetForm({ purpose, formData, setFormData, petId = null }) {
