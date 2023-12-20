@@ -19,7 +19,7 @@ nav {
 
 .navbar-brand {
   color: black;
-  transition: 0.2s ease-in;
+  transition: 0.2s ease-out;
 }
 
 .navbar-brand:focus {
@@ -74,7 +74,7 @@ nav {
 .navbar-brand-home:active,
 .nav-home-user {
   color: white;
-  transition: 0.2s ease-in;
+  transition: 0.2s ease-out;
 }
 
 .nav-home:hover {
@@ -406,7 +406,7 @@ label[for="organization"]>span {
   width: 30%;
   margin-bottom: 5%;
   text-decoration: none;
-  transition: 0.2s ease-in;
+  transition: 0.2s ease-out;
 }
 
 .pet-card:hover, .org-card:hover {
