@@ -24,7 +24,7 @@ export default function App() {
               {/* Route components in here */}
               <Route path="/pets" element={<AllPetsPage user={user} />} />
               <Route path="/pets/:petId" element={<PetDetailPage user={user} />} />
-              <Route path="/pets/new" element={<CreatePetPage />} />
+              <Route path="/pets/new" element={<CreatePetPage user={user} />} />
               <Route path="/pets/:petId/delete" element={<DeletePetPage user={user} />} />
               <Route path="/pets/:petId/update" element={<UpdatePetPage user={user} />} />
               <Route path="/" element={<HomePage />} />
