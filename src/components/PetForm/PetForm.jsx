@@ -93,7 +93,7 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
 
       if (response.status === 201 || response.status === 200) {
         const newPetId = response.data._id;
-        await axios.put(`/api/users/${user._id}/addPet/${newPetId}`)
+        // await axios.put(`/api/users/${user._id}/addPet/${newPetId}`)
         console.log('Pet created:', response.data);
         navigate(`/pets/${newPetId}`);
       } else {
