@@ -9,7 +9,7 @@ import * as dataAPI from "../../utilities/data-api";
 export default function OrgDetailPage() {
 	const [org, setOrg] = useState();
 	const { orgId } = useParams();
-	const [pets, setPets] = useState();
+	const [pets, setPets] = useState([]);
 
 	useEffect(() => {
 		const fetchOrg = async () => {
@@ -21,9 +21,7 @@ export default function OrgDetailPage() {
 			}
 		};
 		fetchOrg();
-	}, [orgId]);
 
-	useEffect(() => {
 		async function fetchOrgsPets() {
 			try {
 				const orgsPets = await dataAPI.getOrgsPets('/api/pets/orgspets', orgId)
@@ -33,7 +31,7 @@ export default function OrgDetailPage() {
 			}
 		}
 		fetchOrgsPets();
-	}, [orgId])
+	}, [orgId]);
 
 	return (
 		<>
@@ -52,7 +50,7 @@ export default function OrgDetailPage() {
 								</div>
 							</div>
 							<div className="org-detail-pets-wrap">
-								{pets ? (
+								{pets.length ? (
 									<>
 										<h2>Pet's Available at {org.name}</h2>
 										<div className="orgs-pets-list">
@@ -62,7 +60,7 @@ export default function OrgDetailPage() {
 										</div>
 									</>
 								) : (
-									<p>Loading...</p>
+									<p>No pets available</p>
 								)}
 							</div>
 						</div>

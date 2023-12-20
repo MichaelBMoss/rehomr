@@ -554,7 +554,6 @@ label[for="organization"]>span {
 @media (min-width: 768px) {
   .org-detail-card {
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
   }
 
