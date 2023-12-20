@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../../models/user');
-const uploadFile = require('../../src/utilities/image-api');
+const { uploadFile } = require('../../src/utilities/image-api');
 
 module.exports = {
   createPS,
@@ -17,12 +17,12 @@ function checkToken(req, res) {
   res.json(req.exp);
 }
 
-async function createPS (req, res) {
-  try{
+async function createPS(req, res) {
+  try {
     const user = await User.create(req.body)
     const token = createJWT(user)
     res.json(token)
-  } catch(err) {
+  } catch (err) {
     res.status(400).json(err)
   }
 }
@@ -81,10 +81,10 @@ async function index(req, res) {
 
 async function getById(req, res) {
   try {
-      const user = await User.findById(req.params.id);
-      res.status(200).json(user);
+    const user = await User.findById(req.params.id);
+    res.status(200).json(user);
   } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 }

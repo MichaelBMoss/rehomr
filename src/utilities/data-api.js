@@ -7,3 +7,7 @@ export function getAll(baseURL) {
 export function getById(baseURL, id) {
   return sendRequest(`${baseURL}/${id}`);
 }
+
+export function getOrgsPets(baseURL, id) {
+  return sendRequest(`${baseURL}/${id}`)
+}

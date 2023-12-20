@@ -12,6 +12,8 @@ router.get('/:id', petsCtrl.getById);
 router.put('/:id', petsCtrl.update);
 // Define a route to handle deleting a pet
 router.delete('/:id', petsCtrl.deletePet);
+// Get pets that belong to this org 
+router.get('/orgspets/:id', petsCtrl.getOrgsPets)
 
 
 

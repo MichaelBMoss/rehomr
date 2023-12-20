@@ -35,6 +35,7 @@ const petSchema = new mongoose.Schema({
 	photoUrl: {
 		type: String,
 	},
+	organizationId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 },
 	{
 		timestamps: true,
