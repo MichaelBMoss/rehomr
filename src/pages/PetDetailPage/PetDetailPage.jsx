@@ -12,7 +12,7 @@ export default function PetDetailPage({ user }) {
 		breed: "",
 		age: {
 			value: "",
-			unit: "years", // Default value
+			unit: "years",
 		},
 		description: "",
 		gender: "",
