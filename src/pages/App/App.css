@@ -547,11 +547,6 @@ label[for="organization"]>span {
 
 
 
-@media (max-width: 550px) {
-  .org-detail-info h1 {
-    font-size: 1.3rem;
-  }
-}
 
 @media (min-width: 768px) {
   .org-detail-card {
@@ -679,3 +674,17 @@ label[for="organization"]>span {
 
 }
 
+@media (max-width: 550px) {
+  .org-detail-info h1 {
+    font-size: 1.3rem;
+  }
+
+  .home-title {
+    font-size: 2.5rem;
+  }
+
+  .home-tag {
+    font-size: 1.3rem;
+    width: 75%;
+  }
+}
