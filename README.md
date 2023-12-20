@@ -4,7 +4,18 @@
 
 ## Screenshot(s)
 
-<!-- Include screenshots of your app's landing page and any other relevant screenshots -->
+Landing page:
+![landing page](public/images/home.png)
+
+Log In:
+![Log In](public/images/login.png)
+
+Pets Available:
+![Pets Available](public/images/pets-available.png)
+
+Pet Detail:
+![Pet Detail](public/images/pet-detail.png)
+![Pet Location](public/images/map.png)
 
 ## Technologies Used
 
