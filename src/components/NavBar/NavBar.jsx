@@ -23,6 +23,7 @@ export default function NavBar({ user, setUser }) {
             className={`navbar-brand ps-3 ${isHomePage ? 'navbar-brand-home' : ''}`} to="/" >
             reHomr
           </Link>
+          <span className={`${isHomePage ? 'nav-user-home' : 'nav-user'}`}>| &nbsp; {user && `${user.name}`}</span>
         </div>
         <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
           <span className={`${isHomePage ? 'navbar-toggler-icon-home' : 'navbar-toggler-icon'}`}></span>
@@ -47,7 +48,7 @@ export default function NavBar({ user, setUser }) {
                 <Link className={`nav-link ${isHomePage ? 'nav-home' : ''} ${isOrgsPage ? 'active' : ''}`} to="/orgs">Organizations</Link>
               </li>
               {user ? (
-                <li className="nav-item"><Link className={`btn btn-yellow-outline nav-btn ${isHomePage ? 'nav-home-user' : ''}`} to="" onClick={handleLogOut}>Log Out</Link></li>
+                <li className="nav-item"><Link className={`btn btn-yellow-outline nav-btn ${isHomePage ? 'nav-home-logout' : ''}`} to="" onClick={handleLogOut}>Log Out</Link></li>
               ) : (
                 <li className="nav-item"><Link className="btn btn-yellow nav-btn" to="/login">Log In/Sign Up</Link></li>
               )}
