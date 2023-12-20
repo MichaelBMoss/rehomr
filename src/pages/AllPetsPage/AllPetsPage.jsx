@@ -39,6 +39,8 @@ export default function AllPetsPage({ user }) {
 				}
 				if (sortOrder === "age") {
 					data.sort((a, b) => convertToWeeks(a.age) - convertToWeeks(b.age));
+				} else if (sortOrder === "distance") {
+					data.sort((a, b) => a.distance - b.distance);
 				} else {
 					data.sort((a, b) => a[sortOrder].localeCompare(b[sortOrder]));
 				}
@@ -60,7 +62,7 @@ export default function AllPetsPage({ user }) {
 					<option value="age">Age</option>
 					<option value="breed">Breed</option>
 					<option value="gender">Gender</option>
-					<option value="location">Location</option>
+					{user && <option value="distance">Distance</option>}
 				</select>
 				<div className="list-group">
 					{pets.length > 0 &&
