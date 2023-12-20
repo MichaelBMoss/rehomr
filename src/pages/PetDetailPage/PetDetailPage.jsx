@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as dataAPI from "../../utilities/data-api";
-import { Link } from 'react-router-dom';
-import * as userAPI from '../../utilities/users-api'
-
-
+import { Link } from "react-router-dom";
+import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";import * as userAPI from '../../utilities/users-api';
 
 export default function PetDetailPage({ user }) {
 	const [pet, setPet] = useState({
@@ -75,13 +73,14 @@ export default function PetDetailPage({ user }) {
 											</li>
 											<li>
 												<span>AGE</span>
-												<div>{pet.age.value} {pet.age.unit}</div>
+												<div>
+													{pet.age.value} {pet.age.unit}
+												</div>
 											</li>
 											<li>
 												<span>LOCATION</span>
 												<div>{pet.location.address}</div>
 											</li>
-
 										</ul>
 									</div>
 								</div>
@@ -100,7 +99,28 @@ export default function PetDetailPage({ user }) {
 											Message Organization
 									</Link>
 								)}
+									<GoogleMap
+										mapContainerStyle={{ width: "400px", height: "400px" }}
+										center={{ lat: pet.location.lat, lng: pet.location.lng }}
+										zoom={10}
+									>
+										<MarkerF
+											key="0"
+											// icon={{
+											// 	url: pet.photoUrl,
+											// 	scaledSize: new window.google.maps.Size(36, 36), // size of the icon
+											// 	origin: new window.google.maps.Point(0, 0), // position of the image within the icon
+											// 	anchor: new window.google.maps.Point(18, 18), // position of the icon on the map
+											// }}
+											position={{
+												lat: pet.location.lat,
+												lng: pet.location.lng,
+											}}
+										/>
+									</GoogleMap>
 							</div>
+							<div>
+								</div>
 						</div>
 					</>
 				) : (
