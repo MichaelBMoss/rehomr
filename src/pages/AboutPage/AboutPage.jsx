@@ -10,16 +10,18 @@ export default function AboutPage() {
                 </p>
                 <h1>Developers</h1>
                 <div className="about-dev">
-                    <h2>Ian MacDonald</h2>
-                    <p>Information</p>
+                    <a className="linkedin" href="https://www.linkedin.com/in/ianpetercreative/"><h2>Ian MacDonald</h2></a>
+                    <p>I am a Software Engineer with a passion for serving others and solving complex problems. My prior experience in the creative field and as a project manager helped me develop skills in problem solving, detailed planning, and intuitive design. I want to use those strengths to solve problems and create products that inspire others.</p>
                 </div>
+                <br />
                 <div className="about-dev">
-                    <h2>Mike Moss</h2>
-                    <p>Information</p>
+                    <a className="linkedin" href="https://www.linkedin.com/in/michaelbmoss/"><h2>Mike Moss</h2></a>
+                    <p>I am a full stack software engineer fascinated by technology’s ability to move the world. My background teaching logic to aspiring law students has provided me with the experience to love working with all kinds of people. My goal is to be a part of the artificial intelligence revolution.</p>
                 </div>
+                <br />
                 <div className="about-dev">
-                    <h2>Zach Mitchell</h2>
-                    <p>Information</p>
+                    <a className="linkedin" href="https://www.linkedin.com/in/zacharysmitchell/"><h2>Zach Mitchell</h2></a>
+                    <p>As a Full-Stack Software Engineer, I'm driven by a passion for using technology to make a positive impact on our world. With a background in telematics support and cross-functional team management, I offer a unique perspective at the intersection of technology, the environment, and people. My diverse skill set, including project management and problem-solving, equips me to contribute effectively to initiatives that drive innovation and positive change.</p>
                 </div>
             </div>
         </>
