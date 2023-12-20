@@ -102,7 +102,7 @@ export default function PetDetailPage({ user }) {
 									</div>
 								) : (
 									<Link className="btn btn-yellow" to={`/`}>
-										Message Organization
+										Message {org.name}
 									</Link>
 								)}
 
