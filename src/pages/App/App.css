@@ -544,8 +544,30 @@ label[for="organization"]>span {
   width: 100%;
 }
 
+.navbar-toggler {
+  border: none
+}
 
+.navbar-toggler:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
 
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-toggler-icon-home {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-image: url('../../../public/images/hamburger-icon-white.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  width: 25px;
+  height: 25px;
+}
 
 
 @media (min-width: 768px) {
@@ -671,7 +693,6 @@ label[for="organization"]>span {
   .nav-home:hover {
     color: black
   }
-
 }
 
 @media (max-width: 550px) {

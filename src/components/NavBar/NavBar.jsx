@@ -19,7 +19,7 @@ export default function NavBar({ user, setUser }) {
           reHomr
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar " aria-controls="offcanvasNavbar">
-          <span className="navbar-toggler-icon"></span>
+          <span className={`${isHomePage ? 'navbar-toggler-icon-home' : 'navbar-toggler-icon'}`}></span>
         </button>
         <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div className="offcanvas-header">
