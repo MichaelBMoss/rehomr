@@ -22,7 +22,7 @@ export default function App() {
             <NavBar user={user} setUser={setUser} />
             <Routes>
               {/* Route components in here */}
-              <Route path="/pets" element={<AllPetsPage />} />
+              <Route path="/pets" element={<AllPetsPage user={user} />} />
               <Route path="/pets/:petId" element={<PetDetailPage />} />
               <Route path="/pets/new" element={<CreatePetPage />} />
               <Route path="/pets/:petId/delete" element={<DeletePetPage />} />
