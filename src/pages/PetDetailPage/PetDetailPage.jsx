@@ -29,7 +29,7 @@ export default function PetDetailPage({ user }) {
 				// Fetch pet data
 				const petData = await dataAPI.getById('/api/pets', petId);
 				setPet(petData);
-	
+
 				// Fetch organization data if pet and organizationId are available
 				if (petData && petData.organizationId) {
 					const orgId = petData.organizationId;
@@ -40,7 +40,7 @@ export default function PetDetailPage({ user }) {
 				console.error(error);
 			}
 		};
-	
+
 		fetchData();
 	}, [petId]);
 
@@ -58,7 +58,7 @@ export default function PetDetailPage({ user }) {
 									<div className="info-text-1">
 										<h1>{pet.name}</h1>
 										<h5>{pet.breed}</h5>
-                                        {org ? <Link className="org-link" to={`/orgs/${org._id}`}>{org.name}</Link> : ''}
+										{org ? <Link className="org-link" to={`/orgs/${org._id}`}>{org.name}</Link> : ''}
 										<p>{pet.description}</p>
 									</div>
 									<div className="info-text-2">
@@ -97,31 +97,38 @@ export default function PetDetailPage({ user }) {
 									</div>
 								) : (
 									<Link className="btn btn-yellow" to={`/`}>
-											Message Organization
+										Message Organization
 									</Link>
 								)}
-									<GoogleMap
-										mapContainerStyle={{ width: "400px", height: "400px" }}
-										center={{ lat: pet.location.lat, lng: pet.location.lng }}
-										zoom={10}
-									>
-										<MarkerF
-											key="0"
-											// icon={{
-											// 	url: pet.photoUrl,
-											// 	scaledSize: new window.google.maps.Size(36, 36), // size of the icon
-											// 	origin: new window.google.maps.Point(0, 0), // position of the image within the icon
-											// 	anchor: new window.google.maps.Point(18, 18), // position of the icon on the map
-											// }}
-											position={{
-												lat: pet.location.lat,
-												lng: pet.location.lng,
-											}}
-										/>
-									</GoogleMap>
+
 							</div>
 							<div>
-								</div>
+							</div>
+						</div>
+						<div className="map-wrap">
+							<h2>Where is your new friend?</h2>
+							<div className="map-card">
+								<GoogleMap
+									mapContainerStyle={{ width: "300px", height: "300px" }}
+									center={{ lat: pet.location.lat, lng: pet.location.lng }}
+									zoom={10}
+									className="google-map"
+								>
+									<MarkerF
+										key="0"
+										// icon={{
+										// 	url: pet.photoUrl,
+										// 	scaledSize: new window.google.maps.Size(36, 36), // size of the icon
+										// 	origin: new window.google.maps.Point(0, 0), // position of the image within the icon
+										// 	anchor: new window.google.maps.Point(18, 18), // position of the icon on the map
+										// }}
+										position={{
+											lat: pet.location.lat,
+											lng: pet.location.lng,
+										}}
+									/>
+								</GoogleMap>
+							</div>
 						</div>
 					</>
 				) : (
