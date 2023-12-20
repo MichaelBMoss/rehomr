@@ -50,7 +50,7 @@ export default function AllPetsPage({ user }) {
 			}
 		};
 		fetchAllPets();
-	}, [sortOrder]);
+	}, [sortOrder, user]);
 
 	return (
 		<>

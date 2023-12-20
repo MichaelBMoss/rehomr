@@ -2,25 +2,49 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as dataAPI from "../../utilities/data-api";
 import { Link } from 'react-router-dom';
+import * as userAPI from '../../utilities/users-api'
+
 
 
 export default function PetDetailPage() {
-	const [pet, setPet] = useState();
+	const [pet, setPet] = useState({
+		name: "",
+		animal: "",
+		breed: "",
+		age: {
+			value: "",
+			unit: "years", // Default value
+		},
+		description: "",
+		gender: "",
+		location: "",
+		photoUrl: "",
+		organizationId: "",
+	});
 	const { petId } = useParams();
+	const [org, setOrg] = useState();
 
 	useEffect(() => {
-		const fetchPet = async () => {
+		const fetchData = async () => {
 			try {
-				const data = await dataAPI.getById('/api/pets', petId);
-				setPet(data);
+				// Fetch pet data
+				const petData = await dataAPI.getById('/api/pets', petId);
+				setPet(petData);
+	
+				// Fetch organization data if pet and organizationId are available
+				if (petData && petData.organizationId) {
+					const orgId = petData.organizationId;
+					const orgData = await userAPI.getById('/api/users/orgs', orgId);
+					setOrg(orgData);
+				}
 			} catch (error) {
 				console.error(error);
 			}
 		};
-		fetchPet();
+	
+		fetchData();
 	}, [petId]);
 
-	console.log(pet)
 	return (
 		<>
 			<div className="pet-detail-wrap">
@@ -35,7 +59,7 @@ export default function PetDetailPage() {
 									<div className="info-text-1">
 										<h1>{pet.name}</h1>
 										<h5>{pet.breed}</h5>
-										<h5>Organization Name</h5>
+                                        {org ? <h5>{org.name}</h5> : ''}
 										<p>{pet.description}</p>
 									</div>
 									<div className="info-text-2">
