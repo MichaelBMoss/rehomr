@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../../models/user');
-const uploadFile = require('../../src/utilities/image-api');
+const { uploadFile } = require('../../src/utilities/image-api');
 
 module.exports = {
   createPS,

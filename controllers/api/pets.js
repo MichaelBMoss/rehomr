@@ -1,5 +1,6 @@
 const Pet = require('../../models/pet/pet');
-const uploadFile = require('../../src/utilities/image-api');
+const { uploadFile, uploadFileUpdate } = require('../../src/utilities/image-api');
+
 
 
 
@@ -49,7 +50,18 @@ async function getById(req, res) {
 
 async function update(req, res) {
     try {
-        const photoUrl = await uploadFile(req, res);
+        let photoUrl;
+
+        try {
+            const uploadResult = await uploadFileUpdate(req, res);
+            if (uploadResult && uploadResult.fileUploaded) {
+                photoUrl = uploadResult.location;
+            }
+        } catch (uploadError) {
+            // If an actual error occurred during the file upload, return an error response
+            return res.status(500).json({ error: 'Error uploading file', details: uploadError.message });
+        }
+
         const { age, location, ...otherFields } = req.body;
 
         // Ensure that age and location are parsed correctly
@@ -64,7 +76,7 @@ async function update(req, res) {
         // Construct the update object
         const updateData = { 
             ...otherFields, 
-            ...(photoUrl ? { photoUrl } : {}), // Include photoUrl only if it's available
+            ...(photoUrl ? { photoUrl } : {}),
             age: parsedAge,
             location: parsedLocation
         };
@@ -86,6 +98,7 @@ async function update(req, res) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 }
+
 
 
 async function deletePet(req, res) {
