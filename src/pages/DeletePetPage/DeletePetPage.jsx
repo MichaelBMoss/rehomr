@@ -23,16 +23,18 @@ export default function DeletePetPage({ user }) { // Assuming you receive the us
 
 	const handleRemovePet = async () => {
 		try {
-			// Make an API request to delete the pet by ID
-			const response = await axios.delete(`/api/pets/${petId}`);
+			const token = localStorage.getItem('token'); // Retrieve the JWT token
+			const headers = {
+			  Authorization: `Bearer ${token}`
+			};
 
+			// Make an API request to delete the pet by ID
+			const response = await axios.delete(`/api/pets/${petId}`, { headers });
+			
 			// Redirect to a different page after successful deletion
 			navigate("/pets");
-
-			console.log("Pet deleted:", response.data);
 		} catch (error) {
 			console.error(error);
-			// Handle error
 		}
 	};
 

@@ -41,9 +41,11 @@ export default function NavBar({ user, setUser }) {
               <li className="nav-item">
                 <Link className={`nav-link ${isHomePage ? 'nav-home' : ''} ${isPetsPage ? 'active' : ''}`} to="/pets"> Pets</Link>
               </li>
-              <li className="nav-item">
-                <Link className={`nav-link ${isHomePage ? 'nav-home' : ''} ${isPetsCreatePage ? 'active' : ''}`} to="/pets/new">Add a Pet</Link>
-              </li>
+              {user && user.role === 'organization' && (
+                <li className="nav-item">
+                    <Link className={`nav-link ${isHomePage ? 'nav-home' : ''} ${isPetsCreatePage ? 'active' : ''}`} to="/pets/new">Add a Pet</Link>
+                </li>
+              )}
               <li className="nav-item">
                 <Link className={`nav-link ${isHomePage ? 'nav-home' : ''} ${isOrgsPage ? 'active' : ''}`} to="/orgs">Organizations</Link>
               </li>
