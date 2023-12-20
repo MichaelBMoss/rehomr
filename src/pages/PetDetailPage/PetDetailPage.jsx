@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as dataAPI from "../../utilities/data-api";
 import { Link } from "react-router-dom";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
 
 export default function PetDetailPage() {
 	const [pet, setPet] = useState();
@@ -77,18 +77,20 @@ export default function PetDetailPage() {
 									</Link>
 								</div>
 								<div>
-										<GoogleMap
-											mapContainerStyle={{ width: "400px", height: "400px" }}
-											center={{ lat: pet.location.lat, lng: pet.location.lng }}
-											zoom={10}
-										>
-											<Marker
-												position={{
-													lat: pet.location.lat,
-													lng: pet.location.lng,
-												}}
-											/>
-										</GoogleMap>
+									console.log(pet); 
+									<GoogleMap
+										mapContainerStyle={{ width: "400px", height: "400px" }}
+										center={{ lat: pet.location.lat, lng: pet.location.lng }}
+										zoom={10}
+									>
+										<MarkerF
+											
+											position={{
+												lat: pet.location.lat,
+												lng: pet.location.lng,
+											}}
+										/>
+									</GoogleMap>
 								</div>
 							</div>
 						</div>
