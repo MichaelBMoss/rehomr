@@ -4,8 +4,7 @@ import * as dataAPI from "../../utilities/data-api";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
-
-export default function DeletePetPage() {
+export default function DeletePetPage({ user }) { // Assuming you receive the user as a prop
 	const [pet, setPet] = useState();
 	const { petId } = useParams();
 	const navigate = useNavigate();
@@ -36,6 +35,15 @@ export default function DeletePetPage() {
 			// Handle error
 		}
 	};
+
+	// Check if the user's ID matches the pet's organizationId
+	const isUserAuthorized = user && pet && user.id === pet.organizationId;
+
+	if (!isUserAuthorized) {
+		// If the user is not authorized, navigate them to the "/login" page
+		navigate("/");
+		return null; // You may return null or display an appropriate message
+	}
 
 	return (
 		<>
