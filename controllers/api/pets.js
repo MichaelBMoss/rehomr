@@ -50,8 +50,19 @@ async function getById(req, res) {
 
 async function update(req, res) {
     try {
-        let photoUrl;
+        // Fetch the pet first to check ownership
+        const pet = await Pet.findById(req.params.id);
+        if (!pet) {
+            return res.status(404).json({ error: 'Pet not found' });
+        }
 
+        // Check if the logged-in user's ID matches the pet's organizationId
+        if (pet.organizationId.toString() !== req.user._id.toString()) {
+            return res.status(403).json({ error: 'User not authorized to update this pet' });
+        }
+
+        // Handle file upload logic
+        let photoUrl;
         try {
             const uploadResult = await uploadFileUpdate(req, res);
             if (uploadResult && uploadResult.fileUploaded) {
@@ -98,7 +109,6 @@ async function update(req, res) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 }
-
 
 
 async function deletePet(req, res) {
