@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as dataAPI from "../../utilities/data-api";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 export default function PetDetailPage() {
 	const [pet, setPet] = useState();
@@ -11,7 +11,7 @@ export default function PetDetailPage() {
 	useEffect(() => {
 		const fetchPet = async () => {
 			try {
-				const data = await dataAPI.getById('/api/pets', petId);
+				const data = await dataAPI.getById("/api/pets", petId);
 				setPet(data);
 			} catch (error) {
 				console.error(error);
@@ -20,7 +20,7 @@ export default function PetDetailPage() {
 		fetchPet();
 	}, [petId]);
 
-	console.log(pet)
+	console.log(pet);
 	return (
 		<>
 			<div className="pet-detail-wrap">
@@ -51,34 +51,48 @@ export default function PetDetailPage() {
 											</li>
 											<li>
 												<span>AGE</span>
-												<div>{pet.age.value} {pet.age.unit}</div>
+												<div>
+													{pet.age.value} {pet.age.unit}
+												</div>
 											</li>
 											<li>
 												<span>LOCATION</span>
 												<div>{pet.location.address}</div>
 											</li>
-
 										</ul>
 									</div>
 								</div>
 								<div className="pet-crud-buttons">
-									<Link className="btn btn-yellow" to={`/pets/${pet._id}/update`}>
+									<Link
+										className="btn btn-yellow"
+										to={`/pets/${pet._id}/update`}
+									>
 										Edit Listing
 									</Link>
-									<Link className="btn btn-red-outline" to={`/pets/${pet._id}/delete`}>
+									<Link
+										className="btn btn-red-outline"
+										to={`/pets/${pet._id}/delete`}
+									>
 										Remove Listing
 									</Link>
 								</div>
+								<div>
+										<GoogleMap
+											mapContainerStyle={{ width: "400px", height: "400px" }}
+											center={{ lat: pet.location.lat, lng: pet.location.lng }}
+											zoom={10}
+										>
+											<Marker
+												position={{
+													lat: pet.location.lat,
+													lng: pet.location.lng,
+												}}
+											/>
+										</GoogleMap>
+								</div>
 							</div>
-							{/* <div>
-								<p>Animal Type: {pet.animal}</p>
-								<p>Gender: {pet.gender}</p>
-								<p>Age: {pet.age.value} {pet.age.unit}</p>
-								<p>Location: {pet.location}</p>
-							</div> */}
 						</div>
 					</>
-
 				) : (
 					<p>Loading...</p>
 				)}
