@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as dataAPI from "../../utilities/data-api";
 import { Link } from "react-router-dom";
-import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";import * as userAPI from '../../utilities/users-api';
+import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
+import * as userAPI from "../../utilities/users-api";
 
 export default function PetDetailPage({ user }) {
 	const [pet, setPet] = useState({
@@ -26,20 +27,20 @@ export default function PetDetailPage({ user }) {
 		const fetchData = async () => {
 			try {
 				// Fetch pet data
-				const petData = await dataAPI.getById('/api/pets', petId);
+				const petData = await dataAPI.getById("/api/pets", petId);
 				setPet(petData);
-	
+
 				// Fetch organization data if pet and organizationId are available
 				if (petData && petData.organizationId) {
 					const orgId = petData.organizationId;
-					const orgData = await userAPI.getById('/api/users/orgs', orgId);
+					const orgData = await userAPI.getById("/api/users/orgs", orgId);
 					setOrg(orgData);
 				}
 			} catch (error) {
 				console.error(error);
 			}
 		};
-	
+
 		fetchData();
 	}, [petId]);
 
@@ -57,7 +58,7 @@ export default function PetDetailPage({ user }) {
 									<div className="info-text-1">
 										<h1>{pet.name}</h1>
 										<h5>{pet.breed}</h5>
-                                        {org ? <h5>{org.name}</h5> : ''}
+										{org ? <h5>{org.name}</h5> : ""}
 										<p>{pet.description}</p>
 									</div>
 									<div className="info-text-2">
@@ -87,18 +88,25 @@ export default function PetDetailPage({ user }) {
 								{/* Conditionally render the buttons */}
 								{user && pet.organizationId === user._id ? (
 									<div className="pet-crud-buttons">
-										<Link className="btn btn-yellow" to={`/pets/${pet._id}/update`}>
+										<Link
+											className="btn btn-yellow"
+											to={`/pets/${pet._id}/update`}
+										>
 											Edit Listing
 										</Link>
-										<Link className="btn btn-red-outline" to={`/pets/${pet._id}/delete`}>
+										<Link
+											className="btn btn-red-outline"
+											to={`/pets/${pet._id}/delete`}
+										>
 											Remove Listing
 										</Link>
 									</div>
 								) : (
 									<Link className="btn btn-yellow" to={`/`}>
-											Message Organization
+										Message Organization
 									</Link>
 								)}
+								{pet.location && pet.location.lat && pet.location.lng ? (
 									<GoogleMap
 										mapContainerStyle={{ width: "400px", height: "400px" }}
 										center={{ lat: pet.location.lat, lng: pet.location.lng }}
@@ -106,21 +114,17 @@ export default function PetDetailPage({ user }) {
 									>
 										<MarkerF
 											key="0"
-											// icon={{
-											// 	url: pet.photoUrl,
-											// 	scaledSize: new window.google.maps.Size(36, 36), // size of the icon
-											// 	origin: new window.google.maps.Point(0, 0), // position of the image within the icon
-											// 	anchor: new window.google.maps.Point(18, 18), // position of the icon on the map
-											// }}
 											position={{
 												lat: pet.location.lat,
 												lng: pet.location.lng,
 											}}
 										/>
 									</GoogleMap>
+								) : (
+									<p>Loading map...</p>
+								)}
 							</div>
-							<div>
-								</div>
+							<div></div>
 						</div>
 					</>
 				) : (
