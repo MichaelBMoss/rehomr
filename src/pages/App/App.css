@@ -340,7 +340,7 @@ label[for="organization"]>span {
   margin-bottom: 50px;
 }
 
-.list-group {
+.list-group, .orgs-pets-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -528,6 +528,22 @@ label[for="organization"]>span {
   width: 50%;
 }
 
+.org-detail-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 50px;
+}
+
+.org-detail-pets-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 
 @media (max-width: 550px) {
   .org-detail-info h1 {
@@ -548,8 +564,31 @@ label[for="organization"]>span {
   }
 }
 
+@media (max-width: 860px) {
+  .org-detail-wrap {
+    padding: 10px
+  }
+
+  .org-detail-card {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .org-detail-image {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .org-detail-image img {
+    width: 100%;
+    height: auto;
+  }
+}
+
 @media (max-width: 767px) {
-  .list-group {
+  .list-group, .orgs-pets-list {
     width: 90%;
   }
 
@@ -559,17 +598,6 @@ label[for="organization"]>span {
 
   .pet-detail-wrap {
     padding: 20px;
-  }
-
-  .org-detail-card {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .org-detail-image img {
-    max-width: 100%;
-    height: auto;
   }
 }
 
@@ -583,7 +611,7 @@ label[for="organization"]>span {
     width: 50%;
   }
 
-  .list-group {
+  .list-group, .orgs-pets-list {
     width: 90%;
   }
 

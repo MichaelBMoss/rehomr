@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {getUser} from '../../utilities/users-service'
 
 
 export default function PetForm({ purpose, formData, setFormData, petId = null }) {
   const [file, setFile] = useState(null);
   const [zipCode, setZipCode] = useState("");
+  const [orgId, setOrgId] = useState("")
+
 
   const handleZipCodeChange = async (event) => {
     const zipCode = event.target.value;
@@ -64,6 +67,7 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const user = getUser();
 
     const data = new FormData();
     Object.keys(formData).forEach((key) => {
@@ -76,6 +80,7 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
       }
     });
     data.append('file', file);
+    data.append('organizationId', user._id)
     
 
     try {
@@ -88,6 +93,7 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
 
       if (response.status === 201 || response.status === 200) {
         const newPetId = response.data._id;
+        await axios.put(`/api/users/${user._id}/addPet/${newPetId}`)
         console.log('Pet created:', response.data);
         navigate(`/pets/${newPetId}`);
       } else {

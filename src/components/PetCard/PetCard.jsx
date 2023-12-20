@@ -11,7 +11,6 @@ export default function PetCard({ pet }) {
                 <div className="pet-card-info">
                     <h3>{pet.name}</h3>
                     <p>{pet.breed} | {pet.gender} | {pet.age.value} {pet.age.unit}</p>
-                    <p>Org Name</p>
                     <span>{pet.location && pet.location.address}</span>
                 </div>
             </Link>

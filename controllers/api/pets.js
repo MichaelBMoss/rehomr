@@ -9,7 +9,7 @@ module.exports = {
     getById,
     update,
     deletePet,
-
+    getOrgsPets,
 };
 
 async function create(req, res) {
@@ -68,5 +68,16 @@ async function deletePet(req, res) {
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+async function getOrgsPets(req, res) {
+    try {
+        const orgsPets = await Pet.find({ organizationId: req.params.id })
+        res.json(orgsPets)
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal Server Error' })
+
     }
 }
