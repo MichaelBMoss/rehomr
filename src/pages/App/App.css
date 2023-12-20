@@ -471,8 +471,8 @@ label[for="organization"]>span {
   color: var(--blue-1);
 }
 
-.detail-card-info h5 {
-  color: var(--gray-1);
+.info-text-1 > h5 {
+  color: black;
 }
 
 .detail-card-info p {
@@ -590,6 +590,33 @@ label[for="organization"]>span {
   background-size: 100%;
   width: 25px;
   height: 25px;
+}
+
+.org-link {
+  color: var(--gray-1);
+  text-decoration: none;
+  font-size: 1.25rem;
+  position: relative;
+  transition: color 0.2s ease-out;
+}
+
+.org-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--yellow-1);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+
+.org-link:hover,
+.org-link:hover::before {
+  transform: scaleX(1);
 }
 
 

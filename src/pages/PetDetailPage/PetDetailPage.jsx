@@ -58,7 +58,7 @@ export default function PetDetailPage({ user }) {
 									<div className="info-text-1">
 										<h1>{pet.name}</h1>
 										<h5>{pet.breed}</h5>
-                                        {org ? <h5>{org.name}</h5> : ''}
+                                        {org ? <Link className="org-link" to={`/orgs/${org._id}`}>{org.name}</Link> : ''}
 										<p>{pet.description}</p>
 									</div>
 									<div className="info-text-2">
