@@ -19,7 +19,7 @@ nav {
 
 .navbar-brand {
   color: black;
-  transition: 0.2s ease-in;
+  transition: 0.2s ease-out;
 }
 
 .navbar-brand:focus {
@@ -72,9 +72,9 @@ nav {
 .nav-home,
 .navbar-brand-home,
 .navbar-brand-home:active,
-.nav-home-user {
+.nav-home-logout {
   color: white;
-  transition: 0.2s ease-in;
+  transition: 0.2s ease-out;
 }
 
 .nav-home:hover {
@@ -84,6 +84,15 @@ nav {
 .navbar-brand:hover,
 .navbar-brand-home:hover {
   color: var(--yellow-1);
+}
+
+.nav-user {
+  color: black;
+}
+
+.nav-user-home {
+  color: white; 
+
 }
 
 .btn {
@@ -406,7 +415,7 @@ label[for="organization"]>span {
   width: 30%;
   margin-bottom: 5%;
   text-decoration: none;
-  transition: 0.2s ease-in;
+  transition: 0.2s ease-out;
 }
 
 .pet-card:hover, .org-card:hover {
@@ -584,6 +593,15 @@ label[for="organization"]>span {
 }
 
 
+@media (min-width: 992px) and (max-width: 1200px) {
+  .nav-link {
+    margin: 0 1rem;
+  }
+  .nav-user, .nav-user-home {
+    font-size: 0.8rem;
+  }
+}
+
 @media (min-width: 768px) {
   .org-detail-card {
     flex-direction: row;
@@ -633,7 +651,7 @@ label[for="organization"]>span {
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .home-title {
     font-size: 3rem;
   }
@@ -700,7 +718,7 @@ label[for="organization"]>span {
     margin: 8px auto;
   }
 
-  .nav-home, .nav-home-user {
+  .nav-home, .nav-home-logout {
     color: black
   }
 
