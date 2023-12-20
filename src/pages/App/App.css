@@ -424,12 +424,18 @@ label[for="organization"]>span {
 
 .pet-detail-wrap, .org-detail-wrap {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   padding: 50px;
   padding-bottom: 100px;
-  height: 100vh;
+  height: 100%;
   background-color: rgb(243, 243, 243);
+  gap: 50px;
+}
+
+.pet-detail-wrap {
+  align-items: center;
 }
 
 .org-detail-wrap {
@@ -439,7 +445,7 @@ label[for="organization"]>span {
 .pet-detail-card {
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 70vh;
   min-height: 575px;
   margin: 0 auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -471,8 +477,8 @@ label[for="organization"]>span {
   color: var(--blue-1);
 }
 
-.detail-card-info h5 {
-  color: var(--gray-1);
+.info-text-1 > h5 {
+  color: black;
 }
 
 .detail-card-info p {
@@ -505,7 +511,7 @@ label[for="organization"]>span {
   top: -40px;
   left: 10px;
   width: 2px;
-  height: 370px;
+  height: 390px;
   background-color: var(--gray-1); 
 }
 
@@ -523,17 +529,6 @@ label[for="organization"]>span {
   color: var(--gray-1);
   font-weight: 500;
   font-size: 0.7rem;
-}
-.pet-detail-card {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  min-height: 575px;
-  margin: 0 auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  background-color: white;
-  border-radius: 5px;
-  padding: 20px;
 }
 
 .org-detail-card {
@@ -590,6 +585,50 @@ label[for="organization"]>span {
   background-size: 100%;
   width: 25px;
   height: 25px;
+}
+
+.org-link {
+  color: var(--gray-1);
+  text-decoration: none;
+  font-size: 1.25rem;
+  position: relative;
+  transition: color 0.2s ease-out;
+}
+
+.org-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--yellow-1);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+
+.org-link:hover,
+.org-link:hover::before {
+  transform: scaleX(1);
+}
+
+.map-wrap{
+  text-align: center;
+  width: 100%;
+}
+
+.map-card {
+  background-color: white;
+  margin: 0 auto;
+  padding: 20px; 
+  border-radius: 5px;
+  width: fit-content;
+}
+GoogleMap {
+  width: 400px;
+  height: 400px; 
 }
 
 
@@ -739,5 +778,11 @@ label[for="organization"]>span {
   .home-tag {
     font-size: 1.3rem;
     width: 75%;
+  }
+}
+
+@media (max-width: 380px) {
+  .map-card {
+    padding: 0;
   }
 }

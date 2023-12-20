@@ -12,7 +12,7 @@ export default function PetDetailPage({ user }) {
 		breed: "",
 		age: {
 			value: "",
-			unit: "years", // Default value
+			unit: "years",
 		},
 		description: "",
 		gender: "",
@@ -58,7 +58,7 @@ export default function PetDetailPage({ user }) {
 									<div className="info-text-1">
 										<h1>{pet.name}</h1>
 										<h5>{pet.breed}</h5>
-										{org ? <h5>{org.name}</h5> : ""}
+										{org ? <Link className="org-link" to={`/orgs/${org._id}`}>{org.name}</Link> : ''}
 										<p>{pet.description}</p>
 									</div>
 									<div className="info-text-2">
@@ -85,7 +85,6 @@ export default function PetDetailPage({ user }) {
 										</ul>
 									</div>
 								</div>
-								{/* Conditionally render the buttons */}
 								{user && pet.organizationId === user._id ? (
 									<div className="pet-crud-buttons">
 										<Link
@@ -106,11 +105,18 @@ export default function PetDetailPage({ user }) {
 										Message Organization
 									</Link>
 								)}
+
+							</div>
+						</div>
+						<div className="map-wrap">
+							<h2>Where is your new friend?</h2>
+							<div className="map-card">
 								{pet.location && pet.location.lat && pet.location.lng ? (
 									<GoogleMap
-										mapContainerStyle={{ width: "400px", height: "400px" }}
+										mapContainerStyle={{ width: "300px", height: "300px" }}
 										center={{ lat: pet.location.lat, lng: pet.location.lng }}
 										zoom={10}
+										className="google-map"
 									>
 										<MarkerF
 											key="0"
@@ -124,7 +130,6 @@ export default function PetDetailPage({ user }) {
 									<p>Loading map...</p>
 								)}
 							</div>
-							<div></div>
 						</div>
 					</>
 				) : (
