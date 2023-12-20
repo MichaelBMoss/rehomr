@@ -21,7 +21,7 @@ export default function AllOrgsPage() {
   return (
     <>
       <div className="index-wrap">
-        <h1>All Orgs Page</h1>
+        <h1>All Orgs</h1>
         <div className="list-group">
           {orgs.map((org) => (
             <OrgCard org={org} key={org._id} />
