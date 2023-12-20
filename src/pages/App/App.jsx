@@ -23,10 +23,10 @@ export default function App() {
             <Routes>
               {/* Route components in here */}
               <Route path="/pets" element={<AllPetsPage user={user} />} />
-              <Route path="/pets/:petId" element={<PetDetailPage />} />
-              <Route path="/pets/new" element={<CreatePetPage />} />
-              <Route path="/pets/:petId/delete" element={<DeletePetPage />} />
-              <Route path="/pets/:petId/update" element={<UpdatePetPage />} />
+              <Route path="/pets/:petId" element={<PetDetailPage user={user} />} />
+              <Route path="/pets/new" element={<CreatePetPage user={user} />} />
+              <Route path="/pets/:petId/delete" element={<DeletePetPage user={user} />} />
+              <Route path="/pets/:petId/update" element={<UpdatePetPage user={user} />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/login" element={<AuthPage setUser={setUser} /> } />

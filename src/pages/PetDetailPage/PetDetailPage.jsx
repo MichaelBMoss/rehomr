@@ -6,7 +6,7 @@ import * as userAPI from '../../utilities/users-api'
 
 
 
-export default function PetDetailPage() {
+export default function PetDetailPage({ user }) {
 	const [pet, setPet] = useState({
 		name: "",
 		animal: "",
@@ -85,24 +85,24 @@ export default function PetDetailPage() {
 										</ul>
 									</div>
 								</div>
-								<div className="pet-crud-buttons">
-									<Link className="btn btn-yellow" to={`/pets/${pet._id}/update`}>
-										Edit Listing
+								{/* Conditionally render the buttons */}
+								{user && pet.organizationId === user.id ? (
+									<div className="pet-crud-buttons">
+										<Link className="btn btn-yellow" to={`/pets/${pet._id}/update`}>
+											Edit Listing
+										</Link>
+										<Link className="btn btn-red-outline" to={`/pets/${pet._id}/delete`}>
+											Remove Listing
+										</Link>
+									</div>
+								) : (
+									<Link className="btn btn-yellow" to={`/`}>
+											Message Organization
 									</Link>
-									<Link className="btn btn-red-outline" to={`/pets/${pet._id}/delete`}>
-										Remove Listing
-									</Link>
-								</div>
+								)}
 							</div>
-							{/* <div>
-								<p>Animal Type: {pet.animal}</p>
-								<p>Gender: {pet.gender}</p>
-								<p>Age: {pet.age.value} {pet.age.unit}</p>
-								<p>Location: {pet.location}</p>
-							</div> */}
 						</div>
 					</>
-
 				) : (
 					<p>Loading...</p>
 				)}

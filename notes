@@ -75,3 +75,20 @@ function uploadFile(req, res) {
 }
 
 module.exports = uploadFile;
+
+
+
+{user && pet.organizationId === user._id ? (
+    <div>
+        <Link className="btn btn-yellow" to={`/pets/${pet._id}/update`}>
+            Edit Listing
+        </Link>
+        <Link className="btn btn-red-outline" to={`/pets/${pet._id}/delete`}>
+            Remove Listing
+        </Link>
+    </div>
+) : (
+    <Link className="btn btn-yellow" to={`/`}>
+    Message Organization
+    </Link>
+)}

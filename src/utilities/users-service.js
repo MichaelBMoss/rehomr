@@ -43,7 +43,6 @@ export function getUser() {
 }
 
 export function checkToken() {
-  // We can't forget how to use .then with promises
   return usersAPI.checkToken()
     .then(dateStr => new Date(dateStr));
 }
