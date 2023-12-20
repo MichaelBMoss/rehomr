@@ -10,7 +10,7 @@ export default function PetCard({ pet, distance, user }) {
                 <div className="pet-card-info">
                     <h3>{pet.name}</h3>
                     <p>{pet.breed} | {pet.gender} | {pet.age.value} {pet.age.unit}</p>
-                    <span>{user && distance ? `You're new best friend is ${distance} miles away` : pet.location.address}</span>
+                    <span>{user && distance ? `Your new best friend is ${distance} miles away` : pet.location.address}</span>
                 </div>
             </Link>
         </>
