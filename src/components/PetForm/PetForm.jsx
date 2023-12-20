@@ -168,6 +168,8 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
           name="zipCode"
           value={zipCode}
           onChange={handleZipCodeChange}
+          minLength={5}
+          maxLength={5}
         />
 
         <label>Photo:</label>

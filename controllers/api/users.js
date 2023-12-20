@@ -30,7 +30,10 @@ async function createPS (req, res) {
 async function createOrg(req, res) {
   try {
     const photoUrl = await uploadFile(req, res)
-    const user = await User.create({...req.body, photoUrl: photoUrl});
+    const location = JSON.parse(req.body.location);
+    const { name, email, role, password } = req.body;
+    const user = await User.create({ name, email, role, location, password, photoUrl });
+    // const user = await User.create({...req.body, photoUrl: photoUrl});
     const token = createJWT(user);
     res.json(token);
   } catch (err) {

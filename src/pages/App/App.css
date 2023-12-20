@@ -46,16 +46,13 @@ nav {
   background-color: var(--yellow-1);
   transform: scaleX(0);
   transform-origin: center;
-  /* Center the transform origin */
   transition: transform 0.2s ease-out;
-  /* Add transition for the transform property */
   z-index: -1;
 }
 
 .nav-link:hover::before,
 .nav-home:hover::before {
   transform: scaleX(1);
-  /* Scale the underline to its full width on hover */
 }
 
 .nav-home,
@@ -64,7 +61,6 @@ nav {
 .nav-home-user {
   color: white;
   transition: 0.2s ease-in;
-  /* Add transition for the transform property */
 }
 
 .nav-home:hover {
@@ -106,6 +102,17 @@ nav {
   background-color: var(--yellow-1);
 }
 
+.btn-red {
+  background-color: var(--red-1);
+  color: white;
+  border: none;
+}
+
+.btn-red:hover {
+  background-color: #e22413;
+  color: white;
+}
+
 .btn-red-outline {
   background-color: transparent;
   border: 2px solid var(--red-1);
@@ -114,10 +121,6 @@ nav {
 .btn-red-outline:hover {
   background-color: var(--red-1);
   color: white; 
-}
-
-.btn-red {
-  background-color: var(--red-1);
 }
 
 .home-img {
@@ -217,7 +220,6 @@ nav {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
-  /* Semi-transparent black overlay */
 }
 
 .auth-page-image-container h1 {
@@ -330,7 +332,8 @@ label[for="organization"]>span {
   justify-content: flex-start;
   align-items: center;
   background-color: rgb(243, 243, 243);
-  padding: 50px 0 150px;
+  padding: 50px 0;
+  min-height: max-content;
 }
 
 .index-wrap>h1 {
@@ -338,8 +341,9 @@ label[for="organization"]>span {
 }
 
 .list-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 5%;
   width: 70%;
 }
@@ -354,14 +358,14 @@ label[for="organization"]>span {
   border: 1px solid rgb(230, 230, 230);
 }
 
-.pet-card-photo {
+.pet-card-photo, .org-card-photo {
   width: 95%;
   padding-top: 95%;
   position: relative;
   overflow: hidden;
 }
 
-.pet-card-photo img {
+.pet-card-photo img, .org-card-photo img {
   position: absolute;
   top: 0;
   left: 0;
@@ -370,30 +374,32 @@ label[for="organization"]>span {
   object-fit: cover;
 }
 
-.pet-card-info {
+.pet-card-info, .org-card-info {
   text-align: center;
 }
 
-.pet-card-info>h3 {
+.pet-card-info>h3, .org-card-info>h3 {
   color: var(--blue-1);
 }
 
-.pet-card-info>span {
+.pet-card-info>span, .org-card-info>span {
   font-size: 0.8rem;
   color: var(--gray-1);
 }
 
 
-.pet-card {
+.pet-card, .org-card {
+  width: 30%;
+  margin-bottom: 5%;
   text-decoration: none;
   transition: 0.2s ease-in;
 }
 
-.pet-card:hover {
+.pet-card:hover, .org-card:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-.pet-detail-wrap {
+.pet-detail-wrap, .org-detail-wrap {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -401,6 +407,10 @@ label[for="organization"]>span {
   padding-bottom: 100px;
   height: 100vh;
   background-color: rgb(243, 243, 243);
+}
+
+.org-detail-wrap {
+  height: 100%;
 }
 
 .pet-detail-card {
@@ -491,24 +501,76 @@ label[for="organization"]>span {
   font-weight: 500;
   font-size: 0.7rem;
 }
+.pet-detail-card {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 575px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.org-detail-card {
+  display: flex;
+  width: 750px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  gap: 50px;
+}
+
+.org-detail-image {
+  width: 50%;
+}
 
 
+@media (max-width: 550px) {
+  .org-detail-info h1 {
+    font-size: 1.3rem;
+  }
+}
 
+@media (min-width: 768px) {
+  .org-detail-card {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-@media (max-width: 575.98px) {}
+  .org-detail-image img {
+    max-width: 100%;
+    height: auto;
+  }
+}
 
-@media (min-width: 768px) {}
-
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .list-group {
     width: 90%;
-    grid-template-columns: 1fr;
+  }
+
+  .pet-card, .org-card {
+    width: 100%;
   }
 
   .pet-detail-wrap {
     padding: 20px;
   }
 
+  .org-detail-card {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .org-detail-image img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 @media (max-width: 992px) {
@@ -576,4 +638,3 @@ label[for="organization"]>span {
 
 }
 
-@media (min-width: 1200px) {}
