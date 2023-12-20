@@ -52,14 +52,18 @@ export default function OrgDetailPage() {
 								</div>
 							</div>
 							<div className="org-detail-pets-wrap">
-								{org && <h2>Pet's Available at {org.name}</h2>}
-								<div className="orgs-pets-list">
-									{pets.length > 0 &&
-										pets.map((pet) => (
-											<PetCard pet={pet} key={pet._id} />
-										))}
-								</div>
-
+								{pets ? (
+									<>
+										<h2>Pet's Available at {org.name}</h2>
+										<div className="orgs-pets-list">
+											{pets.map((pet) => (
+												<PetCard pet={pet} key={pet._id} />
+											))}
+										</div>
+									</>
+								) : (
+									<p>Loading...</p>
+								)}
 							</div>
 						</div>
 					</>
