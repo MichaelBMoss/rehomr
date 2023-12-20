@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import {getUser} from '../../utilities/users-service'
+import { getUser } from '../../utilities/users-service'
 
 
 export default function PetForm({ purpose, formData, setFormData, petId = null }) {
   const [file, setFile] = useState(null);
   const [zipCode, setZipCode] = useState("");
+  const token = localStorage.getItem('token');
+
 
 
   const handleZipCodeChange = async (event) => {
@@ -63,6 +65,9 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = getUser();
+    const headers = {
+      Authorization: `Bearer ${token}`
+    };
 
     const data = new FormData();
     Object.keys(formData).forEach((key) => {
@@ -81,9 +86,9 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
     try {
       let response;
       if (purpose === 'create') {
-        response = await axios.post('/api/pets', data);
+        response = await axios.post('/api/pets', data, { headers });
       } else if (purpose === 'update') {
-        response = await axios.put(`/api/pets/${petId}`, data);
+        response = await axios.put(`/api/pets/${petId}`, data, { headers });
       }
 
       if (response.status === 201 || response.status === 200) {
