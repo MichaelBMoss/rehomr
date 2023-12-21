@@ -19,23 +19,29 @@ Pet Detail:
 
 ## Screenshots (Mobile - iPhone 14 Pro Max)
 
-Landing page:
-![Home](public/images/mobile-screenshots/mobile-home.png)
+### Landing Page:
+<img src="public/images/mobile-screenshots/mobile-home.png" alt="Home" width="300" />
 
-Offcanvas Nav:
-![Offcanvas Nav](public/images/mobile-screenshots/mobile-nav.png)
+### Offcanvas Nav:
+<img src="public/images/mobile-screenshots/mobile-nav.png" alt="Offcanvas Nav" width="300" />
 
-Log In/Sign Up:
-![Log In](public/images/mobile-screenshots/mobile-login.png)
-![Sign Up](public/images/mobile-screenshots/mobile-signup.png)
+### Log In/Sign Up:
+<div style="display: flex; justify-content: space-between;">
+  <img src="public/images/mobile-screenshots/mobile-login.png" alt="Log In" width="300" />
+  <img src="public/images/mobile-screenshots/mobile-signup.png" alt="Sign Up" width="300" />
+</div>
 
-Pets Available:
-![Pets List](public/images/mobile-screenshots/mobile-pets-available.png)
-![Pets List 2](public/images/mobile-screenshots/mobile-pets-available2.png)
+### Pets Available:
+<div style="display: flex; justify-content: space-between;">
+  <img src="public/images/mobile-screenshots/mobile-pets-available.png" alt="Pets List" width="300" />
+  <img src="public/images/mobile-screenshots/mobile-pets-available2.png" alt="Pets List 2" width="300" />
+</div>
 
-Pet Detail:
-![Pet Detail](public/images/mobile-screenshots/mobile-pet-detail.png)
-![Pet Detail 2](public/images/mobile-screenshots/mobile-pet-detail2.png)
+### Pet Detail:
+<div style="display: flex; justify-content: space-between;">
+  <img src="public/images/mobile-screenshots/mobile-pet-detail.png" alt="Pet Detail" width="300" />
+  <img src="public/images/mobile-screenshots/mobile-pet-detail2.png" alt="Pet Detail 2" width="300" />
+</div>
 
 ## Technologies Used
 
