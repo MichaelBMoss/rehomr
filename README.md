@@ -26,19 +26,19 @@ Pet Detail:
 <img src="public/images/mobile-screenshots/mobile-nav.png" alt="Offcanvas Nav" width="300" />
 
 ### Log In/Sign Up:
-<div style="display: flex; align-items: flex-start; justify-content: space-between;">
+<div style="display: flex; align-items: flex-start; justify-content: flex-start;">
   <img src="public/images/mobile-screenshots/mobile-login.png" alt="Log In" width="300" />
   <img src="public/images/mobile-screenshots/mobile-signup.png" alt="Sign Up" width="300" />
 </div>
 
 ### Pets Available:
-<div style="display: flex; align-items: flex-start; justify-content: space-between;">
+<div style="display: flex; align-items: flex-start; justify-content: flex-start;">
   <img src="public/images/mobile-screenshots/mobile-pets-available.png" alt="Pets List" width="300" />
   <img src="public/images/mobile-screenshots/mobile-pets-available2.png" alt="Pets List 2" width="300" />
 </div>
 
 ### Pet Detail:
-<div style="display: flex; align-items: flex-start; justify-content: space-between;">
+<div style="display: flex; align-items: flex-start; justify-content: flex-start;">
   <img src="public/images/mobile-screenshots/mobile-pet-detail.png" alt="Pet Detail" width="300" />
   <img src="public/images/mobile-screenshots/mobile-pet-detail2.png" alt="Pet Detail 2" width="300" />
 </div>
