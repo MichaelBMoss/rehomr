@@ -24,7 +24,8 @@ async function create(req, res) {
             age: parsedAge, 
             ...otherFields, 
             photoUrl, 
-            location: locationData // Add the location data here
+            location: locationData,
+            zipCode: zipCode,
         });
         const savedPet = await newPet.save();
         res.status(201).json(savedPet);
@@ -95,7 +96,8 @@ async function update(req, res) {
             ...otherFields, 
             ...(photoUrl ? { photoUrl } : {}),
             age: parsedAge,
-            location: locationData
+            location: locationData,
+            zipCode: zipCode,
         };
 
         // Update the pet information in the database
