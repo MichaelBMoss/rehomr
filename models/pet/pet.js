@@ -27,6 +27,9 @@ const petSchema = new mongoose.Schema({
 		type: String,
 		enum: ["Male", "Female"],
 	},
+	zipCode: {
+		type: String,
+	},
 	location: {
 		lat: { type: Number, },
 		lng: { type: Number, },

@@ -92,3 +92,23 @@ module.exports = uploadFile;
     Message Organization
     </Link>
 )}
+
+
+} else if (name === 'zipCode') {
+    const zipCode = formData.zipCode;
+    if (zipCode.length === 5) {
+      try {
+        const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`);
+        if (response.data.results[0]) {
+          const location = response.data.results[0].geometry.location;
+          const address = response.data.results[0].formatted_address;
+          setFormData({
+            ...formData,
+            zipCode: zipCode,
+            location: {
+              lat: location.lat,
+              lng: location.lng,
+              address: address
+            },
+          });
+        }

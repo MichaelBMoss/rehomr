@@ -16,7 +16,7 @@ export default function CreatePetPage({ user }) {
 		},
 		description: "",
 		gender: "",
-		location: "",
+		zipCode: "",
 		photoUrl: "",
 	});
 
