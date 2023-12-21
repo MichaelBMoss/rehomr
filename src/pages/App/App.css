@@ -388,7 +388,6 @@ label[for="sort-select"] {
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 12px 5px;
   gap: 10px;
@@ -641,6 +640,15 @@ label[for="sort-select"] {
   width: fit-content;
 }
 
+.pets-list-map-card {
+  background-color: white;
+  margin: 0 auto;
+  padding: 20px; 
+  border-radius: 5px;
+  width: 700px;
+  height: 300px;
+}
+
 .linkedin > h2 {
   padding: 0;
   margin: 0;
@@ -677,6 +685,7 @@ label[for="sort-select"] {
   margin: 25px auto;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 
@@ -735,6 +744,15 @@ label[for="sort-select"] {
 
   .pet-detail-wrap {
     padding: 20px;
+  }
+
+  .pets-list-map-card {
+    width: 500px;
+    height: 200px; 
+  }
+
+  .pets-list-map-wrap>h5 {
+    font-size: 1rem;
   }
 }
 
@@ -826,6 +844,12 @@ label[for="sort-select"] {
   .home-tag {
     font-size: 1.3rem;
     width: 75%;
+  }
+
+  .pets-list-map-card {
+    width: 80%;
+    height: 150px; 
+    padding: 10px;
   }
 }
 
