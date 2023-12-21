@@ -2,20 +2,40 @@
 
 **reHomr** is a web application designed to streamline the process of connecting pets in need of a home with individuals or families looking to adopt. The platform serves as a bridge between pet owners or rescue organizations and potential adopters, facilitating the adoption process and providing a centralized space for users to explore, learn about, and connect with pets.
 
-## Screenshot(s)
+## Screenshots (Web)
 
 Landing page:
-![landing page](public/images/home.png)
+![Home](public/images/web-screenshots/home.png)
 
 Log In:
-![Log In](public/images/login.png)
+![Log In](public/images/web-screenshots/login.png)
 
 Pets Available:
-![Pets Available](public/images/pets-available.png)
+![Alt text](public/images/web-screenshots/pets-available.png)
 
 Pet Detail:
-![Pet Detail](public/images/pet-detail.png)
-![Pet Location](public/images/map.png)
+![Pet Detail](public/images/web-screenshots/pet-detail.png)
+![Pet Map](public/images/web-screenshots/map.png)
+
+## Screenshots (Mobile - iPhone 14 Pro Max)
+
+Landing page:
+![Home](public/images/mobile-screenshots/mobile-home.png)
+
+Offcanvas Nav:
+![Offcanvas Nav](public/images/mobile-screenshots/mobile-nav.png)
+
+Log In/Sign Up:
+![Log In](public/images/mobile-screenshots/mobile-login.png)
+![Sign Up](public/images/mobile-screenshots/mobile-signup.png)
+
+Pets Available:
+![Pets List](public/images/mobile-screenshots/mobile-pets-available.png)
+![Pets List 2](public/images/mobile-screenshots/mobile-pets-available2.png)
+
+Pet Detail:
+![Pet Detail](public/images/mobile-screenshots/mobile-pet-detail.png)
+![Pet Detail 2](public/images/mobile-screenshots/mobile-pet-detail2.png)
 
 ## Technologies Used
 
