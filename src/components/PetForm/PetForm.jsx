@@ -6,38 +6,9 @@ import { getUser } from '../../utilities/users-service'
 
 export default function PetForm({ purpose, formData, setFormData, petId = null }) {
   const [file, setFile] = useState(null);
-  const [zipCode, setZipCode] = useState("");
   const token = localStorage.getItem('token');
 
-
-
-  const handleZipCodeChange = async (event) => {
-    const zipCode = event.target.value;
-    setZipCode(zipCode); // Update the state here
-  
-    // If the zip code has 5 digits
-    if (zipCode.length === 5) {
-      try {
-        const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`);
-        if (response.data.results[0]) {
-          const location = response.data.results[0].geometry.location;
-          const address = response.data.results[0].formatted_address;
-          setFormData({
-            ...formData,
-            location: {
-              lat: location.lat,
-              lng: location.lng,
-              address: address
-            },
-          });
-        }
-      } catch (error) {
-        console.error('Error getting location:', error);
-      }
-    }
-  };
-
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     const { name, value } = e.target;
     if (name === 'ageValue' || name === 'ageUnit') {
       setFormData({
@@ -47,7 +18,7 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
           [name === 'ageValue' ? 'value' : 'unit']: value,
         },
       });
-    } else {
+    } else  {
       setFormData({
         ...formData,
         [name]: value,
@@ -61,7 +32,6 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
 
   const navigate = useNavigate();
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = getUser();
@@ -73,16 +43,13 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
     Object.keys(formData).forEach((key) => {
       if (key === 'age') {
         data.append('age', JSON.stringify(formData.age));
-      } else if (key === 'location') {
-      data.append('location', JSON.stringify(formData.location));
-    } else {
+      }  else {
         data.append(key, formData[key]);
       }
     });
     data.append('file', file);
     data.append('organizationId', user._id)
     
-
     try {
       let response;
       if (purpose === 'create') {
@@ -170,8 +137,8 @@ export default function PetForm({ purpose, formData, setFormData, petId = null }
         <input
           type="text"
           name="zipCode"
-          value={zipCode}
-          onChange={handleZipCodeChange}
+          value={formData.zipCode}
+          onChange={handleChange}
           minLength={5}
           maxLength={5}
         />

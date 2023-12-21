@@ -359,8 +359,22 @@ label[for="organization"]>span {
   min-height: max-content;
 }
 
-.index-wrap>h1 {
-  margin-bottom: 50px;
+.sort-wrap {
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+#sort-select {
+  margin: 0;
+  width: 150px;
+  border-color: var(--blue-1);
+}
+label[for="sort-select"] {
+  font-size: 1.25rem;
 }
 
 .list-group, .orgs-pets-list {
@@ -374,7 +388,6 @@ label[for="organization"]>span {
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 12px 5px;
   gap: 10px;
@@ -627,6 +640,15 @@ label[for="organization"]>span {
   width: fit-content;
 }
 
+.pets-list-map-card {
+  background-color: white;
+  margin: 0 auto;
+  padding: 20px; 
+  border-radius: 5px;
+  width: 700px;
+  height: 300px;
+}
+
 .linkedin > h2 {
   padding: 0;
   margin: 0;
@@ -656,6 +678,14 @@ label[for="organization"]>span {
 .linkedin:hover,
 .linkedin:hover::before {
   transform: scaleX(1);
+}
+
+.pets-list-map-wrap {
+  display: flex;
+  margin: 25px auto;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 
@@ -714,6 +744,15 @@ label[for="organization"]>span {
 
   .pet-detail-wrap {
     padding: 20px;
+  }
+
+  .pets-list-map-card {
+    width: 500px;
+    height: 200px; 
+  }
+
+  .pets-list-map-wrap>h5 {
+    font-size: 1rem;
   }
 }
 
@@ -805,6 +844,12 @@ label[for="organization"]>span {
   .home-tag {
     font-size: 1.3rem;
     width: 75%;
+  }
+
+  .pets-list-map-card {
+    width: 80%;
+    height: 150px; 
+    padding: 10px;
   }
 }
 

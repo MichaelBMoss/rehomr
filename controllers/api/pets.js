@@ -1,6 +1,7 @@
 const Pet = require('../../models/pet/pet');
 const { uploadFile, uploadFileUpdate } = require('../../src/utilities/image-api');
-
+const axios = require('axios');
+require('dotenv').config();
 
 
 
@@ -16,10 +17,16 @@ module.exports = {
 async function create(req, res) {
     try {
         const photoUrl = await uploadFile(req, res);
-        const { age, location, ...otherFields } = req.body;
+        const { age, zipCode, ...otherFields } = req.body;
+        const locationData = await getLocationData(zipCode); // Await the async function
         const parsedAge = JSON.parse(age);
-        const parsedLocation = JSON.parse(location);
-        const newPet = new Pet({ age: parsedAge, location: parsedLocation, ...otherFields, photoUrl });
+        const newPet = new Pet({ 
+            age: parsedAge, 
+            ...otherFields, 
+            photoUrl, 
+            location: locationData,
+            zipCode: zipCode,
+        });
         const savedPet = await newPet.save();
         res.status(201).json(savedPet);
     } catch (error) {
@@ -27,6 +34,7 @@ async function create(req, res) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 }
+
 
 async function index(req, res) {
     try {
@@ -73,13 +81,12 @@ async function update(req, res) {
             return res.status(500).json({ error: 'Error uploading file', details: uploadError.message });
         }
 
-        const { age, location, ...otherFields } = req.body;
-
+        const { age, zipCode, ...otherFields } = req.body;
+        const locationData = await getLocationData(zipCode);
         // Ensure that age and location are parsed correctly
-        let parsedAge, parsedLocation;
+        let parsedAge;
         try {
             parsedAge = JSON.parse(age);
-            parsedLocation = JSON.parse(location);
         } catch (parseError) {
             return res.status(400).json({ error: 'Invalid age or location format' });
         }
@@ -89,7 +96,8 @@ async function update(req, res) {
             ...otherFields, 
             ...(photoUrl ? { photoUrl } : {}),
             age: parsedAge,
-            location: parsedLocation
+            location: locationData,
+            zipCode: zipCode,
         };
 
         // Update the pet information in the database
@@ -135,7 +143,6 @@ async function deletePet(req, res) {
     }
 }
 
-
 async function getOrgsPets(req, res) {
     try {
         const orgsPets = await Pet.find({ organizationId: req.params.id })
@@ -146,3 +153,24 @@ async function getOrgsPets(req, res) {
 
     }
 }
+
+const getLocationData = async (zipCode) => {
+    const apiKey = process.env.REACT_APP_GOOGLE_API_KEY; // Ensure this is set in your environment variables
+    try {
+        const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=${apiKey}`);
+        if (response.data.results.length) {
+            const location = response.data.results[0].geometry.location;
+            const address = response.data.results[0].formatted_address;
+            return { 
+                lat: location.lat, 
+                lng: location.lng, 
+                address: address 
+            };
+        } else {
+            throw new Error('Location not found');
+        }
+    } catch (error) {
+        console.error('Error fetching location data:', error);
+        throw error; // Rethrow the error to handle it in the calling function
+    }
+};

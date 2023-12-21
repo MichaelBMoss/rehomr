@@ -18,7 +18,7 @@ export default function UpdatePetPage({ user }) {
         },
         description: '',
         gender: '',
-        location: '',
+        zipCode: '',
         photoUrl: '',
     });
 
@@ -47,7 +47,7 @@ export default function UpdatePetPage({ user }) {
                 },
                 description: pet.description || '',
                 gender: pet.gender || '',
-                location: pet.location || '',
+                zipCode: pet.zipCode || '',
                 photoUrl: pet.photoUrl || ''
             });
         }
