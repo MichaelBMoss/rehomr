@@ -359,8 +359,22 @@ label[for="organization"]>span {
   min-height: max-content;
 }
 
-.index-wrap>h1 {
-  margin-bottom: 50px;
+.sort-wrap {
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+#sort-select {
+  margin: 0;
+  width: 150px;
+  border-color: var(--blue-1);
+}
+label[for="sort-select"] {
+  font-size: 1.25rem;
 }
 
 .list-group, .orgs-pets-list {
@@ -656,6 +670,13 @@ label[for="organization"]>span {
 .linkedin:hover,
 .linkedin:hover::before {
   transform: scaleX(1);
+}
+
+.pets-list-map-wrap {
+  display: flex;
+  margin: 25px auto;
+  flex-direction: column;
+  align-items: center;
 }
 
 

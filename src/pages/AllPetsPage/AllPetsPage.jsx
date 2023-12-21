@@ -78,17 +78,10 @@ export default function AllPetsPage({ user }) {
 	return (
 		<>
 			<div className="index-wrap">
-				<h1>All Pets</h1>
-				<select value={sortOrder} onChange={handleSortChange}>
-					<option value="name">Name</option>
-					<option value="animal">Animal</option>
-					<option value="age">Age</option>
-					<option value="breed">Breed</option>
-					<option value="gender">Gender</option>
-					{user && <option value="distance">Distance</option>}
-				</select>
+				{/* <h1>All Pets</h1> */}
 				{pets.length > 0 ? (
-					<div className="" >
+					<div className="pets-list-map-wrap" >
+						<h5>Where in the world is your new friend waiting for you:</h5>
 						<div className="map-card">
 							<GoogleMap
 								mapContainerStyle={{ width: "700px", height: "300px" }}
@@ -115,6 +108,18 @@ export default function AllPetsPage({ user }) {
 				) : (
 					<p>Loading map...</p>
 				)}
+				<h1>All Pets</h1>
+				<div className="sort-wrap">
+					<label htmlFor="sort-select">Sort By:</label>
+					<select id="sort-select" value={sortOrder} onChange={handleSortChange}>
+						<option value="name">Name</option>
+						<option value="animal">Animal</option>
+						<option value="age">Age</option>
+						<option value="breed">Breed</option>
+						<option value="gender">Gender</option>
+						{user && <option value="distance">Distance</option>}
+					</select>
+				</div>
 				<div className="list-group">
 					{pets.length > 0 &&
 						pets.map((pet) => (
