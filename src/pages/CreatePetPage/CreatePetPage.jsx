@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PetForm from "../../components/PetForm/PetForm";
+import { useNavigate } from 'react-router-dom';
 
-export default function CreatePetPage() {
+export default function CreatePetPage({ user }) {
+
+	const navigate = useNavigate();
+
 	const [formData, setFormData] = useState({
 		name: "",
 		animal: "",
@@ -15,6 +19,16 @@ export default function CreatePetPage() {
 		location: "",
 		photoUrl: "",
 	});
+
+	useEffect(() => {
+		if (user && user.role !== 'organization') {
+			navigate("/login");
+		}
+	}, [user, navigate]);
+	
+	if (!user || user.role !== 'organization') {
+		return <div>Loading...</div>;
+	}
 
 	return (
 		<div className="pet-form">

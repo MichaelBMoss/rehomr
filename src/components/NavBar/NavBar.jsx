@@ -18,10 +18,13 @@ export default function NavBar({ user, setUser }) {
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
-        <Link
-          className={`navbar-brand ps-3 ${isHomePage ? 'navbar-brand-home' : ''}`} to="/" >
-          reHomr
-        </Link>
+        <div>
+          <Link
+            className={`navbar-brand ps-3 ${isHomePage ? 'navbar-brand-home' : ''}`} to="/" >
+            reHomr
+          </Link>
+          {user && <span className={`${isHomePage ? 'nav-user-home' : 'nav-user'}`}>| &nbsp; {user && `${user.name}`}</span>}
+        </div>
         <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
           <span className={`${isHomePage ? 'navbar-toggler-icon-home' : 'navbar-toggler-icon'}`}></span>
         </button>
@@ -38,14 +41,16 @@ export default function NavBar({ user, setUser }) {
               <li className="nav-item">
                 <Link className={`nav-link ${isHomePage ? 'nav-home' : ''} ${isPetsPage ? 'active' : ''}`} to="/pets"> Pets</Link>
               </li>
-              <li className="nav-item">
-                <Link className={`nav-link ${isHomePage ? 'nav-home' : ''} ${isPetsCreatePage ? 'active' : ''}`} to="/pets/new">Add a Pet</Link>
-              </li>
+              {user && user.role === 'organization' && (
+                <li className="nav-item">
+                    <Link className={`nav-link ${isHomePage ? 'nav-home' : ''} ${isPetsCreatePage ? 'active' : ''}`} to="/pets/new">Add a Pet</Link>
+                </li>
+              )}
               <li className="nav-item">
                 <Link className={`nav-link ${isHomePage ? 'nav-home' : ''} ${isOrgsPage ? 'active' : ''}`} to="/orgs">Organizations</Link>
               </li>
               {user ? (
-                <li className="nav-item"><Link className={`btn btn-yellow-outline nav-btn ${isHomePage ? 'nav-home-user' : ''}`} to="" onClick={handleLogOut}>Log Out</Link></li>
+                <li className="nav-item"><Link className={`btn btn-yellow-outline nav-btn ${isHomePage ? 'nav-home-logout' : ''}`} to="" onClick={handleLogOut}>Log Out</Link></li>
               ) : (
                 <li className="nav-item"><Link className="btn btn-yellow nav-btn" to="/login">Log In/Sign Up</Link></li>
               )}

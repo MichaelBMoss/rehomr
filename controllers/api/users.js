@@ -13,7 +13,6 @@ module.exports = {
 };
 
 function checkToken(req, res) {
-  console.log('req.user', req.user);
   res.json(req.exp);
 }
 
@@ -37,7 +36,7 @@ async function createOrg(req, res) {
     const token = createJWT(user);
     res.json(token);
   } catch (err) {
-    console.log(err)
+    console.error(err)
     res.status(400).json(err);
   }
 }

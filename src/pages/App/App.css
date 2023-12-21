@@ -19,7 +19,7 @@ nav {
 
 .navbar-brand {
   color: black;
-  transition: 0.2s ease-in;
+  transition: 0.2s ease-out;
 }
 
 .navbar-brand:focus {
@@ -72,9 +72,9 @@ nav {
 .nav-home,
 .navbar-brand-home,
 .navbar-brand-home:active,
-.nav-home-user {
+.nav-home-logout {
   color: white;
-  transition: 0.2s ease-in;
+  transition: 0.2s ease-out;
 }
 
 .nav-home:hover {
@@ -84,6 +84,15 @@ nav {
 .navbar-brand:hover,
 .navbar-brand-home:hover {
   color: var(--yellow-1);
+}
+
+.nav-user {
+  color: black;
+}
+
+.nav-user-home {
+  color: white; 
+
 }
 
 .btn {
@@ -406,7 +415,7 @@ label[for="organization"]>span {
   width: 30%;
   margin-bottom: 5%;
   text-decoration: none;
-  transition: 0.2s ease-in;
+  transition: 0.2s ease-out;
 }
 
 .pet-card:hover, .org-card:hover {
@@ -415,12 +424,18 @@ label[for="organization"]>span {
 
 .pet-detail-wrap, .org-detail-wrap {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   padding: 50px;
   padding-bottom: 100px;
-  height: 100vh;
+  height: 100%;
   background-color: rgb(243, 243, 243);
+  gap: 50px;
+}
+
+.pet-detail-wrap {
+  align-items: center;
 }
 
 .org-detail-wrap {
@@ -430,7 +445,7 @@ label[for="organization"]>span {
 .pet-detail-card {
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 70vh;
   min-height: 575px;
   margin: 0 auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -462,8 +477,8 @@ label[for="organization"]>span {
   color: var(--blue-1);
 }
 
-.detail-card-info h5 {
-  color: var(--gray-1);
+.info-text-1 > h5 {
+  color: black;
 }
 
 .detail-card-info p {
@@ -496,7 +511,7 @@ label[for="organization"]>span {
   top: -40px;
   left: 10px;
   width: 2px;
-  height: 370px;
+  height: 390px;
   background-color: var(--gray-1); 
 }
 
@@ -514,17 +529,6 @@ label[for="organization"]>span {
   color: var(--gray-1);
   font-weight: 500;
   font-size: 0.7rem;
-}
-.pet-detail-card {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  min-height: 575px;
-  margin: 0 auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  background-color: white;
-  border-radius: 5px;
-  padding: 20px;
 }
 
 .org-detail-card {
@@ -583,6 +587,86 @@ label[for="organization"]>span {
   height: 25px;
 }
 
+.org-link {
+  color: var(--gray-1);
+  text-decoration: none;
+  font-size: 1.25rem;
+  position: relative;
+  transition: color 0.2s ease-out;
+}
+
+.org-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--yellow-1);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+
+.org-link:hover,
+.org-link:hover::before {
+  transform: scaleX(1);
+}
+
+.map-wrap{
+  text-align: center;
+  width: 100%;
+}
+
+.map-card {
+  background-color: white;
+  margin: 0 auto;
+  padding: 20px; 
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.linkedin > h2 {
+  padding: 0;
+  margin: 0;
+}
+
+.linkedin {
+  color: black;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease-out;
+}
+
+.linkedin::before {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--yellow-1);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+
+.linkedin:hover,
+.linkedin:hover::before {
+  transform: scaleX(1);
+}
+
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .nav-link {
+    margin: 0 1rem;
+  }
+  .nav-user, .nav-user-home {
+    font-size: 0.8rem;
+  }
+}
 
 @media (min-width: 768px) {
   .org-detail-card {
@@ -633,7 +717,7 @@ label[for="organization"]>span {
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 991px) {
   .home-title {
     font-size: 3rem;
   }
@@ -700,7 +784,7 @@ label[for="organization"]>span {
     margin: 8px auto;
   }
 
-  .nav-home, .nav-home-user {
+  .nav-home, .nav-home-logout {
     color: black
   }
 
@@ -721,5 +805,11 @@ label[for="organization"]>span {
   .home-tag {
     font-size: 1.3rem;
     width: 75%;
+  }
+}
+
+@media (max-width: 380px) {
+  .map-card {
+    padding: 0;
   }
 }

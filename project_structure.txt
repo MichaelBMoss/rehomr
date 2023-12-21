@@ -1,24 +1,9 @@
 .
-├── build
-│   ├── asset-manifest.json
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── logo192.png
-│   ├── logo512.png
-│   ├── manifest.json
-│   ├── robots.txt
-│   └── static
-│       ├── css
-│       │   ├── main.073c9b0a.css
-│       │   └── main.073c9b0a.css.map
-│       └── js
-│           ├── main.391b5a80.js
-│           ├── main.391b5a80.js.LICENSE.txt
-│           └── main.391b5a80.js.map
 ├── config
 │   ├── checkToken.js
 │   ├── database.js
-│   └── ensureLoggedIn.js
+│   ├── ensureLoggedIn.js
+│   └── s3.js
 ├── controllers
 │   └── api
 │       ├── pets.js
@@ -28,6 +13,7 @@
 │   ├── pet
 │   │   └── pet.js
 │   └── user.js
+├── notes
 ├── package.json
 ├── package-lock.json
 ├── project_structure.txt
@@ -47,46 +33,55 @@
 │       ├── pets.js
 │       └── users.js
 ├── server.js
-└── src
-    ├── components
-    │   ├── LoginForm
-    │   │   └── LoginForm.jsx
-    │   ├── NavBar
-    │   │   └── NavBar.jsx
-    │   ├── PetForm
-    │   │   └── PetForm.jsx
-    │   └── SignUpForm
-    │       └── SignUpForm.jsx
-    ├── index.css
-    ├── index.js
-    ├── pages
-    │   ├── AboutPage
-    │   │   └── AboutPage.jsx
-    │   ├── AllPetsPage
-    │   │   ├── AllPetsPage.css
-    │   │   └── AllPetsPage.jsx
-    │   ├── App
-    │   │   ├── App.css
-    │   │   └── App.jsx
-    │   ├── AuthPage
-    │   │   └── AuthPage.jsx
-    │   ├── CreatePetPage
-    │   │   └── CreatePetPage.jsx
-    │   ├── DeletePetPage
-    │   │   └── DeletePetPage.jsx
-    │   ├── HomePage
-    │   │   └── HomePage.jsx
-    │   ├── OrgsListPage
-    │   │   └── OrgsListPage.jsx
-    │   ├── PetDetailPage
-    │   │   ├── PetDetailPage.css
-    │   │   └── PetDetailPage.jsx
-    │   └── UpdatePetPage
-    │       └── UpdatePetPage.jsx
-    └── utilities
-        ├── data-api.js
-        ├── send-request.js
-        ├── users-api.js
-        └── users-service.js
+├── src
+│   ├── components
+│   │   ├── LoginForm
+│   │   │   └── LoginForm.jsx
+│   │   ├── NavBar
+│   │   │   └── NavBar.jsx
+│   │   ├── OrgCard
+│   │   │   └── OrgCard.jsx
+│   │   ├── PetCard
+│   │   │   └── PetCard.jsx
+│   │   ├── PetForm
+│   │   │   └── PetForm.jsx
+│   │   └── SignUpForm
+│   │       └── SignUpForm.jsx
+│   ├── index.css
+│   ├── index.js
+│   ├── pages
+│   │   ├── AboutPage
+│   │   │   └── AboutPage.jsx
+│   │   ├── AllPetsPage
+│   │   │   ├── AllPetsPage.css
+│   │   │   └── AllPetsPage.jsx
+│   │   ├── App
+│   │   │   ├── App.css
+│   │   │   └── App.jsx
+│   │   ├── AuthPage
+│   │   │   └── AuthPage.jsx
+│   │   ├── CreatePetPage
+│   │   │   └── CreatePetPage.jsx
+│   │   ├── DeletePetPage
+│   │   │   └── DeletePetPage.jsx
+│   │   ├── HomePage
+│   │   │   └── HomePage.jsx
+│   │   ├── OrgDetailPage
+│   │   │   └── OrgDetailPage.jsx
+│   │   ├── OrgsListPage
+│   │   │   └── OrgsListPage.jsx
+│   │   ├── PetDetailPage
+│   │   │   ├── PetDetailPage.css
+│   │   │   └── PetDetailPage.jsx
+│   │   └── UpdatePetPage
+│   │       └── UpdatePetPage.jsx
+│   └── utilities
+│       ├── data-api.js
+│       ├── image-api.js
+│       ├── places-loadscript.js
+│       ├── send-request.js
+│       ├── users-api.js
+│       └── users-service.js
+└── uploads
 
-31 directories, 58 files
+31 directories, 53 files

@@ -4,8 +4,7 @@ import * as dataAPI from "../../utilities/data-api";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
-
-export default function DeletePetPage() {
+export default function DeletePetPage({ user }) { // Assuming you receive the user as a prop
 	const [pet, setPet] = useState();
 	const { petId } = useParams();
 	const navigate = useNavigate();
@@ -24,18 +23,29 @@ export default function DeletePetPage() {
 
 	const handleRemovePet = async () => {
 		try {
-			// Make an API request to delete the pet by ID
-			const response = await axios.delete(`/api/pets/${petId}`);
+			const token = localStorage.getItem('token'); // Retrieve the JWT token
+			const headers = {
+			  Authorization: `Bearer ${token}`
+			};
 
+			// Make an API request to delete the pet by ID
+			const response = await axios.delete(`/api/pets/${petId}`, { headers });
+			
 			// Redirect to a different page after successful deletion
 			navigate("/pets");
-
-			console.log("Pet deleted:", response.data);
 		} catch (error) {
 			console.error(error);
-			// Handle error
 		}
 	};
+
+	// Check if the user's ID matches the pet's organizationId
+	const isUserAuthorized = user && pet && user._id === pet.organizationId;
+
+	if (!isUserAuthorized) {
+		// If the user is not authorized, navigate them to the "/login" page
+		navigate("/");
+		return null; // You may return null or display an appropriate message
+	}
 
 	return (
 		<>

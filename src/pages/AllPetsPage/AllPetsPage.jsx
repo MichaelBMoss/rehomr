@@ -55,7 +55,7 @@ export default function AllPetsPage({ user }) {
 	return (
 		<>
 			<div className="index-wrap">
-				<h1>All Pets Page</h1>
+				<h1>All Pets</h1>
 				<select value={sortOrder} onChange={handleSortChange}>
 					<option value="name">Name</option>
 					<option value="animal">Animal</option>

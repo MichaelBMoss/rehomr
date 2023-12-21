@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# reHomr: Connecting Pets with Loving Homes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**reHomr** is a web application designed to streamline the process of connecting pets in need of a home with individuals or families looking to adopt. The platform serves as a bridge between pet owners or rescue organizations and potential adopters, facilitating the adoption process and providing a centralized space for users to explore, learn about, and connect with pets.
 
-## Available Scripts
+## Screenshot(s)
 
-In the project directory, you can run:
+Landing page:
+![landing page](public/images/home.png)
 
-### `npm start`
+Log In:
+![Log In](public/images/login.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Pets Available:
+![Pets Available](public/images/pets-available.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Pet Detail:
+![Pet Detail](public/images/pet-detail.png)
+![Pet Location](public/images/map.png)
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Frontend:**
+  - React.js
+  - HTML
+  - CSS
+  - JavaScript
 
-### `npm run build`
+**Backend:**
+  - Node.js
+  - Express.js
+  - MongoDB
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**External Libraries and Tools:**
+  - Bootstrap (for styling)
+  - AJAX/Axios (for making API requests)
+  - Trello (for project planning)
+  - Figma (for wireframing)
+  - Heroku (for deployment)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Other Technologies:**
+  - Google Maps API (for location services)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting Started
 
-### `npm run eject`
+- [Deployed App](https://rehomr-58ea4d4dc5ca.herokuapp.com/)
+- [Trello Board (User Stories)](https://trello.com/b/1KqPHOwD/sei-rehomr)
+- [Figma (Wireframe)](https://www.figma.com/file/byk6manLr3uQvMmUZE5Erb/Project-4---reHomr?type=whiteboard&node-id=0-1&t=wFD32hGv2cRPDrVK-0)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Next Steps
+- Messaging within the site via Socket.io
+- AI Matching
+- User Profile
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
