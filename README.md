@@ -20,27 +20,27 @@ Pet Detail:
 ## Screenshots (Mobile - iPhone 14 Pro Max)
 
 ### Landing Page:
-<img src="public/images/mobile-screenshots/mobile-home.png" alt="Home" width="300" />
+<img src="public/images/mobile-screenshots/mobile-home.png" alt="Home" height="500px" />
 
 ### Offcanvas Nav:
-<img src="public/images/mobile-screenshots/mobile-nav.png" alt="Offcanvas Nav" width="300" />
+<img src="public/images/mobile-screenshots/mobile-nav.png" alt="Offcanvas Nav" height="500px" />
 
 ### Log In/Sign Up:
 <div style="display: flex; align-items: flex-start; justify-content: flex-start;">
-  <img src="public/images/mobile-screenshots/mobile-login.png" alt="Log In" width="300" />
-  <img src="public/images/mobile-screenshots/mobile-signup.png" alt="Sign Up" width="300" />
+  <img src="public/images/mobile-screenshots/mobile-login.png" alt="Log In" height="500px" />
+  <img src="public/images/mobile-screenshots/mobile-signup.png" alt="Sign Up" height="500px" />
 </div>
 
 ### Pets Available:
 <div style="display: flex; align-items: flex-start; justify-content: flex-start;">
-  <img src="public/images/mobile-screenshots/mobile-pets-available.png" alt="Pets List" width="300" />
-  <img src="public/images/mobile-screenshots/mobile-pets-available2.png" alt="Pets List 2" width="300" />
+  <img src="public/images/mobile-screenshots/mobile-pets-available.png" alt="Pets List" height="500px" />
+  <img src="public/images/mobile-screenshots/mobile-pets-available2.png" alt="Pets List 2" height="500px" />
 </div>
 
 ### Pet Detail:
 <div style="display: flex; align-items: flex-start; justify-content: flex-start;">
-  <img src="public/images/mobile-screenshots/mobile-pet-detail.png" alt="Pet Detail" width="300" />
-  <img src="public/images/mobile-screenshots/mobile-pet-detail2.png" alt="Pet Detail 2" width="300" />
+  <img src="public/images/mobile-screenshots/mobile-pet-detail.png" alt="Pet Detail" height="500px" />
+  <img src="public/images/mobile-screenshots/mobile-pet-detail2.png" alt="Pet Detail 2" height="500px" />
 </div>
 
 ## Technologies Used
