@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import * as dataAPI from "../../utilities/data-api";
 import PetCard from "../../components/PetCard/PetCard";
 import { getDistance } from "geolib";
+import { GoogleMap, MarkerF } from "@react-google-maps/api";
 
 export default function AllPetsPage({ user }) {
 	const [pets, setPets] = useState([]);
 	const [sortOrder, setSortOrder] = useState("name");
+	const [avgLat, setAvgLat] = useState(0);
+	const [avgLng, setAvgLng] = useState(0);
 
 	const handleSortChange = (e) => {
 		setSortOrder(e.target.value);
@@ -45,6 +48,26 @@ export default function AllPetsPage({ user }) {
 					data.sort((a, b) => a[sortOrder].localeCompare(b[sortOrder]));
 				}
 				setPets(data);
+
+				// Calculate the average latitude and longitude
+				let avgLat = 0;
+				let avgLng = 0;
+				let count = 0;
+
+				data.forEach((pet) => {
+					if (pet.location && pet.location.lat && pet.location.lng) {
+						avgLat += pet.location.lat;
+						avgLng += pet.location.lng;
+						count++;
+					}
+				});
+
+				avgLat /= count;
+				avgLng /= count;
+
+				// Set the average latitude and longitude in the state
+				setAvgLat(avgLat);
+				setAvgLng(avgLng);
 			} catch (error) {
 				console.error(error);
 			}
@@ -64,6 +87,34 @@ export default function AllPetsPage({ user }) {
 					<option value="gender">Gender</option>
 					{user && <option value="distance">Distance</option>}
 				</select>
+				{pets.length > 0 ? (
+					<div className="" >
+						<div className="map-card">
+							<GoogleMap
+								mapContainerStyle={{ width: "700px", height: "300px" }}
+								center={{ lat: avgLat, lng: avgLng }} // Center the map on the average location
+								zoom={4}
+							>
+								{pets.map(
+									(pet, index) =>
+										pet.location &&
+										pet.location.lat &&
+										pet.location.lng && (
+											<MarkerF
+												key={index}
+												position={{
+													lat: pet.location.lat,
+													lng: pet.location.lng,
+												}}
+											/>
+										)
+								)}
+							</GoogleMap>
+						</div>
+					</div>
+				) : (
+					<p>Loading map...</p>
+				)}
 				<div className="list-group">
 					{pets.length > 0 &&
 						pets.map((pet) => (
