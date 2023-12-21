@@ -80,13 +80,12 @@ async function update(req, res) {
             return res.status(500).json({ error: 'Error uploading file', details: uploadError.message });
         }
 
-        const { age, location, ...otherFields } = req.body;
-
+        const { age, zipCode, ...otherFields } = req.body;
+        const locationData = await getLocationData(zipCode);
         // Ensure that age and location are parsed correctly
-        let parsedAge, parsedLocation;
+        let parsedAge;
         try {
             parsedAge = JSON.parse(age);
-            parsedLocation = JSON.parse(location);
         } catch (parseError) {
             return res.status(400).json({ error: 'Invalid age or location format' });
         }
@@ -96,7 +95,7 @@ async function update(req, res) {
             ...otherFields, 
             ...(photoUrl ? { photoUrl } : {}),
             age: parsedAge,
-            location: parsedLocation
+            location: locationData
         };
 
         // Update the pet information in the database
