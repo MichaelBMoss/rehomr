@@ -830,6 +830,10 @@ label[for="sort-select"] {
   .nav-home:hover {
     color: black
   }
+
+  .about-page-wrap {
+    width: 90%; 
+  }
 }
 
 @media (max-width: 550px) {
