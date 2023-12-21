@@ -946,6 +946,12 @@ label[for="sort-select"] {
   .li-location>div {
     font-size: 0.6rem;
   }
+
+  
+
+  .detail-map-card {
+    width: 100%;
+  }
 }
 
 @media (max-width: 380px) {

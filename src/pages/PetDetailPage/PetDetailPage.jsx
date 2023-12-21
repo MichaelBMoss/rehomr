@@ -144,12 +144,12 @@ export default function PetDetailPage({ user }) {
 								)}
 							</div>
 						</div>
-						<div className="map-wrap">
+						<div className="pets-list-map-wrap">
 							<h2>Where is your new friend?</h2>
-							<div className="map-card">
+							<div className="pets-list-map-card detail-map-card">
 								{pet.location && pet.location.lat && pet.location.lng ? (
 									<GoogleMap
-										mapContainerStyle={{ width: "300px", height: "300px" }}
+										mapContainerStyle={{ width: "100%", height: "100%" }}
 										center={{ lat: pet.location.lat, lng: pet.location.lng }}
 										zoom={10}
 									>
