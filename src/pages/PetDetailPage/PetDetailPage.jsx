@@ -65,6 +65,7 @@ export default function PetDetailPage({ user }) {
 										) : (
 											""
 										)}
+										<div></div>
 										<p>{pet.description}</p>
 									</div>
 									<div className="info-text-2">
