@@ -2,20 +2,46 @@
 
 **reHomr** is a web application designed to streamline the process of connecting pets in need of a home with individuals or families looking to adopt. The platform serves as a bridge between pet owners or rescue organizations and potential adopters, facilitating the adoption process and providing a centralized space for users to explore, learn about, and connect with pets.
 
-## Screenshot(s)
+## Screenshots (Web)
 
 Landing page:
-![landing page](public/images/home.png)
+![Home](public/images/web-screenshots/home.png)
 
 Log In:
-![Log In](public/images/login.png)
+![Log In](public/images/web-screenshots/login.png)
 
 Pets Available:
-![Pets Available](public/images/pets-available.png)
+![Alt text](public/images/web-screenshots/pets-available.png)
 
 Pet Detail:
-![Pet Detail](public/images/pet-detail.png)
-![Pet Location](public/images/map.png)
+![Pet Detail](public/images/web-screenshots/pet-detail.png)
+![Pet Map](public/images/web-screenshots/map.png)
+
+## Screenshots (Mobile - iPhone 14 Pro Max)
+
+### Landing Page:
+<img src="public/images/mobile-screenshots/mobile-home.png" alt="Home" height="500px" />
+
+### Offcanvas Nav:
+<img src="public/images/mobile-screenshots/mobile-nav.png" alt="Offcanvas Nav" height="500px" />
+
+### Log In/Sign Up:
+<div style="display: flex; align-items: flex-start; justify-content: flex-start;">
+  <img src="public/images/mobile-screenshots/mobile-login.png" alt="Log In" height="500px" />
+  <img src="public/images/mobile-screenshots/mobile-signup.png" alt="Sign Up" height="500px" />
+</div>
+
+### Pets Available:
+<div style="display: flex; align-items: flex-start; justify-content: flex-start;">
+  <img src="public/images/mobile-screenshots/mobile-pets-available.png" alt="Pets List" height="500px" />
+  <img src="public/images/mobile-screenshots/mobile-pets-available2.png" alt="Pets List 2" height="500px" />
+</div>
+
+### Pet Detail:
+<div style="display: flex; align-items: flex-start; justify-content: flex-start;">
+  <img src="public/images/mobile-screenshots/mobile-pet-detail.png" alt="Pet Detail" height="500px" />
+  <img src="public/images/mobile-screenshots/mobile-pet-detail2.png" alt="Pet Detail 2" height="500px" />
+</div>
 
 ## Technologies Used
 
