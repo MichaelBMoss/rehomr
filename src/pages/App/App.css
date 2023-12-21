@@ -767,7 +767,7 @@ label[for="sort-select"] {
 
   .pets-list-map-card {
     width: 500px;
-    height: 200px;
+    height: 350px;
   }
 
   .pets-list-map-wrap>h5 {
@@ -887,8 +887,8 @@ label[for="sort-select"] {
   }
 
   .pets-list-map-card {
-    width: 80%;
-    height: 150px;
+    width: 90%;
+    height: 300px;
     padding: 10px;
   }
 
