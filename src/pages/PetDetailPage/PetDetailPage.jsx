@@ -65,7 +65,30 @@ export default function PetDetailPage({ user }) {
 										) : (
 											""
 										)}
-										<div></div>
+										<hr />
+										<div>
+											<ul className="pet-detail-ul-horz">
+												<li>
+													<span>ANIMAL</span>
+													<div>{pet.animal}</div>
+												</li>
+												<li>
+													<span>GENDER</span>
+													<div>{pet.gender}</div>
+												</li>
+												<li>
+													<span>AGE</span>
+													<div>
+														{pet.age.value} {pet.age.unit}
+													</div>
+												</li>
+												<li className="li-location">
+													<span>LOCATION</span>
+													<div>{pet.location.address}</div>
+												</li>
+											</ul>
+										</div>
+										<hr />
 										<p>{pet.description}</p>
 									</div>
 									<div className="info-text-2">

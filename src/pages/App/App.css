@@ -702,6 +702,14 @@ label[for="sort-select"] {
   text-align: center;
 }
 
+.pet-detail-ul-horz {
+  display: none; 
+}
+
+.info-text-1 hr {
+  display: none;
+}
+
 
 @media (min-width: 992px) and (max-width: 1200px) {
   .nav-link {
@@ -896,6 +904,48 @@ label[for="sort-select"] {
     font-size: 0.8rem
   }
 
+  .info-text-2 {
+    display: none;
+  }
+
+  .pet-detail-ul-horz {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+  }
+
+  .pet-detail-ul-horz li {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  
+  .pet-detail-ul-horz span {
+    color: var(--gray-1);
+    font-weight: 500;
+    font-size: 0.5rem;
+  }
+  
+  .pet-detail-ul-horz div {
+    font-size: 0.8rem; 
+  }
+  
+  .detail-card-info p {
+    margin: 0;
+  }
+  
+  .info-text-1 hr {
+    display: block; 
+    margin: 5px 0;
+  }
+  
+  .li-location>div {
+    font-size: 0.6rem;
+  }
 }
 
 @media (max-width: 380px) {
