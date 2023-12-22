@@ -34,25 +34,25 @@ export default function NavBar({ user, setUser }) {
           </div>
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li className="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+              <li className="nav-item" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar">
                 <Link className={`nav-link ${isHomePage ? 'nav-home' : ''} ${isAboutPage ? 'active' : ''}`} to="/about">About</Link>
               </li>
 
-              <li className="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+              <li className="nav-item" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar">
                 <Link className={`nav-link ${isHomePage ? 'nav-home' : ''} ${isPetsPage ? 'active' : ''}`} to="/pets"> Pets</Link>
               </li>
               {user && user.role === 'organization' && (
-                <li className="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+                <li className="nav-item" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar">
                     <Link className={`nav-link ${isHomePage ? 'nav-home' : ''} ${isPetsCreatePage ? 'active' : ''}`} to="/pets/new">Add a Pet</Link>
                 </li>
               )}
-              <li className="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+              <li className="nav-item" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar">
                 <Link className={`nav-link ${isHomePage ? 'nav-home' : ''} ${isOrgsPage ? 'active' : ''}`} to="/orgs">Organizations</Link>
               </li>
               {user ? (
                 <li className="nav-item"><Link className={`btn btn-yellow-outline nav-btn ${isHomePage ? 'nav-home-logout' : ''}`} to="" onClick={handleLogOut}>Log Out</Link></li>
               ) : (
-                <li className="nav-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"><Link className="btn btn-yellow nav-btn" to="/login">Log In/Sign Up</Link></li>
+                <li className="nav-item" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasNavbar"><Link className="btn btn-yellow nav-btn" to="/login">Log In/Sign Up</Link></li>
               )}
             </ul>
           </div>

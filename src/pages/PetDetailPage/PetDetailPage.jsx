@@ -142,6 +142,8 @@ export default function PetDetailPage({ user }) {
 										</a>
 									)
 								)}
+
+								{!user && <Link to="/login" className="btn btn-yellow-outline">Log In/Sign Up to Inquire</Link>}
 							</div>
 						</div>
 						<div className="pets-list-map-wrap">
